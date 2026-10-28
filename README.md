@@ -16,6 +16,8 @@ All policies, members, documents and amounts in `sample_data/` are **fictional**
 | Implementation | Claude Code (Claude Opus 5.5) | The code, fixtures, tests and docs in this repository, built from that plan |
 | LLM at runtime | [OpenRouter](https://openrouter.ai) | Reviewer-facing explanations only (`--llm`); the model is set in `.env` |
 
+The full Claude Code implementation conversation is in [ai-conversation/CONVERSATION.md](ai-conversation/CONVERSATION.md).
+
 ## Requirements
 
 - Python 3.9 or later. Standard library only, so there's nothing to install.
