@@ -3,7 +3,7 @@
 A prototype agent that does the **first-pass assessment of a health insurance claim** in minutes instead of days. It checks the documents, the policy, medical necessity and the benefit amount, then writes an evidence-backed report recommending **Approve**, **Reject** or **Request more information**. A human assessor always makes the final decision.
 
 - **Deterministic code decides.** The tools, decision rules, benefit calculation (`Decimal`, never float) and report are ordinary Python.
-- **The LLM only explains.** With `--llm`, a model on OpenRouter drafts reviewer-facing explanations from verified facts. The explanations are validated against the report and can never change the recommendation.
+- **The LLM only explains.** On every run, a model on OpenRouter drafts reviewer-facing explanations from verified facts. The explanations are validated against the report and can never change the recommendation.
 - **Every reason is traceable** to a document and a policy clause or rule, and every tool call is logged.
 
 All policies, members, documents and amounts in `sample_data/` are **fictional**.
@@ -14,19 +14,19 @@ All policies, members, documents and amounts in `sample_data/` are **fictional**
 |---|---|---|---|
 | Planning | ChatGPT Astra | [Agent operating guideline](get-started/insurance_claim_assessment_agent_guideline.md): Defines how claims are assessed, which guardrails apply and what the report must contain.<br>[Implementation plan](get-started/claim_assessment_implementation_plan.md): Specifies the architecture, tools and decision logic, and sets the acceptance test cases. | • [Guideline conversation](ai-conversation/claim_assessment_conversation_export.md)<br>• [Plan conversation](ai-conversation/draft_implementation_plan_conversation_export.md) |
 | Implementation | Claude Code (Claude Opus 5.5) | The code, fixtures, tests and docs in this repository, built from that plan. | • [Implementation conversation](ai-conversation/CONVERSATION.md) |
-| LLM at runtime | [OpenRouter](https://openrouter.ai) | Reviewer-facing explanations only (`--llm`); the model is set in `.env` | Not applicable |
+| LLM at runtime | [OpenRouter](https://openrouter.ai) | Reviewer-facing explanations only, called on every run; the model is set in `.env` | Not applicable |
 
 ## Requirements
 
 - Python 3.9 or later. Standard library only, so there's nothing to install.
-- For `--llm` only: an [OpenRouter](https://openrouter.ai) API key.
+- An [OpenRouter](https://openrouter.ai) API key in `.env` (see below). Use `--no-llm` to run without one.
 
 ## How to run
 
 Run every command from the project root.
 
 ```bash
-# Assess one claim (readable terminal output)
+# Assess one claim (readable terminal output, with OpenRouter explanations)
 PYTHONPATH=src python3 -m claim_agent.cli CLM-APP-001
 
 # Assess all three sample claims
@@ -46,25 +46,25 @@ PYTHONPATH=src python3 -m claim_agent.cli --all --out output/md
 | `--format text\|md\|json`, `--md`, `--json` | Output format. The default `text` fits the terminal width. |
 | `--out DIR` | Also write `DIR/<claim>.md` and `DIR/<claim>.json` (full audit trail). |
 | `--no-color` | Plain text, with no ANSI colors. Color is also off when output isn't a terminal or `NO_COLOR` is set. |
-| `--llm` | Draft explanations with OpenRouter (needs an API key, see below). |
+| `--no-llm` | Skip the OpenRouter explanations, for offline runs and tests. By default every run calls OpenRouter and needs an API key. |
 | `--no-llm-payload` | Hide the full LLM request/response section. |
 | `--llm-raw` | Add the exact raw request and response JSON bodies to the tool call log. |
 | `--env-file PATH` | Read settings from this file instead of `./.env`. |
 
-### LLM explanations (optional)
+### LLM explanations
 
-Copy `.env.example` to `.env` (it's gitignored) and set your key:
+Every run calls OpenRouter to draft the explanations. Before the first run, copy `.env.example` to `.env` (it's gitignored) and set your key:
 
 ```bash
 cp .env.example .env
 chmod 600 .env
 # edit .env: OPENROUTER_API_KEY=...
-PYTHONPATH=src python3 -m claim_agent.cli --all --llm --out output/md
+PYTHONPATH=src python3 -m claim_agent.cli --all --out output/md
 ```
 
 | Setting | Default | Notes |
 |---|---|---|
-| `OPENROUTER_API_KEY` | none | Required for `--llm`. Never logged or written to a report. There is deliberately no `--api-key` flag. |
+| `OPENROUTER_API_KEY` | none | Required unless you pass `--no-llm`. The run stops with an error if it's missing. Never logged or written to a report. There is deliberately no `--api-key` flag. |
 | `OPENROUTER_MODEL` | `openai/gpt-4o` | The sample runs below used `recursive/flint-v1.0:free`. |
 | `OPENROUTER_MAX_TOKENS` | `1000` | Reasoning models need more; Flint needs about `4000`. |
 | `OPENROUTER_REASONING_EFFORT` | unset | `minimal`, `low`, `medium` or `high`. |
@@ -101,7 +101,7 @@ verifyDocument × n → documentReview → lookupPolicy → checkMedicalNecessit
 | Rejection | `CLM-REJ-001` elective cosmetic rhinoplasty | `POL-REJ-001` v2026-B | USD 2,000.00 | **Reject** | **0.00** |
 | More info | `CLM-RFI-001` back pain, outpatient | `POL-RFI-001` v2026-C | USD 300.00 | **Request more information** | **Pending** (`null`) |
 
-All three pass validation and the citation check. Full reports, generated with `--llm --out output/md` using `recursive/flint-v1.0:free`, are in [output/md/](output/md/):
+All three pass validation and the citation check. Full reports, generated with `--out output/md` using `recursive/flint-v1.0:free`, are in [output/md/](output/md/):
 
 - [CLM-APP-001.md](output/md/CLM-APP-001.md)
 - [CLM-REJ-001.md](output/md/CLM-REJ-001.md)
@@ -370,7 +370,7 @@ Each line is `seq time STATUS tool(args) -> result`.
 | `SKIPPED` | A prerequisite was missing. The reason names the missing requirement or blocker. |
 | `ERROR` | The call failed. Tool errors become unresolved results, never assumptions. |
 
-The `↳` lines under each `openrouter.chat` call show short previews of the request messages and the response. Without `--llm`, the log ends at `decide()` and `validateReport()`, and the explanations show as *Not requested*. The full input and output of every call is in the JSON audit trail (`--json`, or `<claim>.json` written by `--out`).
+The `↳` lines under each `openrouter.chat` call show short previews of the request messages and the response. With `--no-llm`, the log ends at `decide()` and `validateReport()`, and the explanations show as *Not requested*. The full input and output of every call is in the JSON audit trail (`--json`, or `<claim>.json` written by `--out`).
 
 ## Project layout
 

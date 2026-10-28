@@ -3,17 +3,20 @@
 import contextlib
 import io
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from claim_agent.cli import main
 
 
 def run(*argv):
+    """Run the CLI offline; tests never call OpenRouter."""
     out = io.StringIO()
     with contextlib.redirect_stdout(out):
-        main(list(argv))
+        main([*argv, "--no-llm"])
     return out.getvalue()
 
 
@@ -45,6 +48,18 @@ class CliFormatTest(unittest.TestCase):
             run("CLM-APP-001", "--out", d)
             self.assertTrue(Path(d, "CLM-APP-001.md").read_text().startswith("# Claim Assessment Report"))
             json.loads(Path(d, "CLM-APP-001.json").read_text())
+
+
+class CliLlmDefaultTest(unittest.TestCase):
+    def test_llm_is_required_by_default(self):
+        with tempfile.TemporaryDirectory() as d, mock.patch.dict(os.environ, {}, clear=True):
+            with contextlib.redirect_stdout(io.StringIO()), self.assertRaises(SystemExit) as ctx:
+                main(["CLM-APP-001", "--env-file", str(Path(d, "missing.env"))])
+        self.assertIn("--no-llm", str(ctx.exception.code))
+
+    def test_no_llm_skips_explanations(self):
+        out = run("CLM-APP-001", "--md")
+        self.assertIn("Explanations: Not requested", out)
 
 
 if __name__ == "__main__":
