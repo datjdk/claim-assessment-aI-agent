@@ -1,0 +1,98 @@
+{
+  "fixture_version": "2026.10-1",
+  "notice": "FICTIONAL TEST DATA. Not real people, providers, claims or amounts.",
+  "claims": [
+    {
+      "claim_id": "CLM-APP-001",
+      "policy_id": "POL-APP-001",
+      "member_id": "MEM-APP-001",
+      "claim_type": "OUTPATIENT",
+      "claim_mode": "REIMBURSEMENT",
+      "provider": {
+        "provider_id": "PRV-0101",
+        "name": "Fictional Riverside Family Clinic"
+      },
+      "treatment_dates": {
+        "start": "2026-09-15",
+        "end": "2026-09-15"
+      },
+      "submission_date": "2026-09-18",
+      "reported_diagnosis": "Acute bacterial sinusitis",
+      "reported_procedures": [
+        "Outpatient consultation",
+        "Prescribed treatment"
+      ],
+      "submitted_amount": {
+        "amount": "200.00",
+        "currency": "USD"
+      },
+      "documents": [
+        { "document_id": "A-D1", "declared_type": "CLAIM_FORM" },
+        { "document_id": "A-D2", "declared_type": "ITEMIZED_INVOICE" },
+        { "document_id": "A-D3", "declared_type": "PAYMENT_RECEIPT" },
+        { "document_id": "A-D4", "declared_type": "MEDICAL_REPORT" }
+      ]
+    },
+    {
+      "claim_id": "CLM-REJ-001",
+      "policy_id": "POL-REJ-001",
+      "member_id": "MEM-REJ-001",
+      "claim_type": "OUTPATIENT",
+      "claim_mode": "REIMBURSEMENT",
+      "provider": {
+        "provider_id": "PRV-0202",
+        "name": "Fictional Lakeside Aesthetic Day Surgery"
+      },
+      "treatment_dates": {
+        "start": "2026-08-20",
+        "end": "2026-08-20"
+      },
+      "submission_date": "2026-08-27",
+      "reported_diagnosis": null,
+      "reported_procedures": [
+        "Elective cosmetic rhinoplasty"
+      ],
+      "submitted_amount": {
+        "amount": "2000.00",
+        "currency": "USD"
+      },
+      "documents": [
+        { "document_id": "R-D1", "declared_type": "CLAIM_FORM" },
+        { "document_id": "R-D2", "declared_type": "ITEMIZED_INVOICE" },
+        { "document_id": "R-D3", "declared_type": "PAYMENT_RECEIPT" },
+        { "document_id": "R-D4", "declared_type": "MEDICAL_REPORT" }
+      ]
+    },
+    {
+      "claim_id": "CLM-RFI-001",
+      "policy_id": "POL-RFI-001",
+      "member_id": "MEM-RFI-001",
+      "claim_type": "OUTPATIENT",
+      "claim_mode": "REIMBURSEMENT",
+      "provider": {
+        "provider_id": "PRV-0303",
+        "name": "Fictional Hillcrest Physiotherapy Centre"
+      },
+      "treatment_dates": {
+        "start": "2026-10-02",
+        "end": "2026-10-02"
+      },
+      "submission_date": "2026-10-06",
+      "reported_diagnosis": "Acute lower back pain",
+      "reported_procedures": [
+        "Outpatient consultation",
+        "Physiotherapy session"
+      ],
+      "submitted_amount": {
+        "amount": "300.00",
+        "currency": "USD"
+      },
+      "documents": [
+        { "document_id": "I-D1", "declared_type": "CLAIM_FORM" },
+        { "document_id": "I-D2", "declared_type": "ITEMIZED_INVOICE" },
+        { "document_id": "I-D3", "declared_type": "PAYMENT_RECEIPT" },
+        { "document_id": "I-D4", "declared_type": "MEDICAL_REPORT" }
+      ]
+    }
+  ]
+}

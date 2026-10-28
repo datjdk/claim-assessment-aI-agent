@@ -1,0 +1,49 @@
+{
+  "fixture_version": "2026.10-1",
+  "notice": "FICTIONAL TEST DATA. Invented benefit ledger.",
+  "balances": [
+    {
+      "ledger_ref": "LED-APP-001-OP-2026",
+      "policy_id": "POL-APP-001",
+      "member_id": "MEM-APP-001",
+      "benefit_type": "OUTPATIENT",
+      "policy_year": "2026",
+      "currency": "USD",
+      "annual_limit": "1000.00",
+      "used_to_date": "200.00",
+      "remaining": "800.00",
+      "as_of": "2026-09-17",
+      "prior_claims": [
+        { "claim_id": "CLM-APP-000", "service_date": "2026-03-10", "paid_amount": "200.00" }
+      ]
+    },
+    {
+      "ledger_ref": "LED-REJ-001-OP-2026",
+      "policy_id": "POL-REJ-001",
+      "member_id": "MEM-REJ-001",
+      "benefit_type": "OUTPATIENT",
+      "policy_year": "2026",
+      "currency": "USD",
+      "annual_limit": "1500.00",
+      "used_to_date": "0.00",
+      "remaining": "1500.00",
+      "as_of": "2026-08-26",
+      "prior_claims": []
+    },
+    {
+      "ledger_ref": "LED-RFI-001-OP-2026",
+      "policy_id": "POL-RFI-001",
+      "member_id": "MEM-RFI-001",
+      "benefit_type": "OUTPATIENT",
+      "policy_year": "2026",
+      "currency": "USD",
+      "annual_limit": "1500.00",
+      "used_to_date": "300.00",
+      "remaining": "1200.00",
+      "as_of": "2026-10-05",
+      "prior_claims": [
+        { "claim_id": "CLM-RFI-000", "service_date": "2026-05-14", "paid_amount": "300.00" }
+      ]
+    }
+  ]
+}

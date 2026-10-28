@@ -1,0 +1,50 @@
+{
+  "fixture_version": "2026.10-1",
+  "notice": "FICTIONAL TEST DATA. Invented clinical rules for the prototype; not clinical guidance.",
+  "rule_set": {
+    "rule_set_id": "CR-SET-2026",
+    "version": "1.0",
+    "source": "Fictional Clinical Necessity Rulebook CNR-2026 v1.0"
+  },
+  "rules": [
+    {
+      "rule_id": "CR-001",
+      "diagnosis": "Acute bacterial sinusitis",
+      "procedures": ["Outpatient consultation", "Prescribed treatment"],
+      "required_facts": { "medical_indication_present": true },
+      "result": "SUPPORTED",
+      "rationale": "Outpatient consultation and prescribed treatment are an appropriate response to documented acute bacterial sinusitis.",
+      "source_location": "CNR-2026 Section 2.3"
+    },
+    {
+      "rule_id": "CR-002",
+      "diagnosis": null,
+      "procedures": ["Elective cosmetic rhinoplasty"],
+      "required_facts": {
+        "medical_indication_present": false,
+        "procedure_classification": "COSMETIC_ELECTIVE"
+      },
+      "result": "NOT_SUPPORTED",
+      "rationale": "The treating practitioner documents an elective cosmetic procedure and explicitly records no medical indication or functional impairment.",
+      "source_location": "CNR-2026 Section 7.1"
+    },
+    {
+      "rule_id": "CR-003",
+      "diagnosis": "Nasal septal deviation with airway obstruction",
+      "procedures": ["Septorhinoplasty"],
+      "required_facts": { "medical_indication_present": true },
+      "result": "REFER_TO_MEDICAL_REVIEW",
+      "rationale": "Combined functional and aesthetic nasal surgery needs a qualified medical reviewer to separate functional from cosmetic components.",
+      "source_location": "CNR-2026 Section 7.2"
+    },
+    {
+      "rule_id": "CR-004",
+      "diagnosis": "Acute lower back pain",
+      "procedures": ["Outpatient consultation", "Physiotherapy session"],
+      "required_facts": { "medical_indication_present": true },
+      "result": "SUPPORTED",
+      "rationale": "Consultation and physiotherapy are an appropriate first-line response to documented acute lower back pain.",
+      "source_location": "CNR-2026 Section 5.1"
+    }
+  ]
+}

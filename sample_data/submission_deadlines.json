@@ -1,0 +1,36 @@
+{
+  "fixture_version": "2026.10-1",
+  "notice": "FICTIONAL TEST DATA. Invented claim submission rules; not any insurer's real terms.",
+  "rule_sets": [
+    {
+      "rule_set_id": "CSR-2026",
+      "version": "2026.1",
+      "effective_from": "2026-01-01",
+      "source": {
+        "document": "Fictional Claim Submission Rules CSR-2026",
+        "version": "2026.1",
+        "location": "Section 2, Reimbursement claim deadlines"
+      },
+      "applies_to_claim_mode": "REIMBURSEMENT",
+      "applies_to_policy_ids": ["POL-APP-001", "POL-REJ-001", "POL-RFI-001"],
+      "deadlines": [
+        {
+          "deadline_id": "CSR-2.1",
+          "claim_types": ["INPATIENT", "OUTPATIENT"],
+          "days": 60,
+          "anchor": "LAST_TREATMENT_OR_DISCHARGE_DATE",
+          "location": "Section 2.1, Standard medical treatment",
+          "exact_text": "Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date."
+        },
+        {
+          "deadline_id": "CSR-2.2",
+          "claim_types": ["MATERNITY"],
+          "days": 180,
+          "anchor": "CHILDBIRTH_OR_TREATMENT_COMPLETION_DATE",
+          "location": "Section 2.2, Maternity benefits",
+          "exact_text": "Reimbursement claims for maternity benefits must be submitted within 180 days from the date of childbirth or the completion of treatment."
+        }
+      ]
+    }
+  ]
+}

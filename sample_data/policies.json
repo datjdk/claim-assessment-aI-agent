@@ -1,0 +1,318 @@
+{
+  "fixture_version": "2026.10-1",
+  "notice": "FICTIONAL TEST DATA. Clause IDs and wording are invented and are not any insurer's real policy terms.",
+  "policies": [
+    {
+      "policy_id": "POL-APP-001",
+      "version": "2026-A",
+      "policy_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+      "status": "ACTIVE",
+      "effective_from": "2026-01-01",
+      "effective_to": "2026-12-31",
+      "currency": "USD",
+      "endorsements": [],
+      "policyholder": { "policyholder_id": "PH-APP-001", "type": "INDIVIDUAL", "name": "Alex Example", "member_id": "MEM-APP-001" },
+      "members": [
+        {
+          "member_id": "MEM-APP-001",
+          "name": "Alex Example",
+          "date_of_birth": "1988-04-12",
+          "relationship": "PRIMARY",
+          "coverage_start": "2026-01-01",
+          "coverage_end": "2026-12-31"
+        }
+      ],
+      "period_clause_id": "APP-2.1",
+      "member_clause_id": "APP-2.2",
+      "document_requirement_clause_ids": {},
+      "benefits": {
+        "OUTPATIENT": {
+          "covered": true,
+          "benefit_clause_id": "APP-3.1",
+          "annual_limit": "1000.00",
+          "limit_clause_id": "APP-5.1",
+          "deductible": "0.00",
+          "deductible_clause_id": "APP-5.2",
+          "copay_per_visit": "20.00",
+          "copay_clause_id": "APP-5.3",
+          "coinsurance_rate": "0.00",
+          "coinsurance_clause_id": "APP-5.3",
+          "waiting_period_days": 30,
+          "waiting_period_clause_id": "APP-4.1",
+          "medical_necessity_clause_id": "APP-3.2"
+        }
+      },
+      "exclusions": [
+        {
+          "exclusion_id": "EXC-APP-COSMETIC",
+          "clause_id": "APP-6.1",
+          "category": "COSMETIC_ELECTIVE"
+        }
+      ],
+      "calculation_order": ["EXCLUSIONS", "DEDUCTIBLE", "COPAY", "COINSURANCE", "ANNUAL_LIMIT"],
+      "rounding": { "decimal_places": 2, "mode": "ROUND_HALF_UP" },
+      "clauses": [
+        {
+          "clause_id": "APP-2.1",
+          "title": "Period of cover",
+          "location": "Page 2, Section 2.1",
+          "exact_text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment."
+        },
+        {
+          "clause_id": "APP-2.2",
+          "title": "Insured members",
+          "location": "Page 2, Section 2.2",
+          "exact_text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force."
+        },
+        {
+          "clause_id": "APP-3.1",
+          "title": "Outpatient benefit",
+          "location": "Page 4, Section 3.1",
+          "exact_text": "We will pay for outpatient consultations and treatment prescribed by a registered medical practitioner, subject to the limits and cost-sharing shown in Section 5."
+        },
+        {
+          "clause_id": "APP-3.2",
+          "title": "Medical necessity",
+          "location": "Page 4, Section 3.2",
+          "exact_text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner."
+        },
+        {
+          "clause_id": "APP-4.1",
+          "title": "Waiting period",
+          "location": "Page 5, Section 4.1",
+          "exact_text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident."
+        },
+        {
+          "clause_id": "APP-5.1",
+          "title": "Annual outpatient limit",
+          "location": "Page 6, Section 5.1",
+          "exact_text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,000.00."
+        },
+        {
+          "clause_id": "APP-5.2",
+          "title": "Deductible",
+          "location": "Page 6, Section 5.2",
+          "exact_text": "No deductible applies to outpatient benefits under this plan."
+        },
+        {
+          "clause_id": "APP-5.3",
+          "title": "Outpatient copay",
+          "location": "Page 6, Section 5.3",
+          "exact_text": "The member pays a fixed copay of USD 20.00 for each outpatient visit. No coinsurance applies to outpatient benefits."
+        },
+        {
+          "clause_id": "APP-6.1",
+          "title": "Cosmetic treatment exclusion",
+          "location": "Page 8, Section 6.1",
+          "exact_text": "We will not pay for cosmetic or aesthetic treatment performed to change appearance where there is no documented medical indication."
+        }
+      ]
+    },
+    {
+      "policy_id": "POL-REJ-001",
+      "version": "2026-B",
+      "policy_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+      "status": "ACTIVE",
+      "effective_from": "2026-01-01",
+      "effective_to": "2026-12-31",
+      "currency": "USD",
+      "endorsements": [],
+      "policyholder": { "policyholder_id": "PH-REJ-001", "type": "INDIVIDUAL", "name": "Morgan Sample", "member_id": null },
+      "members": [
+        {
+          "member_id": "MEM-REJ-001",
+          "name": "Jordan Sample",
+          "date_of_birth": "1992-11-03",
+          "relationship": "PRIMARY",
+          "coverage_start": "2026-01-01",
+          "coverage_end": "2026-12-31"
+        }
+      ],
+      "period_clause_id": "REJ-2.1",
+      "member_clause_id": "REJ-2.2",
+      "document_requirement_clause_ids": {},
+      "benefits": {
+        "OUTPATIENT": {
+          "covered": true,
+          "benefit_clause_id": "REJ-3.1",
+          "annual_limit": "1500.00",
+          "limit_clause_id": "REJ-5.1",
+          "deductible": "0.00",
+          "deductible_clause_id": "REJ-5.2",
+          "copay_per_visit": "20.00",
+          "copay_clause_id": "REJ-5.2",
+          "coinsurance_rate": "0.00",
+          "coinsurance_clause_id": "REJ-5.2",
+          "waiting_period_days": 30,
+          "waiting_period_clause_id": "REJ-4.1",
+          "medical_necessity_clause_id": "REJ-3.2"
+        }
+      },
+      "exclusions": [
+        {
+          "exclusion_id": "EXC-REJ-COSMETIC",
+          "clause_id": "REJ-6.4",
+          "category": "COSMETIC_ELECTIVE"
+        }
+      ],
+      "calculation_order": ["EXCLUSIONS", "DEDUCTIBLE", "COPAY", "COINSURANCE", "ANNUAL_LIMIT"],
+      "rounding": { "decimal_places": 2, "mode": "ROUND_HALF_UP" },
+      "clauses": [
+        {
+          "clause_id": "REJ-2.1",
+          "title": "Period of cover",
+          "location": "Page 2, Section 2.1",
+          "exact_text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment."
+        },
+        {
+          "clause_id": "REJ-2.2",
+          "title": "Insured members",
+          "location": "Page 2, Section 2.2",
+          "exact_text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force."
+        },
+        {
+          "clause_id": "REJ-3.1",
+          "title": "Outpatient benefit",
+          "location": "Page 4, Section 3.1",
+          "exact_text": "We will pay for outpatient consultations, day procedures and treatment prescribed by a registered medical practitioner, subject to Sections 5 and 6."
+        },
+        {
+          "clause_id": "REJ-3.2",
+          "title": "Medical necessity",
+          "location": "Page 4, Section 3.2",
+          "exact_text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner."
+        },
+        {
+          "clause_id": "REJ-4.1",
+          "title": "Waiting period",
+          "location": "Page 5, Section 4.1",
+          "exact_text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident."
+        },
+        {
+          "clause_id": "REJ-5.1",
+          "title": "Annual outpatient limit",
+          "location": "Page 6, Section 5.1",
+          "exact_text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,500.00."
+        },
+        {
+          "clause_id": "REJ-5.2",
+          "title": "Outpatient cost-sharing",
+          "location": "Page 6, Section 5.2",
+          "exact_text": "No deductible or coinsurance applies to outpatient benefits. The member pays a fixed copay of USD 20.00 for each outpatient visit."
+        },
+        {
+          "clause_id": "REJ-6.4",
+          "title": "Cosmetic and aesthetic procedures exclusion",
+          "location": "Page 9, Section 6.4",
+          "exact_text": "We will not pay for any cosmetic or aesthetic procedure, including rhinoplasty, performed to change appearance where there is no medical indication documented by the treating practitioner. This exclusion does not apply to reconstructive surgery required because of an accident or a documented functional impairment."
+        }
+      ]
+    },
+    {
+      "policy_id": "POL-RFI-001",
+      "version": "2026-C",
+      "policy_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+      "status": "ACTIVE",
+      "effective_from": "2026-01-01",
+      "effective_to": "2026-12-31",
+      "currency": "USD",
+      "endorsements": [],
+      "policyholder": { "policyholder_id": "PH-RFI-001", "type": "ORGANIZATION", "name": "Fictional Hillcrest Logistics Ltd", "member_id": null },
+      "members": [
+        {
+          "member_id": "MEM-RFI-001",
+          "name": "Sam Placeholder",
+          "date_of_birth": "1979-06-21",
+          "relationship": "PRIMARY",
+          "coverage_start": "2026-01-01",
+          "coverage_end": "2026-12-31"
+        }
+      ],
+      "period_clause_id": "RFI-2.1",
+      "member_clause_id": "RFI-2.2",
+      "document_requirement_clause_ids": { "MEDICAL_REPORT": "RFI-7.2" },
+      "benefits": {
+        "OUTPATIENT": {
+          "covered": true,
+          "benefit_clause_id": "RFI-3.1",
+          "annual_limit": "1500.00",
+          "limit_clause_id": "RFI-5.1",
+          "deductible": "0.00",
+          "deductible_clause_id": "RFI-5.2",
+          "copay_per_visit": "25.00",
+          "copay_clause_id": "RFI-5.2",
+          "coinsurance_rate": "0.00",
+          "coinsurance_clause_id": "RFI-5.2",
+          "waiting_period_days": 30,
+          "waiting_period_clause_id": "RFI-4.1",
+          "medical_necessity_clause_id": "RFI-3.2"
+        }
+      },
+      "exclusions": [
+        {
+          "exclusion_id": "EXC-RFI-COSMETIC",
+          "clause_id": "RFI-6.1",
+          "category": "COSMETIC_ELECTIVE"
+        }
+      ],
+      "calculation_order": ["EXCLUSIONS", "DEDUCTIBLE", "COPAY", "COINSURANCE", "ANNUAL_LIMIT"],
+      "rounding": { "decimal_places": 2, "mode": "ROUND_HALF_UP" },
+      "clauses": [
+        {
+          "clause_id": "RFI-2.1",
+          "title": "Period of cover",
+          "location": "Page 2, Section 2.1",
+          "exact_text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment."
+        },
+        {
+          "clause_id": "RFI-2.2",
+          "title": "Insured members",
+          "location": "Page 2, Section 2.2",
+          "exact_text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force."
+        },
+        {
+          "clause_id": "RFI-3.1",
+          "title": "Outpatient benefit",
+          "location": "Page 4, Section 3.1",
+          "exact_text": "We will pay for outpatient consultations, physiotherapy and treatment prescribed by a registered medical practitioner, subject to the limits and cost-sharing shown in Section 5."
+        },
+        {
+          "clause_id": "RFI-3.2",
+          "title": "Medical necessity",
+          "location": "Page 4, Section 3.2",
+          "exact_text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner."
+        },
+        {
+          "clause_id": "RFI-4.1",
+          "title": "Waiting period",
+          "location": "Page 5, Section 4.1",
+          "exact_text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident."
+        },
+        {
+          "clause_id": "RFI-5.1",
+          "title": "Annual outpatient limit",
+          "location": "Page 6, Section 5.1",
+          "exact_text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,500.00."
+        },
+        {
+          "clause_id": "RFI-5.2",
+          "title": "Outpatient cost-sharing",
+          "location": "Page 6, Section 5.2",
+          "exact_text": "No deductible or coinsurance applies to outpatient benefits. The member pays a fixed copay of USD 25.00 for each outpatient visit."
+        },
+        {
+          "clause_id": "RFI-6.1",
+          "title": "Cosmetic treatment exclusion",
+          "location": "Page 8, Section 6.1",
+          "exact_text": "We will not pay for cosmetic or aesthetic treatment performed to change appearance where there is no documented medical indication."
+        },
+        {
+          "clause_id": "RFI-7.2",
+          "title": "Claim evidence",
+          "location": "Page 10, Section 7.2",
+          "exact_text": "Each outpatient claim must be supported by a medical report from the treating practitioner stating the diagnosis and the treatment provided. We may defer assessment until this report is received."
+        }
+      ]
+    }
+  ]
+}

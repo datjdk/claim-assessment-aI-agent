@@ -1,0 +1,51 @@
+"""CLI output formats: text (default), md and json."""
+
+import contextlib
+import io
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+from claim_agent.cli import main
+
+
+def run(*argv):
+    out = io.StringIO()
+    with contextlib.redirect_stdout(out):
+        main(list(argv))
+    return out.getvalue()
+
+
+class CliFormatTest(unittest.TestCase):
+    def test_default_is_terminal_text(self):
+        out = run("CLM-RFI-001")
+        self.assertIn("Recommendation  Request more information", out)
+        self.assertNotIn("| Requirement |", out)
+
+    def test_md_flag_prints_markdown_report(self):
+        for argv in (["--md"], ["--format", "md"]):
+            with self.subTest(argv=argv):
+                out = run("CLM-RFI-001", *argv)
+                self.assertIn("# Claim Assessment Report — CLM-RFI-001", out)
+                self.assertIn("## 6. Policy Citations", out)
+                self.assertIn("### Tool call log", out)
+
+    def test_json_flag_prints_report_and_audit(self):
+        data = json.loads(run("CLM-APP-001", "--json"))
+        self.assertEqual(data["report"]["recommendation"]["outcome"], "APPROVE")
+        self.assertTrue(data["audit"]["events"])
+
+    def test_md_and_json_flags_are_exclusive(self):
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            run("CLM-APP-001", "--md", "--json")
+
+    def test_out_writes_markdown_and_json_files(self):
+        with tempfile.TemporaryDirectory() as d:
+            run("CLM-APP-001", "--out", d)
+            self.assertTrue(Path(d, "CLM-APP-001.md").read_text().startswith("# Claim Assessment Report"))
+            json.loads(Path(d, "CLM-APP-001.json").read_text())
+
+
+if __name__ == "__main__":
+    unittest.main()

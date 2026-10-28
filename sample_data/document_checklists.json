@@ -1,0 +1,110 @@
+{
+  "fixture_version": "2026.10-1",
+  "notice": "FICTIONAL TEST DATA. Invented claims-procedure checklist.",
+  "checklists": [
+    {
+      "checklist_id": "CHK-OUTPATIENT",
+      "claim_type": "OUTPATIENT",
+      "version": "1.2",
+      "procedural_source": {
+        "document": "Fictional Claims Procedure Manual CPM-2026",
+        "version": "1.2",
+        "location": "Section 4.1, Outpatient claim documents"
+      },
+      "requirements": [
+        {
+          "requirement_id": "OP-REQ-1",
+          "document_type": "CLAIM_FORM",
+          "requirement": "REQUIRED",
+          "condition": null,
+          "purpose": "Identifies the member, policy, treatment date and amount claimed.",
+          "request_to": "MEMBER"
+        },
+        {
+          "requirement_id": "OP-REQ-2",
+          "document_type": "ITEMIZED_INVOICE",
+          "requirement": "REQUIRED",
+          "condition": null,
+          "purpose": "Itemizes the charges so covered and excluded amounts can be identified.",
+          "request_to": "PROVIDER"
+        },
+        {
+          "requirement_id": "OP-REQ-3",
+          "document_type": "PAYMENT_RECEIPT",
+          "requirement": "REQUIRED",
+          "condition": null,
+          "purpose": "Confirms the member paid the amount being reimbursed.",
+          "request_to": "MEMBER"
+        },
+        {
+          "requirement_id": "OP-REQ-4",
+          "document_type": "MEDICAL_REPORT",
+          "requirement": "REQUIRED",
+          "condition": null,
+          "purpose": "Documents the diagnosis and treatment needed to assess coverage and medical necessity.",
+          "request_to": "PROVIDER"
+        },
+        {
+          "requirement_id": "OP-REQ-5",
+          "document_type": "REFERRAL_LETTER",
+          "requirement": "CONDITIONAL",
+          "condition": { "fact": "specialist_referral_required", "equals": true },
+          "purpose": "Confirms a referral where the policy requires one for specialist consultation.",
+          "request_to": "PROVIDER"
+        }
+      ]
+    },
+    {
+      "checklist_id": "CHK-INPATIENT",
+      "claim_type": "INPATIENT",
+      "version": "1.2",
+      "procedural_source": {
+        "document": "Fictional Claims Procedure Manual CPM-2026",
+        "version": "1.2",
+        "location": "Section 4.2, Inpatient claim documents"
+      },
+      "requirements": [
+        {
+          "requirement_id": "IP-REQ-1",
+          "document_type": "CLAIM_FORM",
+          "requirement": "REQUIRED",
+          "condition": null,
+          "purpose": "Identifies the member, policy, admission dates and amount claimed.",
+          "request_to": "MEMBER"
+        },
+        {
+          "requirement_id": "IP-REQ-2",
+          "document_type": "ITEMIZED_INVOICE",
+          "requirement": "REQUIRED",
+          "condition": null,
+          "purpose": "Itemizes the charges so covered and excluded amounts can be identified.",
+          "request_to": "PROVIDER"
+        },
+        {
+          "requirement_id": "IP-REQ-3",
+          "document_type": "DISCHARGE_SUMMARY",
+          "requirement": "REQUIRED",
+          "condition": null,
+          "purpose": "Confirms admission and discharge dates, diagnosis and treatment.",
+          "request_to": "PROVIDER"
+        },
+        {
+          "requirement_id": "IP-REQ-4",
+          "document_type": "SURGERY_REPORT",
+          "requirement": "CONDITIONAL",
+          "condition": { "fact": "surgery_performed", "equals": true },
+          "purpose": "Documents the surgical procedure when surgery was performed.",
+          "request_to": "PROVIDER"
+        },
+        {
+          "requirement_id": "IP-REQ-5",
+          "document_type": "PAYMENT_RECEIPT",
+          "requirement": "CONDITIONAL",
+          "condition": { "fact": "reimbursement_claim", "equals": true },
+          "purpose": "Confirms payment when the member is claiming reimbursement.",
+          "request_to": "MEMBER"
+        }
+      ]
+    }
+  ]
+}
