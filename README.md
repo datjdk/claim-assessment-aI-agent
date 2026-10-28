@@ -12,9 +12,14 @@ All policies, members, documents and amounts in `sample_data/` are **fictional**
 
 | Stage | Tool | Output |
 |---|---|---|
-| Planning | ChatGPT Astra | The implementation plan and operating guideline in [get-started/](get-started/) |
+| Planning | ChatGPT Astra | The implementation plan and operating guideline in [get-started/](get-started/) (listed below) |
 | Implementation | Claude Code (Claude Opus 5.5) | The code, fixtures, tests and docs in this repository, built from that plan |
 | LLM at runtime | [OpenRouter](https://openrouter.ai) | Reviewer-facing explanations only (`--llm`); the model is set in `.env` |
+
+Planning documents in [get-started/](get-started/):
+
+- [Implementation plan](get-started/claim_assessment_implementation_plan.md): architecture, the four tools, workflow, decision rules, the three test cases and orchestrator pseudocode.
+- [Agent operating guideline](get-started/insurance_claim_assessment_agent_guideline.md): the assessment SOP, guardrails, report template, validation checklist and status lifecycle.
 
 The full Claude Code implementation conversation is in [ai-conversation/CONVERSATION.md](ai-conversation/CONVERSATION.md).
 
@@ -392,7 +397,8 @@ src/claim_agent/
   human_review.py       authorize / override with reviewer, reason and time
   render.py, labels.py  terminal and Markdown output
 tests/                  unit and acceptance tests
-get-started/            implementation plan and operating guideline
+get-started/            implementation plan and operating guideline (planning docs)
+ai-conversation/        exported Claude Code implementation conversation
 ```
 
 See [CLAUDE.md](CLAUDE.md) for design decisions and the full list of verified case outputs and failure-mode tests.
