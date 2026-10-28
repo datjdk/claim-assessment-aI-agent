@@ -8,6 +8,14 @@ A prototype agent that does the **first-pass assessment of a health insurance cl
 
 All policies, members, documents and amounts in `sample_data/` are **fictional**.
 
+## How this was built
+
+| Stage | Tool | Output |
+|---|---|---|
+| Planning | ChatGPT Astra | The implementation plan and operating guideline in [get-started/](get-started/) |
+| Implementation | Claude Code (Claude Opus 5.5) | The code, fixtures, tests and docs in this repository, built from that plan |
+| LLM at runtime | [OpenRouter](https://openrouter.ai) | Reviewer-facing explanations only (`--llm`); the model is set in `.env` |
+
 ## Requirements
 
 - Python 3.9 or later. Standard library only, so there's nothing to install.
