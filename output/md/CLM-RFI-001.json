@@ -1,0 +1,1445 @@
+{
+  "report": {
+    "notice": "Prototype assessment of FICTIONAL claim data. Recommendation only; final authorization belongs to a human.",
+    "metadata": {
+      "claim_id": "CLM-RFI-001",
+      "assessment_id": "ASM-95be44816a",
+      "assessor": "claim-agent (automated initial assessment)",
+      "assessment_date": "2026-10-28T11:35:14+00:00",
+      "policy_id": "POL-RFI-001",
+      "policy_version": "2026-C",
+      "policyholder": {
+        "policyholder_id": "PH-RFI-001",
+        "type": "ORGANIZATION",
+        "name": "Fictional Hillcrest Logistics Ltd",
+        "member_id": null
+      },
+      "claim_type": "OUTPATIENT",
+      "member_id": "MEM-RFI-001",
+      "treatment_dates": {
+        "start": "2026-10-02",
+        "end": "2026-10-02"
+      },
+      "verified_diagnosis": {
+        "value": null,
+        "verified": false,
+        "source": null
+      },
+      "verified_procedures": {
+        "value": null,
+        "verified": false,
+        "source": null
+      },
+      "reported_diagnosis": "Acute lower back pain",
+      "reported_procedures": [
+        "Outpatient consultation",
+        "Physiotherapy session"
+      ],
+      "submitted_amount": "300.00",
+      "currency": "USD",
+      "context_version": "ctx-1/fixtures-2026.10-1",
+      "tool_versions": {
+        "verifyDocument": "verifyDocument/1.0",
+        "lookupPolicy": "lookupPolicy/1.0",
+        "checkMedicalNecessity": "checkMedicalNecessity/1.0",
+        "calculateBenefit": "calculateBenefit/1.0"
+      },
+      "llm": {
+        "provider": "openrouter",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "model": "recursive/flint-v1.0:free",
+        "temperature": 0.0,
+        "max_tokens": 4000,
+        "reasoning_effort": "low",
+        "max_attempts": 2
+      }
+    },
+    "document_review": {
+      "checklist": {
+        "id": "CHK-OUTPATIENT",
+        "version": "1.2",
+        "source": {
+          "document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "location": "Section 4.1, Outpatient claim documents"
+        }
+      },
+      "rows": [
+        {
+          "document_type": "CLAIM_FORM",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-1",
+          "document_id": "I-D1",
+          "submitted_type": "CLAIM_FORM",
+          "detected_type": "CLAIM_FORM",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "I-D1"
+          ],
+          "citation_ids": [
+            "PC-01"
+          ]
+        },
+        {
+          "document_type": "ITEMIZED_INVOICE",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-2",
+          "document_id": "I-D2",
+          "submitted_type": "ITEMIZED_INVOICE",
+          "detected_type": "ITEMIZED_INVOICE",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "I-D2"
+          ],
+          "citation_ids": [
+            "PC-02"
+          ]
+        },
+        {
+          "document_type": "PAYMENT_RECEIPT",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-3",
+          "document_id": "I-D3",
+          "submitted_type": "PAYMENT_RECEIPT",
+          "detected_type": "PAYMENT_RECEIPT",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "I-D3"
+          ],
+          "citation_ids": [
+            "PC-03"
+          ]
+        },
+        {
+          "document_type": "MEDICAL_REPORT",
+          "required": "Y",
+          "status": "MISSING",
+          "requirement_id": "OP-REQ-4",
+          "document_id": null,
+          "submitted_type": null,
+          "detected_type": null,
+          "verification": null,
+          "issues": [
+            "Submitted I-D4 declared MEDICAL_REPORT but detected APPOINTMENT_CONFIRMATION."
+          ],
+          "evidence": [
+            "I-D4"
+          ],
+          "citation_ids": [
+            "PC-04"
+          ]
+        },
+        {
+          "document_type": "REFERRAL_LETTER",
+          "required": "CONDITIONAL",
+          "status": "NOT_APPLICABLE",
+          "requirement_id": "OP-REQ-5",
+          "document_id": null,
+          "submitted_type": null,
+          "detected_type": null,
+          "verification": null,
+          "issues": [
+            "Condition fact 'specialist_referral_required' not documented; requirement not triggered."
+          ],
+          "evidence": [],
+          "citation_ids": [
+            "PC-05"
+          ]
+        },
+        {
+          "document_type": "APPOINTMENT_CONFIRMATION",
+          "required": "N",
+          "status": "COMPLETE",
+          "requirement_id": null,
+          "document_id": "I-D4",
+          "submitted_type": "MEDICAL_REPORT",
+          "detected_type": "APPOINTMENT_CONFIRMATION",
+          "verification": "VERIFIED",
+          "issues": [
+            "Submitted as MEDICAL_REPORT but the content is an appointment confirmation. It contains no diagnosis, clinical findings or treatment record."
+          ],
+          "evidence": [
+            "I-D4"
+          ],
+          "citation_ids": []
+        }
+      ],
+      "conclusion": "UNRESOLVED_ITEMS",
+      "outstanding_requests": [
+        {
+          "request_id": "REQ-CLM-RFI-001-1",
+          "required_item": "MEDICAL_REPORT",
+          "why_needed": "Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.",
+          "request_to": "PROVIDER",
+          "requirement_id": "OP-REQ-4",
+          "checklist_source": "Fictional Claims Procedure Manual CPM-2026 v1.2, Section 4.1, Outpatient claim documents",
+          "policy_clause_id": "RFI-7.2",
+          "reassessment_trigger": "Reassess when a MEDICAL_REPORT for CLM-RFI-001 is received and verified.",
+          "status": "OPEN"
+        }
+      ],
+      "consistency_issues": []
+    },
+    "policy_verification": {
+      "status": "FOUND",
+      "policy_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+      "version": "2026-C",
+      "checks": [
+        {
+          "check": "policy_active",
+          "label": "Policy active on treatment date",
+          "result": "PASS",
+          "verified_fact": "Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-10-02 to 2026-10-02.",
+          "clause_ids": [
+            "RFI-2.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-06"
+          ],
+          "evidence": [
+            "policy_record:POL-RFI-001"
+          ]
+        },
+        {
+          "check": "member_covered",
+          "label": "Member covered",
+          "result": "PASS",
+          "verified_fact": "Member MEM-RFI-001 covered 2026-01-01 to 2026-12-31.",
+          "clause_ids": [
+            "RFI-2.2"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-07"
+          ],
+          "evidence": [
+            "policy_record:POL-RFI-001"
+          ]
+        },
+        {
+          "check": "benefit_covered",
+          "label": "Claim type / benefit covered",
+          "result": "PASS",
+          "verified_fact": "OUTPATIENT benefit included.",
+          "clause_ids": [
+            "RFI-3.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-08"
+          ],
+          "evidence": [
+            "policy_record:POL-RFI-001"
+          ]
+        },
+        {
+          "check": "waiting_period",
+          "label": "Waiting period",
+          "result": "PASS",
+          "verified_fact": "30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-10-02.",
+          "clause_ids": [
+            "RFI-4.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-09"
+          ],
+          "evidence": [
+            "policy_record:POL-RFI-001"
+          ]
+        },
+        {
+          "check": "submission_deadline",
+          "label": "Claim submitted within deadline",
+          "result": "PASS",
+          "verified_fact": "Submitted 2026-10-06, 4 days after last treatment 2026-10-02; OUTPATIENT deadline 60 days (2026-12-01).",
+          "clause_ids": [],
+          "rule_ids": [
+            "CSR-2.1"
+          ],
+          "citation_ids": [
+            "PC-10"
+          ],
+          "evidence": [
+            "rule_set:CSR-2026",
+            "claim_submission:CLM-RFI-001"
+          ]
+        },
+        {
+          "check": "exclusions",
+          "label": "Exclusions",
+          "result": "UNCERTAIN",
+          "verified_fact": "No verified procedure classification; exclusions cannot be assessed.",
+          "clause_ids": [],
+          "rule_ids": [],
+          "citation_ids": [],
+          "evidence": []
+        },
+        {
+          "check": "limit",
+          "label": "Remaining benefit limit",
+          "result": "PASS",
+          "verified_fact": "Remaining OUTPATIENT limit USD 1200.00 of 1500.00 as of 2026-10-05.",
+          "clause_ids": [
+            "RFI-5.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-11"
+          ],
+          "evidence": [
+            "ledger:LED-RFI-001-OP-2026"
+          ]
+        }
+      ],
+      "remaining_limit": "1200.00",
+      "conclusion": "UNDETERMINED",
+      "reason": null
+    },
+    "medical_necessity": {
+      "diagnosis": null,
+      "procedures": [],
+      "result": "INSUFFICIENT_EVIDENCE",
+      "rule_id": null,
+      "rationale": null,
+      "clinical_source": null,
+      "rule_set_version": null,
+      "policy_clause_ids": [
+        "RFI-3.2"
+      ],
+      "citation_ids": [
+        "PC-13"
+      ],
+      "evidence": [],
+      "outstanding_concerns": [
+        "No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION)."
+      ]
+    },
+    "benefit_calculation": {
+      "status": "PENDING",
+      "currency": "USD",
+      "submitted": "300.00",
+      "excluded": null,
+      "eligible": null,
+      "deductible": null,
+      "copay": null,
+      "coinsurance": null,
+      "limit_adjustment": null,
+      "insurer_payable": null,
+      "member_responsibility": null,
+      "remaining_limit_before": null,
+      "remaining_limit_after": null,
+      "steps": [],
+      "clause_ids": [],
+      "citation_ids": [],
+      "evidence": [],
+      "pending_reasons": [
+        "Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE."
+      ]
+    },
+    "recommendation": {
+      "outcome": "REQUEST_MORE_INFO",
+      "recommended_payable": null,
+      "reasons": [
+        {
+          "finding": "MEDICAL_REPORT needed: Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.",
+          "evidence": [
+            "I-D4"
+          ],
+          "citation_ids": [
+            "PC-12",
+            "PC-04"
+          ]
+        }
+      ],
+      "information_requests": [
+        {
+          "request_id": "REQ-CLM-RFI-001-1",
+          "required_item": "MEDICAL_REPORT",
+          "why_needed": "Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.",
+          "request_to": "PROVIDER",
+          "requirement_id": "OP-REQ-4",
+          "checklist_source": "Fictional Claims Procedure Manual CPM-2026 v1.2, Section 4.1, Outpatient claim documents",
+          "policy_clause_id": "RFI-7.2",
+          "reassessment_trigger": "Reassess when a MEDICAL_REPORT for CLM-RFI-001 is received and verified.",
+          "status": "OPEN"
+        }
+      ],
+      "escalations": [
+        "Exclusions uncertain: No verified procedure classification; exclusions cannot be assessed.",
+        "Medical necessity INSUFFICIENT_EVIDENCE: No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).",
+        "Benefit calculation PENDING: Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE."
+      ],
+      "next_action": "Send the information requests; hold the claim as PENDING_INFORMATION and reassess on receipt.",
+      "authorization_owner": "Claims assessor"
+    },
+    "policy_citations": {
+      "citations": [
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-1",
+          "title": "CHK-OUTPATIENT CLAIM_FORM",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "CLAIM_FORM is REQUIRED: Identifies the member, policy, treatment date and amount claimed.",
+          "citation_id": "PC-01",
+          "supported_findings": [
+            "Document requirement CLAIM_FORM"
+          ],
+          "evidence_ids": [
+            "I-D1"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-2",
+          "title": "CHK-OUTPATIENT ITEMIZED_INVOICE",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "ITEMIZED_INVOICE is REQUIRED: Itemizes the charges so covered and excluded amounts can be identified.",
+          "citation_id": "PC-02",
+          "supported_findings": [
+            "Document requirement ITEMIZED_INVOICE"
+          ],
+          "evidence_ids": [
+            "I-D2"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-3",
+          "title": "CHK-OUTPATIENT PAYMENT_RECEIPT",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "PAYMENT_RECEIPT is REQUIRED: Confirms the member paid the amount being reimbursed.",
+          "citation_id": "PC-03",
+          "supported_findings": [
+            "Document requirement PAYMENT_RECEIPT"
+          ],
+          "evidence_ids": [
+            "I-D3"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-4",
+          "title": "CHK-OUTPATIENT MEDICAL_REPORT",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "MEDICAL_REPORT is REQUIRED: Documents the diagnosis and treatment needed to assess coverage and medical necessity.",
+          "citation_id": "PC-04",
+          "supported_findings": [
+            "Document requirement MEDICAL_REPORT",
+            "MEDICAL_REPORT needed: Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity."
+          ],
+          "evidence_ids": [
+            "I-D4"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-5",
+          "title": "CHK-OUTPATIENT REFERRAL_LETTER",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "REFERRAL_LETTER is CONDITIONAL: Confirms a referral where the policy requires one for specialist consultation.",
+          "citation_id": "PC-05",
+          "supported_findings": [
+            "Document requirement REFERRAL_LETTER"
+          ],
+          "evidence_ids": []
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+          "version": "2026-C",
+          "effective_date": "2026-01-01",
+          "clause_id": "RFI-2.1",
+          "title": "Period of cover",
+          "location": "Page 2, Section 2.1",
+          "text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment.",
+          "citation_id": "PC-06",
+          "supported_findings": [
+            "Policy active on treatment date"
+          ],
+          "evidence_ids": [
+            "policy_record:POL-RFI-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+          "version": "2026-C",
+          "effective_date": "2026-01-01",
+          "clause_id": "RFI-2.2",
+          "title": "Insured members",
+          "location": "Page 2, Section 2.2",
+          "text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force.",
+          "citation_id": "PC-07",
+          "supported_findings": [
+            "Member covered"
+          ],
+          "evidence_ids": [
+            "policy_record:POL-RFI-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+          "version": "2026-C",
+          "effective_date": "2026-01-01",
+          "clause_id": "RFI-3.1",
+          "title": "Outpatient benefit",
+          "location": "Page 4, Section 3.1",
+          "text": "We will pay for outpatient consultations, physiotherapy and treatment prescribed by a registered medical practitioner, subject to the limits and cost-sharing shown in Section 5.",
+          "citation_id": "PC-08",
+          "supported_findings": [
+            "Claim type / benefit covered"
+          ],
+          "evidence_ids": [
+            "policy_record:POL-RFI-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+          "version": "2026-C",
+          "effective_date": "2026-01-01",
+          "clause_id": "RFI-4.1",
+          "title": "Waiting period",
+          "location": "Page 5, Section 4.1",
+          "text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident.",
+          "citation_id": "PC-09",
+          "supported_findings": [
+            "Waiting period"
+          ],
+          "evidence_ids": [
+            "policy_record:POL-RFI-001"
+          ]
+        },
+        {
+          "kind": "RULE",
+          "source_document": "Fictional Claim Submission Rules CSR-2026",
+          "version": "2026.1",
+          "effective_date": "2026-01-01",
+          "clause_id": "CSR-2.1",
+          "title": "CSR-2026",
+          "location": "Section 2.1, Standard medical treatment",
+          "text": "Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date.",
+          "citation_id": "PC-10",
+          "supported_findings": [
+            "Claim submitted within deadline"
+          ],
+          "evidence_ids": [
+            "rule_set:CSR-2026",
+            "claim_submission:CLM-RFI-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+          "version": "2026-C",
+          "effective_date": "2026-01-01",
+          "clause_id": "RFI-5.1",
+          "title": "Annual outpatient limit",
+          "location": "Page 6, Section 5.1",
+          "text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,500.00.",
+          "citation_id": "PC-11",
+          "supported_findings": [
+            "Remaining benefit limit"
+          ],
+          "evidence_ids": [
+            "ledger:LED-RFI-001-OP-2026"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+          "version": "2026-C",
+          "effective_date": "2026-01-01",
+          "clause_id": "RFI-7.2",
+          "title": "Claim evidence",
+          "location": "Page 10, Section 7.2",
+          "text": "Each outpatient claim must be supported by a medical report from the treating practitioner stating the diagnosis and the treatment provided. We may defer assessment until this report is received.",
+          "citation_id": "PC-12",
+          "supported_findings": [
+            "MEDICAL_REPORT needed: Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity."
+          ],
+          "evidence_ids": [
+            "I-D4"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+          "version": "2026-C",
+          "effective_date": "2026-01-01",
+          "clause_id": "RFI-3.2",
+          "title": "Medical necessity",
+          "location": "Page 4, Section 3.2",
+          "text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner.",
+          "citation_id": "PC-13",
+          "supported_findings": [
+            "Medical necessity"
+          ],
+          "evidence_ids": []
+        }
+      ],
+      "coverage_check": "PASS"
+    },
+    "assessment_status": "PENDING_INFORMATION",
+    "audit_reference": "AUD-CLM-RFI-001-a1617e66",
+    "explanations": {
+      "status": "DRAFTED",
+      "sections": {
+        "document_review": "Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION, with no diagnosis or treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.",
+        "policy_verification": "Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline and remaining limit checks PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.",
+        "medical_necessity": "Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; outstanding concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).",
+        "benefit_calculation": "Benefit calculation PENDING; USD 300.00 submitted; calculation blocked by OP-REQ-4 MEDICAL_REPORT MISSING and medical necessity INSUFFICIENT_EVIDENCE.",
+        "recommendation": "Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT is received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2; exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING."
+      },
+      "llm": {
+        "provider": "openrouter",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "model": "recursive/flint-v1.0:free",
+        "temperature": 0.0,
+        "max_tokens": 4000,
+        "reasoning_effort": "low",
+        "max_attempts": 2,
+        "served_model": "recursive/flint-v1.0:free",
+        "response_id": "gen-1793187318-yVPOm0ZnuZuZKi0G6R5X"
+      },
+      "errors": [
+        "Attempt 1: OpenRouter returned HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"recursive/flint-v1.0:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Recursive\",\"is_byok\":fal"
+      ]
+    },
+    "human_review": {
+      "authorization_status": "PENDING",
+      "reviewer": null,
+      "decision": null,
+      "final_outcome": null,
+      "reason": null,
+      "reviewed_at": null
+    },
+    "validation": {
+      "status": "PASS",
+      "errors": [],
+      "citation_check": "PASS",
+      "reconciliation": "NOT_APPLICABLE"
+    }
+  },
+  "audit": {
+    "reference": "AUD-CLM-RFI-001-a1617e66",
+    "claim_id": "CLM-RFI-001",
+    "context_version": "ctx-1/fixtures-2026.10-1",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "I-D1"
+        },
+        "output": {
+          "document_id": "I-D1",
+          "status": "FOUND",
+          "declared_type": "CLAIM_FORM",
+          "detected_type": "CLAIM_FORM",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "member_id": {
+              "value": "MEM-RFI-001",
+              "document_id": "I-D1",
+              "location": "p.1, Member details"
+            },
+            "policy_id": {
+              "value": "POL-RFI-001",
+              "document_id": "I-D1",
+              "location": "p.1, Member details"
+            },
+            "treatment_date": {
+              "value": "2026-10-02",
+              "document_id": "I-D1",
+              "location": "p.1, Treatment details"
+            },
+            "claimed_amount": {
+              "value": "300.00",
+              "document_id": "I-D1",
+              "location": "p.2, Amount claimed"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "I-D2"
+        },
+        "output": {
+          "document_id": "I-D2",
+          "status": "FOUND",
+          "declared_type": "ITEMIZED_INVOICE",
+          "detected_type": "ITEMIZED_INVOICE",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "provider_id": {
+              "value": "PRV-0303",
+              "document_id": "I-D2",
+              "location": "p.1, Header"
+            },
+            "service_date": {
+              "value": "2026-10-02",
+              "document_id": "I-D2",
+              "location": "p.1, Header"
+            },
+            "line_items": {
+              "value": [
+                {
+                  "line_id": "I-D2-L1",
+                  "description": "Outpatient consultation",
+                  "amount": "150.00",
+                  "category": "CONSULTATION"
+                },
+                {
+                  "line_id": "I-D2-L2",
+                  "description": "Physiotherapy session",
+                  "amount": "150.00",
+                  "category": "THERAPY"
+                }
+              ],
+              "document_id": "I-D2",
+              "location": "p.1, Lines 1-2"
+            },
+            "invoice_total": {
+              "value": "300.00",
+              "document_id": "I-D2",
+              "location": "p.1, Total"
+            },
+            "visit_count": {
+              "value": 1,
+              "document_id": "I-D2",
+              "location": "p.1, Header"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 3,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "I-D3"
+        },
+        "output": {
+          "document_id": "I-D3",
+          "status": "FOUND",
+          "declared_type": "PAYMENT_RECEIPT",
+          "detected_type": "PAYMENT_RECEIPT",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "amount_paid": {
+              "value": "300.00",
+              "document_id": "I-D3",
+              "location": "p.1, Amount paid"
+            },
+            "payment_date": {
+              "value": "2026-10-02",
+              "document_id": "I-D3",
+              "location": "p.1, Date"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 4,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "I-D4"
+        },
+        "output": {
+          "document_id": "I-D4",
+          "status": "FOUND",
+          "declared_type": "MEDICAL_REPORT",
+          "detected_type": "APPOINTMENT_CONFIRMATION",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [
+            {
+              "code": "TYPE_MISMATCH",
+              "description": "Submitted as MEDICAL_REPORT but the content is an appointment confirmation. It contains no diagnosis, clinical findings or treatment record."
+            }
+          ],
+          "extracted_facts": {
+            "patient_member_id": {
+              "value": "MEM-RFI-001",
+              "document_id": "I-D4",
+              "location": "p.1, Patient"
+            },
+            "appointment_date": {
+              "value": "2026-10-02",
+              "document_id": "I-D4",
+              "location": "p.1, Appointment"
+            },
+            "appointment_type": {
+              "value": "Physiotherapy assessment",
+              "document_id": "I-D4",
+              "location": "p.1, Appointment"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 5,
+        "event": "STEP",
+        "name": "documentReview",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "documentReview/1.0",
+        "input": {
+          "checklist": "CHK-OUTPATIENT v1.2"
+        },
+        "output": {
+          "claim_id": "CLM-RFI-001",
+          "rows": [
+            {
+              "document_type": "CLAIM_FORM",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-1",
+              "document_id": "I-D1",
+              "submitted_type": "CLAIM_FORM",
+              "detected_type": "CLAIM_FORM",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "I-D1"
+              ]
+            },
+            {
+              "document_type": "ITEMIZED_INVOICE",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-2",
+              "document_id": "I-D2",
+              "submitted_type": "ITEMIZED_INVOICE",
+              "detected_type": "ITEMIZED_INVOICE",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "I-D2"
+              ]
+            },
+            {
+              "document_type": "PAYMENT_RECEIPT",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-3",
+              "document_id": "I-D3",
+              "submitted_type": "PAYMENT_RECEIPT",
+              "detected_type": "PAYMENT_RECEIPT",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "I-D3"
+              ]
+            },
+            {
+              "document_type": "MEDICAL_REPORT",
+              "required": "Y",
+              "status": "MISSING",
+              "requirement_id": "OP-REQ-4",
+              "document_id": null,
+              "submitted_type": null,
+              "detected_type": null,
+              "verification": null,
+              "issues": [
+                "Submitted I-D4 declared MEDICAL_REPORT but detected APPOINTMENT_CONFIRMATION."
+              ],
+              "evidence": [
+                "I-D4"
+              ]
+            },
+            {
+              "document_type": "REFERRAL_LETTER",
+              "required": "CONDITIONAL",
+              "status": "NOT_APPLICABLE",
+              "requirement_id": "OP-REQ-5",
+              "document_id": null,
+              "submitted_type": null,
+              "detected_type": null,
+              "verification": null,
+              "issues": [
+                "Condition fact 'specialist_referral_required' not documented; requirement not triggered."
+              ],
+              "evidence": []
+            },
+            {
+              "document_type": "APPOINTMENT_CONFIRMATION",
+              "required": "N",
+              "status": "COMPLETE",
+              "requirement_id": null,
+              "document_id": "I-D4",
+              "submitted_type": "MEDICAL_REPORT",
+              "detected_type": "APPOINTMENT_CONFIRMATION",
+              "verification": "VERIFIED",
+              "issues": [
+                "Submitted as MEDICAL_REPORT but the content is an appointment confirmation. It contains no diagnosis, clinical findings or treatment record."
+              ],
+              "evidence": [
+                "I-D4"
+              ]
+            }
+          ],
+          "conclusion": "UNRESOLVED_ITEMS",
+          "requests": [
+            {
+              "request_id": "REQ-CLM-RFI-001-1",
+              "required_item": "MEDICAL_REPORT",
+              "why_needed": "Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.",
+              "request_to": "PROVIDER",
+              "requirement_id": "OP-REQ-4",
+              "checklist_source": "Fictional Claims Procedure Manual CPM-2026 v1.2, Section 4.1, Outpatient claim documents",
+              "policy_clause_id": null,
+              "reassessment_trigger": "Reassess when a MEDICAL_REPORT for CLM-RFI-001 is received and verified.",
+              "status": "OPEN"
+            }
+          ],
+          "checklist_id": "CHK-OUTPATIENT",
+          "checklist_version": "1.2",
+          "checklist_source": {
+            "document": "Fictional Claims Procedure Manual CPM-2026",
+            "version": "1.2",
+            "location": "Section 4.1, Outpatient claim documents"
+          },
+          "consistency_issues": []
+        },
+        "reason": null
+      },
+      {
+        "sequence": 6,
+        "event": "TOOL_CALL",
+        "name": "lookupPolicy",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "lookupPolicy/1.0",
+        "input": {
+          "policyId": "POL-RFI-001"
+        },
+        "output": {
+          "policy_id": "POL-RFI-001",
+          "status": "FOUND",
+          "version": "2026-C",
+          "policy_document": "Fictional Active Health Plan, Policy Wording 2026-C",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "currency": "USD",
+          "policyholder": {
+            "policyholder_id": "PH-RFI-001",
+            "type": "ORGANIZATION",
+            "name": "Fictional Hillcrest Logistics Ltd",
+            "member_id": null
+          },
+          "checks": {
+            "policy_active": {
+              "result": "PASS",
+              "fact": "Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-10-02 to 2026-10-02.",
+              "clause_ids": [
+                "RFI-2.1"
+              ],
+              "evidence": [
+                "policy_record:POL-RFI-001"
+              ],
+              "rule_ids": []
+            },
+            "member_covered": {
+              "result": "PASS",
+              "fact": "Member MEM-RFI-001 covered 2026-01-01 to 2026-12-31.",
+              "clause_ids": [
+                "RFI-2.2"
+              ],
+              "evidence": [
+                "policy_record:POL-RFI-001"
+              ],
+              "rule_ids": []
+            },
+            "benefit_covered": {
+              "result": "PASS",
+              "fact": "OUTPATIENT benefit included.",
+              "clause_ids": [
+                "RFI-3.1"
+              ],
+              "evidence": [
+                "policy_record:POL-RFI-001"
+              ],
+              "rule_ids": []
+            },
+            "waiting_period": {
+              "result": "PASS",
+              "fact": "30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-10-02.",
+              "clause_ids": [
+                "RFI-4.1"
+              ],
+              "evidence": [
+                "policy_record:POL-RFI-001"
+              ],
+              "rule_ids": []
+            },
+            "submission_deadline": {
+              "result": "PASS",
+              "fact": "Submitted 2026-10-06, 4 days after last treatment 2026-10-02; OUTPATIENT deadline 60 days (2026-12-01).",
+              "clause_ids": [],
+              "evidence": [
+                "rule_set:CSR-2026",
+                "claim_submission:CLM-RFI-001"
+              ],
+              "rule_ids": [
+                "CSR-2.1"
+              ]
+            },
+            "exclusions": {
+              "result": "UNCERTAIN",
+              "fact": "No verified procedure classification; exclusions cannot be assessed.",
+              "clause_ids": [],
+              "evidence": [],
+              "rule_ids": []
+            },
+            "limit": {
+              "result": "PASS",
+              "fact": "Remaining OUTPATIENT limit USD 1200.00 of 1500.00 as of 2026-10-05.",
+              "clause_ids": [
+                "RFI-5.1"
+              ],
+              "evidence": [
+                "ledger:LED-RFI-001-OP-2026"
+              ],
+              "rule_ids": []
+            }
+          },
+          "clauses": {
+            "RFI-2.1": {
+              "clause_id": "RFI-2.1",
+              "title": "Period of cover",
+              "location": "Page 2, Section 2.1",
+              "exact_text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment."
+            },
+            "RFI-2.2": {
+              "clause_id": "RFI-2.2",
+              "title": "Insured members",
+              "location": "Page 2, Section 2.2",
+              "exact_text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force."
+            },
+            "RFI-3.1": {
+              "clause_id": "RFI-3.1",
+              "title": "Outpatient benefit",
+              "location": "Page 4, Section 3.1",
+              "exact_text": "We will pay for outpatient consultations, physiotherapy and treatment prescribed by a registered medical practitioner, subject to the limits and cost-sharing shown in Section 5."
+            },
+            "RFI-3.2": {
+              "clause_id": "RFI-3.2",
+              "title": "Medical necessity",
+              "location": "Page 4, Section 3.2",
+              "exact_text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner."
+            },
+            "RFI-4.1": {
+              "clause_id": "RFI-4.1",
+              "title": "Waiting period",
+              "location": "Page 5, Section 4.1",
+              "exact_text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident."
+            },
+            "RFI-5.1": {
+              "clause_id": "RFI-5.1",
+              "title": "Annual outpatient limit",
+              "location": "Page 6, Section 5.1",
+              "exact_text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,500.00."
+            },
+            "RFI-5.2": {
+              "clause_id": "RFI-5.2",
+              "title": "Outpatient cost-sharing",
+              "location": "Page 6, Section 5.2",
+              "exact_text": "No deductible or coinsurance applies to outpatient benefits. The member pays a fixed copay of USD 25.00 for each outpatient visit."
+            },
+            "RFI-6.1": {
+              "clause_id": "RFI-6.1",
+              "title": "Cosmetic treatment exclusion",
+              "location": "Page 8, Section 6.1",
+              "exact_text": "We will not pay for cosmetic or aesthetic treatment performed to change appearance where there is no documented medical indication."
+            },
+            "RFI-7.2": {
+              "clause_id": "RFI-7.2",
+              "title": "Claim evidence",
+              "location": "Page 10, Section 7.2",
+              "exact_text": "Each outpatient claim must be supported by a medical report from the treating practitioner stating the diagnosis and the treatment provided. We may defer assessment until this report is received."
+            }
+          },
+          "benefit": {
+            "covered": true,
+            "benefit_clause_id": "RFI-3.1",
+            "annual_limit": "1500.00",
+            "limit_clause_id": "RFI-5.1",
+            "deductible": "0.00",
+            "deductible_clause_id": "RFI-5.2",
+            "copay_per_visit": "25.00",
+            "copay_clause_id": "RFI-5.2",
+            "coinsurance_rate": "0.00",
+            "coinsurance_clause_id": "RFI-5.2",
+            "waiting_period_days": 30,
+            "waiting_period_clause_id": "RFI-4.1",
+            "medical_necessity_clause_id": "RFI-3.2"
+          },
+          "remaining_limit": "1200.00",
+          "ledger_ref": "LED-RFI-001-OP-2026",
+          "document_requirement_clause_ids": {
+            "MEDICAL_REPORT": "RFI-7.2"
+          },
+          "rules": {
+            "CSR-2.1": {
+              "rule_id": "CSR-2.1",
+              "rule_set_id": "CSR-2026",
+              "version": "2026.1",
+              "effective_from": "2026-01-01",
+              "source_document": "Fictional Claim Submission Rules CSR-2026",
+              "location": "Section 2.1, Standard medical treatment",
+              "exact_text": "Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date."
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 7,
+        "event": "SKIPPED_STEP",
+        "name": "checkMedicalNecessity",
+        "status": "SKIPPED",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": null,
+        "input": null,
+        "output": null,
+        "reason": "No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION)."
+      },
+      {
+        "sequence": 8,
+        "event": "SKIPPED_STEP",
+        "name": "calculateBenefit",
+        "status": "SKIPPED",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": null,
+        "input": null,
+        "output": null,
+        "reason": "Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE."
+      },
+      {
+        "sequence": 9,
+        "event": "STEP",
+        "name": "decide",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:14+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "decide/1.0",
+        "input": null,
+        "output": {
+          "outcome": "REQUEST_MORE_INFO",
+          "assessment_status": "PENDING_INFORMATION",
+          "recommended_payable": null,
+          "reasons": 1,
+          "information_requests": [
+            "REQ-CLM-RFI-001-1"
+          ],
+          "escalations": 3
+        },
+        "reason": null
+      },
+      {
+        "sequence": 10,
+        "event": "LLM_REQUEST",
+        "name": "openrouter.chat",
+        "status": "ERROR",
+        "timestamp": "2026-10-28T11:35:15+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "openrouter:recursive/flint-v1.0:free",
+        "input": {
+          "url": "https://openrouter.ai/api/v1/chat/completions",
+          "model": "recursive/flint-v1.0:free",
+          "attempt": 1,
+          "request_preview": [
+            {
+              "role": "system",
+              "chars": 603,
+              "text": "You draft explanations for a human insurance claim assessor. Rules: - U\u2026"
+            },
+            {
+              "role": "user",
+              "chars": 13513,
+              "text": "{\"claim_id\":\"CLM-RFI-001\",\"currency\":\"USD\",\"document_review\":{\"checklis\u2026"
+            }
+          ]
+        },
+        "output": {
+          "response_id": null,
+          "served_model": null,
+          "tokens_in": null,
+          "tokens_out": null,
+          "validation_problems": [],
+          "response_preview": null
+        },
+        "reason": "OpenRouter returned HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"recursive/flint-v1.0:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Recursive\",\"is_byok\":fal"
+      },
+      {
+        "sequence": 11,
+        "event": "LLM_REQUEST",
+        "name": "openrouter.chat",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:33+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "openrouter:recursive/flint-v1.0:free",
+        "input": {
+          "url": "https://openrouter.ai/api/v1/chat/completions",
+          "model": "recursive/flint-v1.0:free",
+          "attempt": 2,
+          "request_preview": [
+            {
+              "role": "system",
+              "chars": 603,
+              "text": "You draft explanations for a human insurance claim assessor. Rules: - U\u2026"
+            },
+            {
+              "role": "user",
+              "chars": 13513,
+              "text": "{\"claim_id\":\"CLM-RFI-001\",\"currency\":\"USD\",\"document_review\":{\"checklis\u2026"
+            }
+          ]
+        },
+        "output": {
+          "response_id": "gen-1793187318-yVPOm0ZnuZuZKi0G6R5X",
+          "served_model": "recursive/flint-v1.0:free",
+          "tokens_in": 3448,
+          "tokens_out": 2094,
+          "validation_problems": [],
+          "response_preview": {
+            "chars": 1284,
+            "text": "{ \"document_review\": \"Checklist conclusion UNRESOLVED_ITEMS; required M\u2026"
+          }
+        },
+        "reason": null
+      },
+      {
+        "sequence": 12,
+        "event": "LLM_CALL",
+        "name": "draftExplanations",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:33+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "openrouter:recursive/flint-v1.0:free",
+        "input": {
+          "sections": [
+            "document_review",
+            "policy_verification",
+            "medical_necessity",
+            "benefit_calculation",
+            "recommendation"
+          ],
+          "config": {
+            "provider": "openrouter",
+            "url": "https://openrouter.ai/api/v1/chat/completions",
+            "model": "recursive/flint-v1.0:free",
+            "temperature": 0.0,
+            "max_tokens": 4000,
+            "reasoning_effort": "low",
+            "max_attempts": 2
+          },
+          "url": "https://openrouter.ai/api/v1/chat/completions",
+          "request_body": {
+            "model": "recursive/flint-v1.0:free",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You draft explanations for a human insurance claim assessor.\nRules:\n- Use only the facts in the supplied JSON. Do not add clinical, policy or financial information.\n- Do not make, change or question the recommendation. The application decided it; you explain it.\n- Mention only clause IDs, document IDs and amounts that appear in the facts. Write amounts with two decimals exactly as given.\n- Reply with one JSON object and nothing else. Its keys must be exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation."
+              },
+              {
+                "role": "user",
+                "content": "{\"claim_id\":\"CLM-RFI-001\",\"currency\":\"USD\",\"document_review\":{\"checklist\":{\"id\":\"CHK-OUTPATIENT\",\"version\":\"1.2\",\"source\":{\"document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"location\":\"Section 4.1, Outpatient claim documents\"}},\"rows\":[{\"document_type\":\"CLAIM_FORM\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-1\",\"document_id\":\"I-D1\",\"submitted_type\":\"CLAIM_FORM\",\"detected_type\":\"CLAIM_FORM\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"I-D1\"],\"citation_ids\":[\"PC-01\"]},{\"document_type\":\"ITEMIZED_INVOICE\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-2\",\"document_id\":\"I-D2\",\"submitted_type\":\"ITEMIZED_INVOICE\",\"detected_type\":\"ITEMIZED_INVOICE\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"I-D2\"],\"citation_ids\":[\"PC-02\"]},{\"document_type\":\"PAYMENT_RECEIPT\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-3\",\"document_id\":\"I-D3\",\"submitted_type\":\"PAYMENT_RECEIPT\",\"detected_type\":\"PAYMENT_RECEIPT\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"I-D3\"],\"citation_ids\":[\"PC-03\"]},{\"document_type\":\"MEDICAL_REPORT\",\"required\":\"Y\",\"status\":\"MISSING\",\"requirement_id\":\"OP-REQ-4\",\"document_id\":null,\"submitted_type\":null,\"detected_type\":null,\"verification\":null,\"issues\":[\"Submitted I-D4 declared MEDICAL_REPORT but detected APPOINTMENT_CONFIRMATION.\"],\"evidence\":[\"I-D4\"],\"citation_ids\":[\"PC-04\"]},{\"document_type\":\"REFERRAL_LETTER\",\"required\":\"CONDITIONAL\",\"status\":\"NOT_APPLICABLE\",\"requirement_id\":\"OP-REQ-5\",\"document_id\":null,\"submitted_type\":null,\"detected_type\":null,\"verification\":null,\"issues\":[\"Condition fact 'specialist_referral_required' not documented; requirement not triggered.\"],\"evidence\":[],\"citation_ids\":[\"PC-05\"]},{\"document_type\":\"APPOINTMENT_CONFIRMATION\",\"required\":\"N\",\"status\":\"COMPLETE\",\"requirement_id\":null,\"document_id\":\"I-D4\",\"submitted_type\":\"MEDICAL_REPORT\",\"detected_type\":\"APPOINTMENT_CONFIRMATION\",\"verification\":\"VERIFIED\",\"issues\":[\"Submitted as MEDICAL_REPORT but the content is an appointment confirmation. It contains no diagnosis, clinical findings or treatment record.\"],\"evidence\":[\"I-D4\"],\"citation_ids\":[]}],\"conclusion\":\"UNRESOLVED_ITEMS\",\"outstanding_requests\":[{\"request_id\":\"REQ-CLM-RFI-001-1\",\"required_item\":\"MEDICAL_REPORT\",\"why_needed\":\"Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.\",\"request_to\":\"PROVIDER\",\"requirement_id\":\"OP-REQ-4\",\"checklist_source\":\"Fictional Claims Procedure Manual CPM-2026 v1.2, Section 4.1, Outpatient claim documents\",\"policy_clause_id\":\"RFI-7.2\",\"reassessment_trigger\":\"Reassess when a MEDICAL_REPORT for CLM-RFI-001 is received and verified.\",\"status\":\"OPEN\"}],\"consistency_issues\":[]},\"policy_verification\":{\"status\":\"FOUND\",\"policy_document\":\"Fictional Active Health Plan, Policy Wording 2026-C\",\"version\":\"2026-C\",\"checks\":[{\"check\":\"policy_active\",\"label\":\"Policy active on treatment date\",\"result\":\"PASS\",\"verified_fact\":\"Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-10-02 to 2026-10-02.\",\"clause_ids\":[\"RFI-2.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-06\"],\"evidence\":[\"policy_record:POL-RFI-001\"]},{\"check\":\"member_covered\",\"label\":\"Member covered\",\"result\":\"PASS\",\"verified_fact\":\"Member MEM-RFI-001 covered 2026-01-01 to 2026-12-31.\",\"clause_ids\":[\"RFI-2.2\"],\"rule_ids\":[],\"citation_ids\":[\"PC-07\"],\"evidence\":[\"policy_record:POL-RFI-001\"]},{\"check\":\"benefit_covered\",\"label\":\"Claim type / benefit covered\",\"result\":\"PASS\",\"verified_fact\":\"OUTPATIENT benefit included.\",\"clause_ids\":[\"RFI-3.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-08\"],\"evidence\":[\"policy_record:POL-RFI-001\"]},{\"check\":\"waiting_period\",\"label\":\"Waiting period\",\"result\":\"PASS\",\"verified_fact\":\"30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-10-02.\",\"clause_ids\":[\"RFI-4.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-09\"],\"evidence\":[\"policy_record:POL-RFI-001\"]},{\"check\":\"submission_deadline\",\"label\":\"Claim submitted within deadline\",\"result\":\"PASS\",\"verified_fact\":\"Submitted 2026-10-06, 4 days after last treatment 2026-10-02; OUTPATIENT deadline 60 days (2026-12-01).\",\"clause_ids\":[],\"rule_ids\":[\"CSR-2.1\"],\"citation_ids\":[\"PC-10\"],\"evidence\":[\"rule_set:CSR-2026\",\"claim_submission:CLM-RFI-001\"]},{\"check\":\"exclusions\",\"label\":\"Exclusions\",\"result\":\"UNCERTAIN\",\"verified_fact\":\"No verified procedure classification; exclusions cannot be assessed.\",\"clause_ids\":[],\"rule_ids\":[],\"citation_ids\":[],\"evidence\":[]},{\"check\":\"limit\",\"label\":\"Remaining benefit limit\",\"result\":\"PASS\",\"verified_fact\":\"Remaining OUTPATIENT limit USD 1200.00 of 1500.00 as of 2026-10-05.\",\"clause_ids\":[\"RFI-5.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-11\"],\"evidence\":[\"ledger:LED-RFI-001-OP-2026\"]}],\"remaining_limit\":\"1200.00\",\"conclusion\":\"UNDETERMINED\",\"reason\":null},\"medical_necessity\":{\"diagnosis\":null,\"procedures\":[],\"result\":\"INSUFFICIENT_EVIDENCE\",\"rule_id\":null,\"rationale\":null,\"clinical_source\":null,\"rule_set_version\":null,\"policy_clause_ids\":[\"RFI-3.2\"],\"citation_ids\":[\"PC-13\"],\"evidence\":[],\"outstanding_concerns\":[\"No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\"]},\"benefit_calculation\":{\"status\":\"PENDING\",\"currency\":\"USD\",\"submitted\":\"300.00\",\"excluded\":null,\"eligible\":null,\"deductible\":null,\"copay\":null,\"coinsurance\":null,\"limit_adjustment\":null,\"insurer_payable\":null,\"member_responsibility\":null,\"remaining_limit_before\":null,\"remaining_limit_after\":null,\"steps\":[],\"clause_ids\":[],\"citation_ids\":[],\"evidence\":[],\"pending_reasons\":[\"Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE.\"]},\"recommendation\":{\"outcome\":\"REQUEST_MORE_INFO\",\"recommended_payable\":null,\"reasons\":[{\"finding\":\"MEDICAL_REPORT needed: Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.\",\"evidence\":[\"I-D4\"],\"citation_ids\":[\"PC-12\",\"PC-04\"]}],\"information_requests\":[{\"request_id\":\"REQ-CLM-RFI-001-1\",\"required_item\":\"MEDICAL_REPORT\",\"why_needed\":\"Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.\",\"request_to\":\"PROVIDER\",\"requirement_id\":\"OP-REQ-4\",\"checklist_source\":\"Fictional Claims Procedure Manual CPM-2026 v1.2, Section 4.1, Outpatient claim documents\",\"policy_clause_id\":\"RFI-7.2\",\"reassessment_trigger\":\"Reassess when a MEDICAL_REPORT for CLM-RFI-001 is received and verified.\",\"status\":\"OPEN\"}],\"escalations\":[\"Exclusions uncertain: No verified procedure classification; exclusions cannot be assessed.\",\"Medical necessity INSUFFICIENT_EVIDENCE: No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\",\"Benefit calculation PENDING: Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE.\"],\"next_action\":\"Send the information requests; hold the claim as PENDING_INFORMATION and reassess on receipt.\",\"authorization_owner\":\"Claims assessor\"},\"policy_citations\":{\"citations\":[{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-1\",\"title\":\"CHK-OUTPATIENT CLAIM_FORM\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"CLAIM_FORM is REQUIRED: Identifies the member, policy, treatment date and amount claimed.\",\"citation_id\":\"PC-01\",\"supported_findings\":[\"Document requirement CLAIM_FORM\"],\"evidence_ids\":[\"I-D1\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-2\",\"title\":\"CHK-OUTPATIENT ITEMIZED_INVOICE\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"ITEMIZED_INVOICE is REQUIRED: Itemizes the charges so covered and excluded amounts can be identified.\",\"citation_id\":\"PC-02\",\"supported_findings\":[\"Document requirement ITEMIZED_INVOICE\"],\"evidence_ids\":[\"I-D2\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-3\",\"title\":\"CHK-OUTPATIENT PAYMENT_RECEIPT\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"PAYMENT_RECEIPT is REQUIRED: Confirms the member paid the amount being reimbursed.\",\"citation_id\":\"PC-03\",\"supported_findings\":[\"Document requirement PAYMENT_RECEIPT\"],\"evidence_ids\":[\"I-D3\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-4\",\"title\":\"CHK-OUTPATIENT MEDICAL_REPORT\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"MEDICAL_REPORT is REQUIRED: Documents the diagnosis and treatment needed to assess coverage and medical necessity.\",\"citation_id\":\"PC-04\",\"supported_findings\":[\"Document requirement MEDICAL_REPORT\",\"MEDICAL_REPORT needed: Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.\"],\"evidence_ids\":[\"I-D4\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-5\",\"title\":\"CHK-OUTPATIENT REFERRAL_LETTER\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"REFERRAL_LETTER is CONDITIONAL: Confirms a referral where the policy requires one for specialist consultation.\",\"citation_id\":\"PC-05\",\"supported_findings\":[\"Document requirement REFERRAL_LETTER\"],\"evidence_ids\":[]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Active Health Plan, Policy Wording 2026-C\",\"version\":\"2026-C\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"RFI-2.1\",\"title\":\"Period of cover\",\"location\":\"Page 2, Section 2.1\",\"text\":\"Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment.\",\"citation_id\":\"PC-06\",\"supported_findings\":[\"Policy active on treatment date\"],\"evidence_ids\":[\"policy_record:POL-RFI-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Active Health Plan, Policy Wording 2026-C\",\"version\":\"2026-C\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"RFI-2.2\",\"title\":\"Insured members\",\"location\":\"Page 2, Section 2.2\",\"text\":\"Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force.\",\"citation_id\":\"PC-07\",\"supported_findings\":[\"Member covered\"],\"evidence_ids\":[\"policy_record:POL-RFI-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Active Health Plan, Policy Wording 2026-C\",\"version\":\"2026-C\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"RFI-3.1\",\"title\":\"Outpatient benefit\",\"location\":\"Page 4, Section 3.1\",\"text\":\"We will pay for outpatient consultations, physiotherapy and treatment prescribed by a registered medical practitioner, subject to the limits and cost-sharing shown in Section 5.\",\"citation_id\":\"PC-08\",\"supported_findings\":[\"Claim type / benefit covered\"],\"evidence_ids\":[\"policy_record:POL-RFI-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Active Health Plan, Policy Wording 2026-C\",\"version\":\"2026-C\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"RFI-4.1\",\"title\":\"Waiting period\",\"location\":\"Page 5, Section 4.1\",\"text\":\"Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident.\",\"citation_id\":\"PC-09\",\"supported_findings\":[\"Waiting period\"],\"evidence_ids\":[\"policy_record:POL-RFI-001\"]},{\"kind\":\"RULE\",\"source_document\":\"Fictional Claim Submission Rules CSR-2026\",\"version\":\"2026.1\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"CSR-2.1\",\"title\":\"CSR-2026\",\"location\":\"Section 2.1, Standard medical treatment\",\"text\":\"Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date.\",\"citation_id\":\"PC-10\",\"supported_findings\":[\"Claim submitted within deadline\"],\"evidence_ids\":[\"rule_set:CSR-2026\",\"claim_submission:CLM-RFI-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Active Health Plan, Policy Wording 2026-C\",\"version\":\"2026-C\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"RFI-5.1\",\"title\":\"Annual outpatient limit\",\"location\":\"Page 6, Section 5.1\",\"text\":\"The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,500.00.\",\"citation_id\":\"PC-11\",\"supported_findings\":[\"Remaining benefit limit\"],\"evidence_ids\":[\"ledger:LED-RFI-001-OP-2026\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Active Health Plan, Policy Wording 2026-C\",\"version\":\"2026-C\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"RFI-7.2\",\"title\":\"Claim evidence\",\"location\":\"Page 10, Section 7.2\",\"text\":\"Each outpatient claim must be supported by a medical report from the treating practitioner stating the diagnosis and the treatment provided. We may defer assessment until this report is received.\",\"citation_id\":\"PC-12\",\"supported_findings\":[\"MEDICAL_REPORT needed: Required MEDICAL_REPORT is missing. Documents the diagnosis and treatment needed to assess coverage and medical necessity.\"],\"evidence_ids\":[\"I-D4\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Active Health Plan, Policy Wording 2026-C\",\"version\":\"2026-C\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"RFI-3.2\",\"title\":\"Medical necessity\",\"location\":\"Page 4, Section 3.2\",\"text\":\"Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner.\",\"citation_id\":\"PC-13\",\"supported_findings\":[\"Medical necessity\"],\"evidence_ids\":[]}]}}"
+              }
+            ],
+            "temperature": 0.0,
+            "max_tokens": 4000,
+            "reasoning": {
+              "effort": "low"
+            }
+          }
+        },
+        "output": {
+          "status": "DRAFTED",
+          "attempts": 2,
+          "served_model": "recursive/flint-v1.0:free",
+          "response_id": "gen-1793187318-yVPOm0ZnuZuZKi0G6R5X",
+          "exchanges": [
+            {
+              "attempt": 1,
+              "error": "OpenRouter returned HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"recursive/flint-v1.0:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Recursive\",\"is_byok\":fal",
+              "http_status": 429,
+              "retryable": true
+            },
+            {
+              "attempt": 2,
+              "response_id": "gen-1793187318-yVPOm0ZnuZuZKi0G6R5X",
+              "served_model": "recursive/flint-v1.0:free",
+              "usage": {
+                "prompt_tokens": 3448,
+                "completion_tokens": 2094,
+                "total_tokens": 5542,
+                "cost": 0,
+                "is_byok": false,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "audio_tokens": 0,
+                  "video_tokens": 0
+                },
+                "cost_details": {
+                  "upstream_inference_cost": 0,
+                  "upstream_inference_prompt_cost": 0,
+                  "upstream_inference_completions_cost": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 1879,
+                  "image_tokens": 0,
+                  "audio_tokens": 0
+                }
+              },
+              "raw_content": "{\n  \"document_review\": \"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION, with no diagnosis or treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\",\n  \"policy_verification\": \"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline and remaining limit checks PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\",\n  \"medical_necessity\": \"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; outstanding concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\",\n  \"benefit_calculation\": \"Benefit calculation PENDING; USD 300.00 submitted; calculation blocked by OP-REQ-4 MEDICAL_REPORT MISSING and medical necessity INSUFFICIENT_EVIDENCE.\",\n  \"recommendation\": \"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT is received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2; exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\"\n}",
+              "response_body": {
+                "id": "gen-1793187318-yVPOm0ZnuZuZKi0G6R5X",
+                "object": "chat.completion",
+                "created": 1793187318,
+                "model": "recursive/flint-v1.0:free",
+                "provider": "Recursive",
+                "system_fingerprint": null,
+                "service_tier": null,
+                "choices": [
+                  {
+                    "index": 0,
+                    "logprobs": null,
+                    "finish_reason": "stop",
+                    "native_finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "content": "{\n  \"document_review\": \"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION, with no diagnosis or treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\",\n  \"policy_verification\": \"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline and remaining limit checks PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\",\n  \"medical_necessity\": \"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; outstanding concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\",\n  \"benefit_calculation\": \"Benefit calculation PENDING; USD 300.00 submitted; calculation blocked by OP-REQ-4 MEDICAL_REPORT MISSING and medical necessity INSUFFICIENT_EVIDENCE.\",\n  \"recommendation\": \"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT is received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2; exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\"\n}",
+                      "refusal": null,
+                      "reasoning": "We need answer user. Need parse. We need draft explanations for human insurance claim assessor. Must follow rules. Reply with one JSON object and nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\n\nWe need likely produce JSON object with those keys, values short plain-text explanations. Must not add extra keys. Must use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\n\nNeed be careful. The final should be one JSON object and nothing else. Keys exactly those five. Each value short plain-text explanation.\n\nWe need decide content for each.\n\ndocument_review: Should explain checklist conclusion UNRESOLVED_ITEMS, outstanding request REQ... MEDICAL_REPORT missing, I-D4 submitted as MEDICAL_REPORT but detected APPOINTMENT_CONFIRMATION, no diagnosis etc. Mention clause IDs? Only clause IDs that appear. Could mention OP-REQ-4, RFI-7.2? Document review maybe: \"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION; no diagnosis/treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\" Short plain text.\n\npolicy_verification: status FOUND, checks mostly PASS, exclusions UNCERTAIN, remaining limit USD 1200.00 of 1500.00 as of 2026-10-05. Mention clause IDs RFI-2.1 etc? Short: \"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline, remaining limit PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\" Amounts with two decimals exactly as given. Given remaining limit \"USD 1200.00 of 1500.00\" yes. Policy max \"USD 1,500.00\" but remaining is 1200.00. Use two decimals. Good.\n\nmedical_necessity: result INSUFFICIENT_EVIDENCE, diagnosis null, procedures [], rationale null, clinical source null, policy clause IDs RFI-3.2, citation PC-13, evidence [], outstanding concern: No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION). Short: \"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\" Good.\n\nbenefit_calculation: status PENDING, currency USD, submitted 300.00, excluded null, eligible null, deductible null, copay null, coinsurance null, limit_adjustment null, insurer_payable null, member_responsibility null, remaining_limit_before null, remaining_limit_after null, steps [], clause_ids [], citation_ids [], evidence [], pending_reasons: Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE. Short: \"Benefit calculation PENDING; USD 300.00 submitted; no calculation due to missing MEDICAL_REPORT and insufficient medical necessity evidence. Blocked by OP-REQ-4 and medical necessity INSUFFICIENT_EVIDENCE.\" Amount 300.00 two decimals. Good.\n\nrecommendation: outcome REQUEST_MORE_INFO, recommended_payable null, reasons: MEDICAL_REPORT needed... information_requests: REQ... status OPEN. escalations: Exclusions uncertain... Medical necessity... Benefit calculation PENDING... next_action: Send information requests; hold claim as PENDING_INFORMATION and reassess on receipt. authorization_owner Claims assessor.\n\nShort plain-text explanation: \"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2. Exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\" Good.\n\nNeed final one JSON object and nothing else. Keys exactly. Values short plain-text explanations. Could be strings. Ensure no extra keys. JSON valid. No markdown. The final answer should be just JSON object.\n\nNeed consider \"Reply with one JSON object and nothing else. Its keys must be exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation.\" So final should be:\n{\n  \"document_review\": \"...\",\n  \"policy_verification\": \"...\",\n  \"medical_necessity\": \"...\",\n  \"benefit_calculation\": \"...\",\n  \"recommendation\": \"...\"\n}\n\nNo policy_citations etc.\n\nShould we include amounts with two decimals exactly as given. In policy_verification: \"USD 1200.00 of 1500.00\" yes. In benefit: \"USD 300.00\". In medical no amount. In document no amount.\n\nMention only clause IDs, document IDs and amounts that appear in facts. We can mention clause IDs: OP-REQ-4, RFI-7.2, RFI-3.2, RFI-5.1? Only if relevant. Document IDs: I-D4, maybe I-D1 etc? For document review, mention I-D4. Policy verification maybe no document IDs? Could mention policy_record:POL-RFI-001? That's evidence, not document ID? Maybe avoid. Amounts: USD 1200.00, USD 1500.00, USD 300.00. Good.\n\nDo not add clinical, policy or financial info. Our explanations are factual from JSON.\n\nNeed maybe not include \"diagnosis and treatment cannot be assessed\" is okay? It's from facts. Short.\n\nLet's draft final JSON. Ensure valid JSON, no trailing commas. Strings can contain semicolons. No newlines? JSON can have newlines. One JSON object and nothing else. We can format pretty. That's still one JSON object. Nothing else.\n\nCheck keys exactly. Values short plain-text explanations.\n\nDraft:\n{\n  \"document_review\": \"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION, with no diagnosis or treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\",\n  \"policy_verification\": \"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline and remaining limit checks PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\",\n  \"medical_necessity\": \"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; outstanding concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\",\n  \"benefit_calculation\": \"Benefit calculation PENDING; USD 300.00 submitted; calculation blocked by OP-REQ-4 MEDICAL_REPORT MISSING and medical necessity INSUFFICIENT_EVIDENCE.\",\n  \"recommendation\": \"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT is received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2; exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\"\n}\n\nCheck amounts: \"USD 1200.00 of 1500.00\" given remaining limit \"USD 1200.00 of 1500.00 as of 2026-10-05.\" Yes. \"USD 300.00\" given submitted. Good.\n\nBut policy_verification: \"remaining limit checks PASS\" maybe okay. It says remaining benefit limit PASS. Good.\n\nMedical necessity: \"diagnosis and treatment cannot be assessed\" okay.\n\nBenefit calculation: \"USD 300.00 submitted\" okay.\n\nRecommendation: \"hold claim as PENDING_INFORMATION\" from next_action. Good.\n\nDoes final include only JSON? Yes.\n\nNeed maybe no markdown code fences. Just JSON.\n\nLet's final.",
+                      "reasoning_details": [
+                        {
+                          "type": "reasoning.text",
+                          "text": "We need answer user. Need parse. We need draft explanations for human insurance claim assessor. Must follow rules. Reply with one JSON object and nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\n\nWe need likely produce JSON object with those keys, values short plain-text explanations. Must not add extra keys. Must use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\n\nNeed be careful. The final should be one JSON object and nothing else. Keys exactly those five. Each value short plain-text explanation.\n\nWe need decide content for each.\n\ndocument_review: Should explain checklist conclusion UNRESOLVED_ITEMS, outstanding request REQ... MEDICAL_REPORT missing, I-D4 submitted as MEDICAL_REPORT but detected APPOINTMENT_CONFIRMATION, no diagnosis etc. Mention clause IDs? Only clause IDs that appear. Could mention OP-REQ-4, RFI-7.2? Document review maybe: \"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION; no diagnosis/treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\" Short plain text.\n\npolicy_verification: status FOUND, checks mostly PASS, exclusions UNCERTAIN, remaining limit USD 1200.00 of 1500.00 as of 2026-10-05. Mention clause IDs RFI-2.1 etc? Short: \"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline, remaining limit PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\" Amounts with two decimals exactly as given. Given remaining limit \"USD 1200.00 of 1500.00\" yes. Policy max \"USD 1,500.00\" but remaining is 1200.00. Use two decimals. Good.\n\nmedical_necessity: result INSUFFICIENT_EVIDENCE, diagnosis null, procedures [], rationale null, clinical source null, policy clause IDs RFI-3.2, citation PC-13, evidence [], outstanding concern: No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION). Short: \"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\" Good.\n\nbenefit_calculation: status PENDING, currency USD, submitted 300.00, excluded null, eligible null, deductible null, copay null, coinsurance null, limit_adjustment null, insurer_payable null, member_responsibility null, remaining_limit_before null, remaining_limit_after null, steps [], clause_ids [], citation_ids [], evidence [], pending_reasons: Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE. Short: \"Benefit calculation PENDING; USD 300.00 submitted; no calculation due to missing MEDICAL_REPORT and insufficient medical necessity evidence. Blocked by OP-REQ-4 and medical necessity INSUFFICIENT_EVIDENCE.\" Amount 300.00 two decimals. Good.\n\nrecommendation: outcome REQUEST_MORE_INFO, recommended_payable null, reasons: MEDICAL_REPORT needed... information_requests: REQ... status OPEN. escalations: Exclusions uncertain... Medical necessity... Benefit calculation PENDING... next_action: Send information requests; hold claim as PENDING_INFORMATION and reassess on receipt. authorization_owner Claims assessor.\n\nShort plain-text explanation: \"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2. Exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\" Good.\n\nNeed final one JSON object and nothing else. Keys exactly. Values short plain-text explanations. Could be strings. Ensure no extra keys. JSON valid. No markdown. The final answer should be just JSON object.\n\nNeed consider \"Reply with one JSON object and nothing else. Its keys must be exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation.\" So final should be:\n{\n  \"document_review\": \"...\",\n  \"policy_verification\": \"...\",\n  \"medical_necessity\": \"...\",\n  \"benefit_calculation\": \"...\",\n  \"recommendation\": \"...\"\n}\n\nNo policy_citations etc.\n\nShould we include amounts with two decimals exactly as given. In policy_verification: \"USD 1200.00 of 1500.00\" yes. In benefit: \"USD 300.00\". In medical no amount. In document no amount.\n\nMention only clause IDs, document IDs and amounts that appear in facts. We can mention clause IDs: OP-REQ-4, RFI-7.2, RFI-3.2, RFI-5.1? Only if relevant. Document IDs: I-D4, maybe I-D1 etc? For document review, mention I-D4. Policy verification maybe no document IDs? Could mention policy_record:POL-RFI-001? That's evidence, not document ID? Maybe avoid. Amounts: USD 1200.00, USD 1500.00, USD 300.00. Good.\n\nDo not add clinical, policy or financial info. Our explanations are factual from JSON.\n\nNeed maybe not include \"diagnosis and treatment cannot be assessed\" is okay? It's from facts. Short.\n\nLet's draft final JSON. Ensure valid JSON, no trailing commas. Strings can contain semicolons. No newlines? JSON can have newlines. One JSON object and nothing else. We can format pretty. That's still one JSON object. Nothing else.\n\nCheck keys exactly. Values short plain-text explanations.\n\nDraft:\n{\n  \"document_review\": \"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION, with no diagnosis or treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\",\n  \"policy_verification\": \"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline and remaining limit checks PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\",\n  \"medical_necessity\": \"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; outstanding concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\",\n  \"benefit_calculation\": \"Benefit calculation PENDING; USD 300.00 submitted; calculation blocked by OP-REQ-4 MEDICAL_REPORT MISSING and medical necessity INSUFFICIENT_EVIDENCE.\",\n  \"recommendation\": \"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT is received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2; exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\"\n}\n\nCheck amounts: \"USD 1200.00 of 1500.00\" given remaining limit \"USD 1200.00 of 1500.00 as of 2026-10-05.\" Yes. \"USD 300.00\" given submitted. Good.\n\nBut policy_verification: \"remaining limit checks PASS\" maybe okay. It says remaining benefit limit PASS. Good.\n\nMedical necessity: \"diagnosis and treatment cannot be assessed\" okay.\n\nBenefit calculation: \"USD 300.00 submitted\" okay.\n\nRecommendation: \"hold claim as PENDING_INFORMATION\" from next_action. Good.\n\nDoes final include only JSON? Yes.\n\nNeed maybe no markdown code fences. Just JSON.\n\nLet's final.",
+                          "format": "unknown",
+                          "index": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "usage": {
+                  "prompt_tokens": 3448,
+                  "completion_tokens": 2094,
+                  "total_tokens": 5542,
+                  "cost": 0,
+                  "is_byok": false,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0,
+                    "audio_tokens": 0,
+                    "video_tokens": 0
+                  },
+                  "cost_details": {
+                    "upstream_inference_cost": 0,
+                    "upstream_inference_prompt_cost": 0,
+                    "upstream_inference_completions_cost": 0
+                  },
+                  "completion_tokens_details": {
+                    "reasoning_tokens": 1879,
+                    "image_tokens": 0,
+                    "audio_tokens": 0
+                  }
+                }
+              },
+              "response_raw": "\n         \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1793187318-yVPOm0ZnuZuZKi0G6R5X\",\"object\":\"chat.completion\",\"created\":1793187318,\"model\":\"recursive/flint-v1.0:free\",\"provider\":\"Recursive\",\"system_fingerprint\":null,\"service_tier\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"document_review\\\": \\\"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION, with no diagnosis or treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\\\",\\n  \\\"policy_verification\\\": \\\"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline and remaining limit checks PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; outstanding concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\\\",\\n  \\\"benefit_calculation\\\": \\\"Benefit calculation PENDING; USD 300.00 submitted; calculation blocked by OP-REQ-4 MEDICAL_REPORT MISSING and medical necessity INSUFFICIENT_EVIDENCE.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT is received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2; exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\\\"\\n}\",\"refusal\":null,\"reasoning\":\"We need answer user. Need parse. We need draft explanations for human insurance claim assessor. Must follow rules. Reply with one JSON object and nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\\n\\nWe need likely produce JSON object with those keys, values short plain-text explanations. Must not add extra keys. Must use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\\n\\nNeed be careful. The final should be one JSON object and nothing else. Keys exactly those five. Each value short plain-text explanation.\\n\\nWe need decide content for each.\\n\\ndocument_review: Should explain checklist conclusion UNRESOLVED_ITEMS, outstanding request REQ... MEDICAL_REPORT missing, I-D4 submitted as MEDICAL_REPORT but detected APPOINTMENT_CONFIRMATION, no diagnosis etc. Mention clause IDs? Only clause IDs that appear. Could mention OP-REQ-4, RFI-7.2? Document review maybe: \\\"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION; no diagnosis/treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\\\" Short plain text.\\n\\npolicy_verification: status FOUND, checks mostly PASS, exclusions UNCERTAIN, remaining limit USD 1200.00 of 1500.00 as of 2026-10-05. Mention clause IDs RFI-2.1 etc? Short: \\\"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline, remaining limit PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\\\" Amounts with two decimals exactly as given. Given remaining limit \\\"USD 1200.00 of 1500.00\\\" yes. Policy max \\\"USD 1,500.00\\\" but remaining is 1200.00. Use two decimals. Good.\\n\\nmedical_necessity: result INSUFFICIENT_EVIDENCE, diagnosis null, procedures [], rationale null, clinical source null, policy clause IDs RFI-3.2, citation PC-13, evidence [], outstanding concern: No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION). Short: \\\"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\\\" Good.\\n\\nbenefit_calculation: status PENDING, currency USD, submitted 300.00, excluded null, eligible null, deductible null, copay null, coinsurance null, limit_adjustment null, insurer_payable null, member_responsibility null, remaining_limit_before null, remaining_limit_after null, steps [], clause_ids [], citation_ids [], evidence [], pending_reasons: Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE. Short: \\\"Benefit calculation PENDING; USD 300.00 submitted; no calculation due to missing MEDICAL_REPORT and insufficient medical necessity evidence. Blocked by OP-REQ-4 and medical necessity INSUFFICIENT_EVIDENCE.\\\" Amount 300.00 two decimals. Good.\\n\\nrecommendation: outcome REQUEST_MORE_INFO, recommended_payable null, reasons: MEDICAL_REPORT needed... information_requests: REQ... status OPEN. escalations: Exclusions uncertain... Medical necessity... Benefit calculation PENDING... next_action: Send information requests; hold claim as PENDING_INFORMATION and reassess on receipt. authorization_owner Claims assessor.\\n\\nShort plain-text explanation: \\\"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2. Exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\\\" Good.\\n\\nNeed final one JSON object and nothing else. Keys exactly. Values short plain-text explanations. Could be strings. Ensure no extra keys. JSON valid. No markdown. The final answer should be just JSON object.\\n\\nNeed consider \\\"Reply with one JSON object and nothing else. Its keys must be exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation.\\\" So final should be:\\n{\\n  \\\"document_review\\\": \\\"...\\\",\\n  \\\"policy_verification\\\": \\\"...\\\",\\n  \\\"medical_necessity\\\": \\\"...\\\",\\n  \\\"benefit_calculation\\\": \\\"...\\\",\\n  \\\"recommendation\\\": \\\"...\\\"\\n}\\n\\nNo policy_citations etc.\\n\\nShould we include amounts with two decimals exactly as given. In policy_verification: \\\"USD 1200.00 of 1500.00\\\" yes. In benefit: \\\"USD 300.00\\\". In medical no amount. In document no amount.\\n\\nMention only clause IDs, document IDs and amounts that appear in facts. We can mention clause IDs: OP-REQ-4, RFI-7.2, RFI-3.2, RFI-5.1? Only if relevant. Document IDs: I-D4, maybe I-D1 etc? For document review, mention I-D4. Policy verification maybe no document IDs? Could mention policy_record:POL-RFI-001? That's evidence, not document ID? Maybe avoid. Amounts: USD 1200.00, USD 1500.00, USD 300.00. Good.\\n\\nDo not add clinical, policy or financial info. Our explanations are factual from JSON.\\n\\nNeed maybe not include \\\"diagnosis and treatment cannot be assessed\\\" is okay? It's from facts. Short.\\n\\nLet's draft final JSON. Ensure valid JSON, no trailing commas. Strings can contain semicolons. No newlines? JSON can have newlines. One JSON object and nothing else. We can format pretty. That's still one JSON object. Nothing else.\\n\\nCheck keys exactly. Values short plain-text explanations.\\n\\nDraft:\\n{\\n  \\\"document_review\\\": \\\"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION, with no diagnosis or treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\\\",\\n  \\\"policy_verification\\\": \\\"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline and remaining limit checks PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; outstanding concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\\\",\\n  \\\"benefit_calculation\\\": \\\"Benefit calculation PENDING; USD 300.00 submitted; calculation blocked by OP-REQ-4 MEDICAL_REPORT MISSING and medical necessity INSUFFICIENT_EVIDENCE.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT is received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2; exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\\\"\\n}\\n\\nCheck amounts: \\\"USD 1200.00 of 1500.00\\\" given remaining limit \\\"USD 1200.00 of 1500.00 as of 2026-10-05.\\\" Yes. \\\"USD 300.00\\\" given submitted. Good.\\n\\nBut policy_verification: \\\"remaining limit checks PASS\\\" maybe okay. It says remaining benefit limit PASS. Good.\\n\\nMedical necessity: \\\"diagnosis and treatment cannot be assessed\\\" okay.\\n\\nBenefit calculation: \\\"USD 300.00 submitted\\\" okay.\\n\\nRecommendation: \\\"hold claim as PENDING_INFORMATION\\\" from next_action. Good.\\n\\nDoes final include only JSON? Yes.\\n\\nNeed maybe no markdown code fences. Just JSON.\\n\\nLet's final.\",\"reasoning_details\":[{\"type\":\"reasoning.text\",\"text\":\"We need answer user. Need parse. We need draft explanations for human insurance claim assessor. Must follow rules. Reply with one JSON object and nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\\n\\nWe need likely produce JSON object with those keys, values short plain-text explanations. Must not add extra keys. Must use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\\n\\nNeed be careful. The final should be one JSON object and nothing else. Keys exactly those five. Each value short plain-text explanation.\\n\\nWe need decide content for each.\\n\\ndocument_review: Should explain checklist conclusion UNRESOLVED_ITEMS, outstanding request REQ... MEDICAL_REPORT missing, I-D4 submitted as MEDICAL_REPORT but detected APPOINTMENT_CONFIRMATION, no diagnosis etc. Mention clause IDs? Only clause IDs that appear. Could mention OP-REQ-4, RFI-7.2? Document review maybe: \\\"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION; no diagnosis/treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\\\" Short plain text.\\n\\npolicy_verification: status FOUND, checks mostly PASS, exclusions UNCERTAIN, remaining limit USD 1200.00 of 1500.00 as of 2026-10-05. Mention clause IDs RFI-2.1 etc? Short: \\\"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline, remaining limit PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\\\" Amounts with two decimals exactly as given. Given remaining limit \\\"USD 1200.00 of 1500.00\\\" yes. Policy max \\\"USD 1,500.00\\\" but remaining is 1200.00. Use two decimals. Good.\\n\\nmedical_necessity: result INSUFFICIENT_EVIDENCE, diagnosis null, procedures [], rationale null, clinical source null, policy clause IDs RFI-3.2, citation PC-13, evidence [], outstanding concern: No verified MEDICAL_REPORT: OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION). Short: \\\"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\\\" Good.\\n\\nbenefit_calculation: status PENDING, currency USD, submitted 300.00, excluded null, eligible null, deductible null, copay null, coinsurance null, limit_adjustment null, insurer_payable null, member_responsibility null, remaining_limit_before null, remaining_limit_after null, steps [], clause_ids [], citation_ids [], evidence [], pending_reasons: Blocked by: OP-REQ-4 MEDICAL_REPORT MISSING; medical necessity INSUFFICIENT_EVIDENCE. Short: \\\"Benefit calculation PENDING; USD 300.00 submitted; no calculation due to missing MEDICAL_REPORT and insufficient medical necessity evidence. Blocked by OP-REQ-4 and medical necessity INSUFFICIENT_EVIDENCE.\\\" Amount 300.00 two decimals. Good.\\n\\nrecommendation: outcome REQUEST_MORE_INFO, recommended_payable null, reasons: MEDICAL_REPORT needed... information_requests: REQ... status OPEN. escalations: Exclusions uncertain... Medical necessity... Benefit calculation PENDING... next_action: Send information requests; hold claim as PENDING_INFORMATION and reassess on receipt. authorization_owner Claims assessor.\\n\\nShort plain-text explanation: \\\"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2. Exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\\\" Good.\\n\\nNeed final one JSON object and nothing else. Keys exactly. Values short plain-text explanations. Could be strings. Ensure no extra keys. JSON valid. No markdown. The final answer should be just JSON object.\\n\\nNeed consider \\\"Reply with one JSON object and nothing else. Its keys must be exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation.\\\" So final should be:\\n{\\n  \\\"document_review\\\": \\\"...\\\",\\n  \\\"policy_verification\\\": \\\"...\\\",\\n  \\\"medical_necessity\\\": \\\"...\\\",\\n  \\\"benefit_calculation\\\": \\\"...\\\",\\n  \\\"recommendation\\\": \\\"...\\\"\\n}\\n\\nNo policy_citations etc.\\n\\nShould we include amounts with two decimals exactly as given. In policy_verification: \\\"USD 1200.00 of 1500.00\\\" yes. In benefit: \\\"USD 300.00\\\". In medical no amount. In document no amount.\\n\\nMention only clause IDs, document IDs and amounts that appear in facts. We can mention clause IDs: OP-REQ-4, RFI-7.2, RFI-3.2, RFI-5.1? Only if relevant. Document IDs: I-D4, maybe I-D1 etc? For document review, mention I-D4. Policy verification maybe no document IDs? Could mention policy_record:POL-RFI-001? That's evidence, not document ID? Maybe avoid. Amounts: USD 1200.00, USD 1500.00, USD 300.00. Good.\\n\\nDo not add clinical, policy or financial info. Our explanations are factual from JSON.\\n\\nNeed maybe not include \\\"diagnosis and treatment cannot be assessed\\\" is okay? It's from facts. Short.\\n\\nLet's draft final JSON. Ensure valid JSON, no trailing commas. Strings can contain semicolons. No newlines? JSON can have newlines. One JSON object and nothing else. We can format pretty. That's still one JSON object. Nothing else.\\n\\nCheck keys exactly. Values short plain-text explanations.\\n\\nDraft:\\n{\\n  \\\"document_review\\\": \\\"Checklist conclusion UNRESOLVED_ITEMS; required MEDICAL_REPORT missing. I-D4 submitted as MEDICAL_REPORT but detected as APPOINTMENT_CONFIRMATION, with no diagnosis or treatment record. Outstanding request REQ-CLM-RFI-001-1 open under OP-REQ-4, RFI-7.2.\\\",\\n  \\\"policy_verification\\\": \\\"Policy verification FOUND; active, member covered, OUTPATIENT benefit, waiting period, submission deadline and remaining limit checks PASS; exclusions UNCERTAIN; remaining limit USD 1200.00 of 1500.00 as of 2026-10-05.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity INSUFFICIENT_EVIDENCE; no verified MEDICAL_REPORT, so diagnosis and treatment cannot be assessed. Policy clause RFI-3.2; outstanding concern OP-REQ-4 MISSING (I-D4 is APPOINTMENT_CONFIRMATION).\\\",\\n  \\\"benefit_calculation\\\": \\\"Benefit calculation PENDING; USD 300.00 submitted; calculation blocked by OP-REQ-4 MEDICAL_REPORT MISSING and medical necessity INSUFFICIENT_EVIDENCE.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation REQUEST_MORE_INFO; hold claim as PENDING_INFORMATION and reassess on receipt once MEDICAL_REPORT is received and verified. Information request REQ-CLM-RFI-001-1 open for MEDICAL_REPORT under OP-REQ-4, RFI-7.2; exclusions uncertain; medical necessity INSUFFICIENT_EVIDENCE; benefit calculation PENDING.\\\"\\n}\\n\\nCheck amounts: \\\"USD 1200.00 of 1500.00\\\" given remaining limit \\\"USD 1200.00 of 1500.00 as of 2026-10-05.\\\" Yes. \\\"USD 300.00\\\" given submitted. Good.\\n\\nBut policy_verification: \\\"remaining limit checks PASS\\\" maybe okay. It says remaining benefit limit PASS. Good.\\n\\nMedical necessity: \\\"diagnosis and treatment cannot be assessed\\\" okay.\\n\\nBenefit calculation: \\\"USD 300.00 submitted\\\" okay.\\n\\nRecommendation: \\\"hold claim as PENDING_INFORMATION\\\" from next_action. Good.\\n\\nDoes final include only JSON? Yes.\\n\\nNeed maybe no markdown code fences. Just JSON.\\n\\nLet's final.\",\"format\":\"unknown\",\"index\":0}]}}],\"usage\":{\"prompt_tokens\":3448,\"completion_tokens\":2094,\"total_tokens\":5542,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":1879,\"image_tokens\":0,\"audio_tokens\":0}}}",
+              "validation_problems": []
+            }
+          ]
+        },
+        "reason": "Attempt 1: OpenRouter returned HTTP 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"recursive/flint-v1.0:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations\",\"provider_name\":\"Recursive\",\"is_byok\":fal"
+      },
+      {
+        "sequence": 13,
+        "event": "STEP",
+        "name": "validateReport",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:35:33+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "validateReport/1.0",
+        "input": null,
+        "output": {
+          "status": "PASS",
+          "errors": [],
+          "citation_check": "PASS",
+          "reconciliation": "NOT_APPLICABLE",
+          "assessment_status": "PENDING_INFORMATION"
+        },
+        "reason": null
+      }
+    ]
+  }
+}

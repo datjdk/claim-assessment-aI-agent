@@ -1,0 +1,1606 @@
+{
+  "report": {
+    "notice": "Prototype assessment of FICTIONAL claim data. Recommendation only; final authorization belongs to a human.",
+    "metadata": {
+      "claim_id": "CLM-APP-001",
+      "assessment_id": "ASM-9966348219",
+      "assessor": "claim-agent (automated initial assessment)",
+      "assessment_date": "2026-10-28T11:30:39+00:00",
+      "policy_id": "POL-APP-001",
+      "policy_version": "2026-A",
+      "policyholder": {
+        "policyholder_id": "PH-APP-001",
+        "type": "INDIVIDUAL",
+        "name": "Alex Example",
+        "member_id": "MEM-APP-001"
+      },
+      "claim_type": "OUTPATIENT",
+      "member_id": "MEM-APP-001",
+      "treatment_dates": {
+        "start": "2026-09-15",
+        "end": "2026-09-15"
+      },
+      "verified_diagnosis": {
+        "value": "Acute bacterial sinusitis",
+        "verified": true,
+        "source": "A-D4 p.1, Assessment"
+      },
+      "verified_procedures": {
+        "value": [
+          "Outpatient consultation",
+          "Prescribed treatment"
+        ],
+        "verified": true,
+        "source": "A-D4 p.1, Plan"
+      },
+      "reported_diagnosis": "Acute bacterial sinusitis",
+      "reported_procedures": [
+        "Outpatient consultation",
+        "Prescribed treatment"
+      ],
+      "submitted_amount": "200.00",
+      "currency": "USD",
+      "context_version": "ctx-1/fixtures-2026.10-1",
+      "tool_versions": {
+        "verifyDocument": "verifyDocument/1.0",
+        "lookupPolicy": "lookupPolicy/1.0",
+        "checkMedicalNecessity": "checkMedicalNecessity/1.0",
+        "calculateBenefit": "calculateBenefit/1.0"
+      },
+      "llm": {
+        "provider": "openrouter",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "model": "recursive/flint-v1.0:free",
+        "temperature": 0.0,
+        "max_tokens": 4000,
+        "reasoning_effort": "low",
+        "max_attempts": 2
+      }
+    },
+    "document_review": {
+      "checklist": {
+        "id": "CHK-OUTPATIENT",
+        "version": "1.2",
+        "source": {
+          "document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "location": "Section 4.1, Outpatient claim documents"
+        }
+      },
+      "rows": [
+        {
+          "document_type": "CLAIM_FORM",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-1",
+          "document_id": "A-D1",
+          "submitted_type": "CLAIM_FORM",
+          "detected_type": "CLAIM_FORM",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "A-D1"
+          ],
+          "citation_ids": [
+            "PC-01"
+          ]
+        },
+        {
+          "document_type": "ITEMIZED_INVOICE",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-2",
+          "document_id": "A-D2",
+          "submitted_type": "ITEMIZED_INVOICE",
+          "detected_type": "ITEMIZED_INVOICE",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "A-D2"
+          ],
+          "citation_ids": [
+            "PC-02"
+          ]
+        },
+        {
+          "document_type": "PAYMENT_RECEIPT",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-3",
+          "document_id": "A-D3",
+          "submitted_type": "PAYMENT_RECEIPT",
+          "detected_type": "PAYMENT_RECEIPT",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "A-D3"
+          ],
+          "citation_ids": [
+            "PC-03"
+          ]
+        },
+        {
+          "document_type": "MEDICAL_REPORT",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-4",
+          "document_id": "A-D4",
+          "submitted_type": "MEDICAL_REPORT",
+          "detected_type": "MEDICAL_REPORT",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "A-D4"
+          ],
+          "citation_ids": [
+            "PC-04"
+          ]
+        },
+        {
+          "document_type": "REFERRAL_LETTER",
+          "required": "CONDITIONAL",
+          "status": "NOT_APPLICABLE",
+          "requirement_id": "OP-REQ-5",
+          "document_id": null,
+          "submitted_type": null,
+          "detected_type": null,
+          "verification": null,
+          "issues": [
+            "Condition fact 'specialist_referral_required' not documented; requirement not triggered."
+          ],
+          "evidence": [],
+          "citation_ids": [
+            "PC-05"
+          ]
+        }
+      ],
+      "conclusion": "COMPLETE",
+      "outstanding_requests": [],
+      "consistency_issues": []
+    },
+    "policy_verification": {
+      "status": "FOUND",
+      "policy_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+      "version": "2026-A",
+      "checks": [
+        {
+          "check": "policy_active",
+          "label": "Policy active on treatment date",
+          "result": "PASS",
+          "verified_fact": "Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15.",
+          "clause_ids": [
+            "APP-2.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-06"
+          ],
+          "evidence": [
+            "policy_record:POL-APP-001"
+          ]
+        },
+        {
+          "check": "member_covered",
+          "label": "Member covered",
+          "result": "PASS",
+          "verified_fact": "Member MEM-APP-001 covered 2026-01-01 to 2026-12-31.",
+          "clause_ids": [
+            "APP-2.2"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-07"
+          ],
+          "evidence": [
+            "policy_record:POL-APP-001"
+          ]
+        },
+        {
+          "check": "benefit_covered",
+          "label": "Claim type / benefit covered",
+          "result": "PASS",
+          "verified_fact": "OUTPATIENT benefit included.",
+          "clause_ids": [
+            "APP-3.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-08"
+          ],
+          "evidence": [
+            "policy_record:POL-APP-001"
+          ]
+        },
+        {
+          "check": "waiting_period",
+          "label": "Waiting period",
+          "result": "PASS",
+          "verified_fact": "30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15.",
+          "clause_ids": [
+            "APP-4.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-09"
+          ],
+          "evidence": [
+            "policy_record:POL-APP-001"
+          ]
+        },
+        {
+          "check": "submission_deadline",
+          "label": "Claim submitted within deadline",
+          "result": "PASS",
+          "verified_fact": "Submitted 2026-09-18, 3 days after last treatment 2026-09-15; OUTPATIENT deadline 60 days (2026-11-14).",
+          "clause_ids": [],
+          "rule_ids": [
+            "CSR-2.1"
+          ],
+          "citation_ids": [
+            "PC-10"
+          ],
+          "evidence": [
+            "rule_set:CSR-2026",
+            "claim_submission:CLM-APP-001"
+          ]
+        },
+        {
+          "check": "exclusions",
+          "label": "Exclusions",
+          "result": "PASS",
+          "verified_fact": "Verified procedure classification MEDICAL matches no exclusion.",
+          "clause_ids": [
+            "APP-6.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-11"
+          ],
+          "evidence": [
+            "A-D4"
+          ]
+        },
+        {
+          "check": "limit",
+          "label": "Remaining benefit limit",
+          "result": "PASS",
+          "verified_fact": "Remaining OUTPATIENT limit USD 800.00 of 1000.00 as of 2026-09-17.",
+          "clause_ids": [
+            "APP-5.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-12"
+          ],
+          "evidence": [
+            "ledger:LED-APP-001-OP-2026"
+          ]
+        }
+      ],
+      "remaining_limit": "800.00",
+      "conclusion": "ELIGIBLE",
+      "reason": null
+    },
+    "medical_necessity": {
+      "diagnosis": "Acute bacterial sinusitis",
+      "procedures": [
+        "Outpatient consultation",
+        "Prescribed treatment"
+      ],
+      "result": "SUPPORTED",
+      "rule_id": "CR-001",
+      "rationale": "Outpatient consultation and prescribed treatment are an appropriate response to documented acute bacterial sinusitis.",
+      "clinical_source": "Fictional Clinical Necessity Rulebook CNR-2026 v1.0 CNR-2026 Section 2.3",
+      "rule_set_version": "1.0",
+      "policy_clause_ids": [
+        "APP-3.2"
+      ],
+      "citation_ids": [
+        "PC-13"
+      ],
+      "evidence": [
+        {
+          "value": "Acute bacterial sinusitis",
+          "document_id": "A-D4",
+          "location": "p.1, Assessment"
+        },
+        {
+          "value": [
+            "Outpatient consultation",
+            "Prescribed treatment"
+          ],
+          "document_id": "A-D4",
+          "location": "p.1, Plan"
+        },
+        {
+          "value": true,
+          "document_id": "A-D4",
+          "location": "p.1, Assessment"
+        }
+      ],
+      "outstanding_concerns": []
+    },
+    "benefit_calculation": {
+      "status": "COMPLETE",
+      "currency": "USD",
+      "submitted": "200.00",
+      "excluded": "0.00",
+      "eligible": "200.00",
+      "deductible": "0.00",
+      "copay": "20.00",
+      "coinsurance": "0.00",
+      "limit_adjustment": "0.00",
+      "insurer_payable": "180.00",
+      "member_responsibility": "20.00",
+      "remaining_limit_before": "800.00",
+      "remaining_limit_after": "620.00",
+      "steps": [
+        {
+          "step": "EXCLUSIONS",
+          "amount": "0.00",
+          "detail": "Verified procedure classification MEDICAL matches no exclusion."
+        },
+        {
+          "step": "DEDUCTIBLE",
+          "amount": "0.00",
+          "detail": "Deductible 0.00."
+        },
+        {
+          "step": "COPAY",
+          "amount": "20.00",
+          "detail": "Copay 20.00 x 1 visit(s), capped at the amount left."
+        },
+        {
+          "step": "COINSURANCE",
+          "amount": "0.00",
+          "detail": "Coinsurance rate 0.00."
+        },
+        {
+          "step": "ANNUAL_LIMIT",
+          "amount": "0.00",
+          "detail": "Payable capped at remaining limit 800.00."
+        }
+      ],
+      "clause_ids": [
+        "APP-5.2",
+        "APP-5.3",
+        "APP-5.1"
+      ],
+      "citation_ids": [
+        "PC-14",
+        "PC-15",
+        "PC-12"
+      ],
+      "evidence": [
+        "A-D2",
+        "ledger:LED-APP-001-OP-2026",
+        "A-D4"
+      ],
+      "pending_reasons": []
+    },
+    "recommendation": {
+      "outcome": "APPROVE",
+      "recommended_payable": "180.00",
+      "reasons": [
+        {
+          "finding": "Coverage established: Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15. Member MEM-APP-001 covered 2026-01-01 to 2026-12-31.",
+          "evidence": [
+            "policy_record:POL-APP-001"
+          ],
+          "citation_ids": [
+            "PC-06",
+            "PC-07"
+          ]
+        },
+        {
+          "finding": "Submitted on time: Submitted 2026-09-18, 3 days after last treatment 2026-09-15; OUTPATIENT deadline 60 days (2026-11-14).",
+          "evidence": [
+            "rule_set:CSR-2026",
+            "claim_submission:CLM-APP-001"
+          ],
+          "citation_ids": [
+            "PC-10"
+          ]
+        },
+        {
+          "finding": "Benefit applies: OUTPATIENT benefit included. 30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15. Verified procedure classification MEDICAL matches no exclusion.",
+          "evidence": [
+            "A-D4",
+            "policy_record:POL-APP-001"
+          ],
+          "citation_ids": [
+            "PC-08",
+            "PC-09",
+            "PC-11"
+          ]
+        },
+        {
+          "finding": "Medical necessity SUPPORTED (CR-001): Outpatient consultation and prescribed treatment are an appropriate response to documented acute bacterial sinusitis.",
+          "evidence": [
+            "A-D4",
+            "clinical_rule:CR-001"
+          ],
+          "citation_ids": [
+            "PC-13"
+          ]
+        },
+        {
+          "finding": "Calculation: USD 200.00 submitted, 0.00 excluded, 180.00 insurer payable, 20.00 member responsibility; remaining limit 800.00 -> 620.00.",
+          "evidence": [
+            "A-D2",
+            "ledger:LED-APP-001-OP-2026",
+            "A-D4"
+          ],
+          "citation_ids": [
+            "PC-14",
+            "PC-15",
+            "PC-12"
+          ]
+        }
+      ],
+      "information_requests": [],
+      "escalations": [],
+      "next_action": "Send to an authorized approver to authorize payment of USD 180.00.",
+      "authorization_owner": "Claims approver"
+    },
+    "policy_citations": {
+      "citations": [
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-1",
+          "title": "CHK-OUTPATIENT CLAIM_FORM",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "CLAIM_FORM is REQUIRED: Identifies the member, policy, treatment date and amount claimed.",
+          "citation_id": "PC-01",
+          "supported_findings": [
+            "Document requirement CLAIM_FORM"
+          ],
+          "evidence_ids": [
+            "A-D1"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-2",
+          "title": "CHK-OUTPATIENT ITEMIZED_INVOICE",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "ITEMIZED_INVOICE is REQUIRED: Itemizes the charges so covered and excluded amounts can be identified.",
+          "citation_id": "PC-02",
+          "supported_findings": [
+            "Document requirement ITEMIZED_INVOICE"
+          ],
+          "evidence_ids": [
+            "A-D2"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-3",
+          "title": "CHK-OUTPATIENT PAYMENT_RECEIPT",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "PAYMENT_RECEIPT is REQUIRED: Confirms the member paid the amount being reimbursed.",
+          "citation_id": "PC-03",
+          "supported_findings": [
+            "Document requirement PAYMENT_RECEIPT"
+          ],
+          "evidence_ids": [
+            "A-D3"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-4",
+          "title": "CHK-OUTPATIENT MEDICAL_REPORT",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "MEDICAL_REPORT is REQUIRED: Documents the diagnosis and treatment needed to assess coverage and medical necessity.",
+          "citation_id": "PC-04",
+          "supported_findings": [
+            "Document requirement MEDICAL_REPORT"
+          ],
+          "evidence_ids": [
+            "A-D4"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-5",
+          "title": "CHK-OUTPATIENT REFERRAL_LETTER",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "REFERRAL_LETTER is CONDITIONAL: Confirms a referral where the policy requires one for specialist consultation.",
+          "citation_id": "PC-05",
+          "supported_findings": [
+            "Document requirement REFERRAL_LETTER"
+          ],
+          "evidence_ids": []
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-2.1",
+          "title": "Period of cover",
+          "location": "Page 2, Section 2.1",
+          "text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment.",
+          "citation_id": "PC-06",
+          "supported_findings": [
+            "Policy active on treatment date",
+            "Coverage established: Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15. Member MEM-APP-001 covered 2026-01-01 to 2026-12-31."
+          ],
+          "evidence_ids": [
+            "policy_record:POL-APP-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-2.2",
+          "title": "Insured members",
+          "location": "Page 2, Section 2.2",
+          "text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force.",
+          "citation_id": "PC-07",
+          "supported_findings": [
+            "Member covered",
+            "Coverage established: Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15. Member MEM-APP-001 covered 2026-01-01 to 2026-12-31."
+          ],
+          "evidence_ids": [
+            "policy_record:POL-APP-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-3.1",
+          "title": "Outpatient benefit",
+          "location": "Page 4, Section 3.1",
+          "text": "We will pay for outpatient consultations and treatment prescribed by a registered medical practitioner, subject to the limits and cost-sharing shown in Section 5.",
+          "citation_id": "PC-08",
+          "supported_findings": [
+            "Claim type / benefit covered",
+            "Benefit applies: OUTPATIENT benefit included. 30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15. Verified procedure classification MEDICAL matches no exclusion."
+          ],
+          "evidence_ids": [
+            "policy_record:POL-APP-001",
+            "A-D4"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-4.1",
+          "title": "Waiting period",
+          "location": "Page 5, Section 4.1",
+          "text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident.",
+          "citation_id": "PC-09",
+          "supported_findings": [
+            "Waiting period",
+            "Benefit applies: OUTPATIENT benefit included. 30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15. Verified procedure classification MEDICAL matches no exclusion."
+          ],
+          "evidence_ids": [
+            "policy_record:POL-APP-001",
+            "A-D4"
+          ]
+        },
+        {
+          "kind": "RULE",
+          "source_document": "Fictional Claim Submission Rules CSR-2026",
+          "version": "2026.1",
+          "effective_date": "2026-01-01",
+          "clause_id": "CSR-2.1",
+          "title": "CSR-2026",
+          "location": "Section 2.1, Standard medical treatment",
+          "text": "Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date.",
+          "citation_id": "PC-10",
+          "supported_findings": [
+            "Claim submitted within deadline",
+            "Submitted on time: Submitted 2026-09-18, 3 days after last treatment 2026-09-15; OUTPATIENT deadline 60 days (2026-11-14)."
+          ],
+          "evidence_ids": [
+            "rule_set:CSR-2026",
+            "claim_submission:CLM-APP-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-6.1",
+          "title": "Cosmetic treatment exclusion",
+          "location": "Page 8, Section 6.1",
+          "text": "We will not pay for cosmetic or aesthetic treatment performed to change appearance where there is no documented medical indication.",
+          "citation_id": "PC-11",
+          "supported_findings": [
+            "Exclusions",
+            "Benefit applies: OUTPATIENT benefit included. 30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15. Verified procedure classification MEDICAL matches no exclusion."
+          ],
+          "evidence_ids": [
+            "A-D4",
+            "policy_record:POL-APP-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-5.1",
+          "title": "Annual outpatient limit",
+          "location": "Page 6, Section 5.1",
+          "text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,000.00.",
+          "citation_id": "PC-12",
+          "supported_findings": [
+            "Remaining benefit limit",
+            "Calculation: USD 200.00 submitted, 0.00 excluded, 180.00 insurer payable, 20.00 member responsibility; remaining limit 800.00 -> 620.00.",
+            "Benefit calculation"
+          ],
+          "evidence_ids": [
+            "ledger:LED-APP-001-OP-2026",
+            "A-D2",
+            "A-D4"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-3.2",
+          "title": "Medical necessity",
+          "location": "Page 4, Section 3.2",
+          "text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner.",
+          "citation_id": "PC-13",
+          "supported_findings": [
+            "Medical necessity SUPPORTED (CR-001): Outpatient consultation and prescribed treatment are an appropriate response to documented acute bacterial sinusitis.",
+            "Medical necessity"
+          ],
+          "evidence_ids": [
+            "A-D4",
+            "clinical_rule:CR-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-5.2",
+          "title": "Deductible",
+          "location": "Page 6, Section 5.2",
+          "text": "No deductible applies to outpatient benefits under this plan.",
+          "citation_id": "PC-14",
+          "supported_findings": [
+            "Calculation: USD 200.00 submitted, 0.00 excluded, 180.00 insurer payable, 20.00 member responsibility; remaining limit 800.00 -> 620.00.",
+            "Benefit calculation"
+          ],
+          "evidence_ids": [
+            "A-D2",
+            "ledger:LED-APP-001-OP-2026",
+            "A-D4"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "version": "2026-A",
+          "effective_date": "2026-01-01",
+          "clause_id": "APP-5.3",
+          "title": "Outpatient copay",
+          "location": "Page 6, Section 5.3",
+          "text": "The member pays a fixed copay of USD 20.00 for each outpatient visit. No coinsurance applies to outpatient benefits.",
+          "citation_id": "PC-15",
+          "supported_findings": [
+            "Calculation: USD 200.00 submitted, 0.00 excluded, 180.00 insurer payable, 20.00 member responsibility; remaining limit 800.00 -> 620.00.",
+            "Benefit calculation"
+          ],
+          "evidence_ids": [
+            "A-D2",
+            "ledger:LED-APP-001-OP-2026",
+            "A-D4"
+          ]
+        }
+      ],
+      "coverage_check": "PASS"
+    },
+    "assessment_status": "READY_FOR_AUTHORIZATION",
+    "audit_reference": "AUD-CLM-APP-001-ed700f0a",
+    "explanations": {
+      "status": "DRAFTED",
+      "sections": {
+        "document_review": "Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.",
+        "policy_verification": "Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.",
+        "medical_necessity": "Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2; evidence A-D4.",
+        "benefit_calculation": "Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.",
+        "recommendation": "Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00."
+      },
+      "llm": {
+        "provider": "openrouter",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "model": "recursive/flint-v1.0:free",
+        "temperature": 0.0,
+        "max_tokens": 4000,
+        "reasoning_effort": "low",
+        "max_attempts": 2,
+        "served_model": "recursive/flint-v1.0:free",
+        "response_id": "gen-1793187041-dQdYkp5hlAtu7PzSFvQB"
+      },
+      "errors": []
+    },
+    "human_review": {
+      "authorization_status": "PENDING",
+      "reviewer": null,
+      "decision": null,
+      "final_outcome": null,
+      "reason": null,
+      "reviewed_at": null
+    },
+    "validation": {
+      "status": "PASS",
+      "errors": [],
+      "citation_check": "PASS",
+      "reconciliation": "PASS"
+    }
+  },
+  "audit": {
+    "reference": "AUD-CLM-APP-001-ed700f0a",
+    "claim_id": "CLM-APP-001",
+    "context_version": "ctx-1/fixtures-2026.10-1",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "A-D1"
+        },
+        "output": {
+          "document_id": "A-D1",
+          "status": "FOUND",
+          "declared_type": "CLAIM_FORM",
+          "detected_type": "CLAIM_FORM",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "member_id": {
+              "value": "MEM-APP-001",
+              "document_id": "A-D1",
+              "location": "p.1, Member details"
+            },
+            "policy_id": {
+              "value": "POL-APP-001",
+              "document_id": "A-D1",
+              "location": "p.1, Member details"
+            },
+            "treatment_date": {
+              "value": "2026-09-15",
+              "document_id": "A-D1",
+              "location": "p.1, Treatment details"
+            },
+            "claimed_amount": {
+              "value": "200.00",
+              "document_id": "A-D1",
+              "location": "p.2, Amount claimed"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "A-D2"
+        },
+        "output": {
+          "document_id": "A-D2",
+          "status": "FOUND",
+          "declared_type": "ITEMIZED_INVOICE",
+          "detected_type": "ITEMIZED_INVOICE",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "provider_id": {
+              "value": "PRV-0101",
+              "document_id": "A-D2",
+              "location": "p.1, Header"
+            },
+            "service_date": {
+              "value": "2026-09-15",
+              "document_id": "A-D2",
+              "location": "p.1, Header"
+            },
+            "line_items": {
+              "value": [
+                {
+                  "line_id": "A-D2-L1",
+                  "description": "Outpatient consultation",
+                  "amount": "120.00",
+                  "category": "CONSULTATION"
+                },
+                {
+                  "line_id": "A-D2-L2",
+                  "description": "Prescribed antibiotic course",
+                  "amount": "80.00",
+                  "category": "MEDICATION"
+                }
+              ],
+              "document_id": "A-D2",
+              "location": "p.1, Lines 1-2"
+            },
+            "invoice_total": {
+              "value": "200.00",
+              "document_id": "A-D2",
+              "location": "p.1, Total"
+            },
+            "visit_count": {
+              "value": 1,
+              "document_id": "A-D2",
+              "location": "p.1, Header"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 3,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "A-D3"
+        },
+        "output": {
+          "document_id": "A-D3",
+          "status": "FOUND",
+          "declared_type": "PAYMENT_RECEIPT",
+          "detected_type": "PAYMENT_RECEIPT",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "amount_paid": {
+              "value": "200.00",
+              "document_id": "A-D3",
+              "location": "p.1, Amount paid"
+            },
+            "payment_date": {
+              "value": "2026-09-15",
+              "document_id": "A-D3",
+              "location": "p.1, Date"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 4,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "A-D4"
+        },
+        "output": {
+          "document_id": "A-D4",
+          "status": "FOUND",
+          "declared_type": "MEDICAL_REPORT",
+          "detected_type": "MEDICAL_REPORT",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "patient_member_id": {
+              "value": "MEM-APP-001",
+              "document_id": "A-D4",
+              "location": "p.1, Patient"
+            },
+            "examination_date": {
+              "value": "2026-09-15",
+              "document_id": "A-D4",
+              "location": "p.1, Header"
+            },
+            "diagnosis": {
+              "value": "Acute bacterial sinusitis",
+              "document_id": "A-D4",
+              "location": "p.1, Assessment"
+            },
+            "procedures": {
+              "value": [
+                "Outpatient consultation",
+                "Prescribed treatment"
+              ],
+              "document_id": "A-D4",
+              "location": "p.1, Plan"
+            },
+            "medical_indication_present": {
+              "value": true,
+              "document_id": "A-D4",
+              "location": "p.1, Assessment"
+            },
+            "procedure_classification": {
+              "value": "MEDICAL",
+              "document_id": "A-D4",
+              "location": "p.1, Plan"
+            },
+            "clinical_findings": {
+              "value": "Facial pain and purulent nasal discharge for 12 days; symptoms worsening after initial improvement.",
+              "document_id": "A-D4",
+              "location": "p.1, History and examination"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 5,
+        "event": "STEP",
+        "name": "documentReview",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "documentReview/1.0",
+        "input": {
+          "checklist": "CHK-OUTPATIENT v1.2"
+        },
+        "output": {
+          "claim_id": "CLM-APP-001",
+          "rows": [
+            {
+              "document_type": "CLAIM_FORM",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-1",
+              "document_id": "A-D1",
+              "submitted_type": "CLAIM_FORM",
+              "detected_type": "CLAIM_FORM",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "A-D1"
+              ]
+            },
+            {
+              "document_type": "ITEMIZED_INVOICE",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-2",
+              "document_id": "A-D2",
+              "submitted_type": "ITEMIZED_INVOICE",
+              "detected_type": "ITEMIZED_INVOICE",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "A-D2"
+              ]
+            },
+            {
+              "document_type": "PAYMENT_RECEIPT",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-3",
+              "document_id": "A-D3",
+              "submitted_type": "PAYMENT_RECEIPT",
+              "detected_type": "PAYMENT_RECEIPT",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "A-D3"
+              ]
+            },
+            {
+              "document_type": "MEDICAL_REPORT",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-4",
+              "document_id": "A-D4",
+              "submitted_type": "MEDICAL_REPORT",
+              "detected_type": "MEDICAL_REPORT",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "A-D4"
+              ]
+            },
+            {
+              "document_type": "REFERRAL_LETTER",
+              "required": "CONDITIONAL",
+              "status": "NOT_APPLICABLE",
+              "requirement_id": "OP-REQ-5",
+              "document_id": null,
+              "submitted_type": null,
+              "detected_type": null,
+              "verification": null,
+              "issues": [
+                "Condition fact 'specialist_referral_required' not documented; requirement not triggered."
+              ],
+              "evidence": []
+            }
+          ],
+          "conclusion": "COMPLETE",
+          "requests": [],
+          "checklist_id": "CHK-OUTPATIENT",
+          "checklist_version": "1.2",
+          "checklist_source": {
+            "document": "Fictional Claims Procedure Manual CPM-2026",
+            "version": "1.2",
+            "location": "Section 4.1, Outpatient claim documents"
+          },
+          "consistency_issues": []
+        },
+        "reason": null
+      },
+      {
+        "sequence": 6,
+        "event": "TOOL_CALL",
+        "name": "lookupPolicy",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "lookupPolicy/1.0",
+        "input": {
+          "policyId": "POL-APP-001"
+        },
+        "output": {
+          "policy_id": "POL-APP-001",
+          "status": "FOUND",
+          "version": "2026-A",
+          "policy_document": "Fictional Essential Health Plan, Policy Wording 2026-A",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "currency": "USD",
+          "policyholder": {
+            "policyholder_id": "PH-APP-001",
+            "type": "INDIVIDUAL",
+            "name": "Alex Example",
+            "member_id": "MEM-APP-001"
+          },
+          "checks": {
+            "policy_active": {
+              "result": "PASS",
+              "fact": "Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15.",
+              "clause_ids": [
+                "APP-2.1"
+              ],
+              "evidence": [
+                "policy_record:POL-APP-001"
+              ],
+              "rule_ids": []
+            },
+            "member_covered": {
+              "result": "PASS",
+              "fact": "Member MEM-APP-001 covered 2026-01-01 to 2026-12-31.",
+              "clause_ids": [
+                "APP-2.2"
+              ],
+              "evidence": [
+                "policy_record:POL-APP-001"
+              ],
+              "rule_ids": []
+            },
+            "benefit_covered": {
+              "result": "PASS",
+              "fact": "OUTPATIENT benefit included.",
+              "clause_ids": [
+                "APP-3.1"
+              ],
+              "evidence": [
+                "policy_record:POL-APP-001"
+              ],
+              "rule_ids": []
+            },
+            "waiting_period": {
+              "result": "PASS",
+              "fact": "30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15.",
+              "clause_ids": [
+                "APP-4.1"
+              ],
+              "evidence": [
+                "policy_record:POL-APP-001"
+              ],
+              "rule_ids": []
+            },
+            "submission_deadline": {
+              "result": "PASS",
+              "fact": "Submitted 2026-09-18, 3 days after last treatment 2026-09-15; OUTPATIENT deadline 60 days (2026-11-14).",
+              "clause_ids": [],
+              "evidence": [
+                "rule_set:CSR-2026",
+                "claim_submission:CLM-APP-001"
+              ],
+              "rule_ids": [
+                "CSR-2.1"
+              ]
+            },
+            "exclusions": {
+              "result": "PASS",
+              "fact": "Verified procedure classification MEDICAL matches no exclusion.",
+              "clause_ids": [
+                "APP-6.1"
+              ],
+              "evidence": [
+                "A-D4"
+              ],
+              "rule_ids": []
+            },
+            "limit": {
+              "result": "PASS",
+              "fact": "Remaining OUTPATIENT limit USD 800.00 of 1000.00 as of 2026-09-17.",
+              "clause_ids": [
+                "APP-5.1"
+              ],
+              "evidence": [
+                "ledger:LED-APP-001-OP-2026"
+              ],
+              "rule_ids": []
+            }
+          },
+          "clauses": {
+            "APP-2.1": {
+              "clause_id": "APP-2.1",
+              "title": "Period of cover",
+              "location": "Page 2, Section 2.1",
+              "exact_text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment."
+            },
+            "APP-2.2": {
+              "clause_id": "APP-2.2",
+              "title": "Insured members",
+              "location": "Page 2, Section 2.2",
+              "exact_text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force."
+            },
+            "APP-3.1": {
+              "clause_id": "APP-3.1",
+              "title": "Outpatient benefit",
+              "location": "Page 4, Section 3.1",
+              "exact_text": "We will pay for outpatient consultations and treatment prescribed by a registered medical practitioner, subject to the limits and cost-sharing shown in Section 5."
+            },
+            "APP-3.2": {
+              "clause_id": "APP-3.2",
+              "title": "Medical necessity",
+              "location": "Page 4, Section 3.2",
+              "exact_text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner."
+            },
+            "APP-4.1": {
+              "clause_id": "APP-4.1",
+              "title": "Waiting period",
+              "location": "Page 5, Section 4.1",
+              "exact_text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident."
+            },
+            "APP-5.1": {
+              "clause_id": "APP-5.1",
+              "title": "Annual outpatient limit",
+              "location": "Page 6, Section 5.1",
+              "exact_text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,000.00."
+            },
+            "APP-5.2": {
+              "clause_id": "APP-5.2",
+              "title": "Deductible",
+              "location": "Page 6, Section 5.2",
+              "exact_text": "No deductible applies to outpatient benefits under this plan."
+            },
+            "APP-5.3": {
+              "clause_id": "APP-5.3",
+              "title": "Outpatient copay",
+              "location": "Page 6, Section 5.3",
+              "exact_text": "The member pays a fixed copay of USD 20.00 for each outpatient visit. No coinsurance applies to outpatient benefits."
+            },
+            "APP-6.1": {
+              "clause_id": "APP-6.1",
+              "title": "Cosmetic treatment exclusion",
+              "location": "Page 8, Section 6.1",
+              "exact_text": "We will not pay for cosmetic or aesthetic treatment performed to change appearance where there is no documented medical indication."
+            }
+          },
+          "benefit": {
+            "covered": true,
+            "benefit_clause_id": "APP-3.1",
+            "annual_limit": "1000.00",
+            "limit_clause_id": "APP-5.1",
+            "deductible": "0.00",
+            "deductible_clause_id": "APP-5.2",
+            "copay_per_visit": "20.00",
+            "copay_clause_id": "APP-5.3",
+            "coinsurance_rate": "0.00",
+            "coinsurance_clause_id": "APP-5.3",
+            "waiting_period_days": 30,
+            "waiting_period_clause_id": "APP-4.1",
+            "medical_necessity_clause_id": "APP-3.2"
+          },
+          "remaining_limit": "800.00",
+          "ledger_ref": "LED-APP-001-OP-2026",
+          "document_requirement_clause_ids": {},
+          "rules": {
+            "CSR-2.1": {
+              "rule_id": "CSR-2.1",
+              "rule_set_id": "CSR-2026",
+              "version": "2026.1",
+              "effective_from": "2026-01-01",
+              "source_document": "Fictional Claim Submission Rules CSR-2026",
+              "location": "Section 2.1, Standard medical treatment",
+              "exact_text": "Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date."
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 7,
+        "event": "TOOL_CALL",
+        "name": "checkMedicalNecessity",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "checkMedicalNecessity/1.0",
+        "input": {
+          "diagnosis": "Acute bacterial sinusitis",
+          "procedures": [
+            "Outpatient consultation",
+            "Prescribed treatment"
+          ]
+        },
+        "output": {
+          "result": "SUPPORTED",
+          "diagnosis": "Acute bacterial sinusitis",
+          "procedures": [
+            "Outpatient consultation",
+            "Prescribed treatment"
+          ],
+          "rule_id": "CR-001",
+          "rationale": "Outpatient consultation and prescribed treatment are an appropriate response to documented acute bacterial sinusitis.",
+          "rule_set_version": "1.0",
+          "source": "Fictional Clinical Necessity Rulebook CNR-2026 v1.0",
+          "source_location": "CNR-2026 Section 2.3",
+          "evidence": [
+            {
+              "value": "Acute bacterial sinusitis",
+              "document_id": "A-D4",
+              "location": "p.1, Assessment"
+            },
+            {
+              "value": [
+                "Outpatient consultation",
+                "Prescribed treatment"
+              ],
+              "document_id": "A-D4",
+              "location": "p.1, Plan"
+            },
+            {
+              "value": true,
+              "document_id": "A-D4",
+              "location": "p.1, Assessment"
+            }
+          ],
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 8,
+        "event": "TOOL_CALL",
+        "name": "calculateBenefit",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "calculateBenefit/1.0",
+        "input": {
+          "policyId": "POL-APP-001",
+          "claimType": "OUTPATIENT",
+          "amount": "200.00"
+        },
+        "output": {
+          "status": "COMPLETE",
+          "policy_id": "POL-APP-001",
+          "claim_type": "OUTPATIENT",
+          "currency": "USD",
+          "submitted": "200.00",
+          "excluded": "0.00",
+          "eligible": "200.00",
+          "deductible": "0.00",
+          "copay": "20.00",
+          "coinsurance": "0.00",
+          "limit_adjustment": "0.00",
+          "insurer_payable": "180.00",
+          "member_responsibility": "20.00",
+          "remaining_limit_before": "800.00",
+          "remaining_limit_after": "620.00",
+          "steps": [
+            {
+              "step": "EXCLUSIONS",
+              "amount": "0.00",
+              "detail": "Verified procedure classification MEDICAL matches no exclusion."
+            },
+            {
+              "step": "DEDUCTIBLE",
+              "amount": "0.00",
+              "detail": "Deductible 0.00."
+            },
+            {
+              "step": "COPAY",
+              "amount": "20.00",
+              "detail": "Copay 20.00 x 1 visit(s), capped at the amount left."
+            },
+            {
+              "step": "COINSURANCE",
+              "amount": "0.00",
+              "detail": "Coinsurance rate 0.00."
+            },
+            {
+              "step": "ANNUAL_LIMIT",
+              "amount": "0.00",
+              "detail": "Payable capped at remaining limit 800.00."
+            }
+          ],
+          "clause_ids": [
+            "APP-5.2",
+            "APP-5.3",
+            "APP-5.1"
+          ],
+          "evidence": [
+            "A-D2",
+            "ledger:LED-APP-001-OP-2026",
+            "A-D4"
+          ],
+          "pending_reasons": []
+        },
+        "reason": null
+      },
+      {
+        "sequence": 9,
+        "event": "STEP",
+        "name": "decide",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:39+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "decide/1.0",
+        "input": null,
+        "output": {
+          "outcome": "APPROVE",
+          "assessment_status": "READY_FOR_AUTHORIZATION",
+          "recommended_payable": "180.00",
+          "reasons": 5,
+          "information_requests": [],
+          "escalations": 0
+        },
+        "reason": null
+      },
+      {
+        "sequence": 10,
+        "event": "LLM_REQUEST",
+        "name": "openrouter.chat",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:57+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "openrouter:recursive/flint-v1.0:free",
+        "input": {
+          "url": "https://openrouter.ai/api/v1/chat/completions",
+          "model": "recursive/flint-v1.0:free",
+          "attempt": 1,
+          "request_preview": [
+            {
+              "role": "system",
+              "chars": 603,
+              "text": "You draft explanations for a human insurance claim assessor. Rules: - U\u2026"
+            },
+            {
+              "role": "user",
+              "chars": 15881,
+              "text": "{\"claim_id\":\"CLM-APP-001\",\"currency\":\"USD\",\"document_review\":{\"checklis\u2026"
+            }
+          ]
+        },
+        "output": {
+          "response_id": "gen-1793187041-dQdYkp5hlAtu7PzSFvQB",
+          "served_model": "recursive/flint-v1.0:free",
+          "tokens_in": 4288,
+          "tokens_out": 1936,
+          "validation_problems": [],
+          "response_preview": {
+            "chars": 1169,
+            "text": "{\"document_review\":\"Checklist CHK-OUTPATIENT version 1.2 found required\u2026"
+          }
+        },
+        "reason": null
+      },
+      {
+        "sequence": 11,
+        "event": "LLM_CALL",
+        "name": "draftExplanations",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:57+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "openrouter:recursive/flint-v1.0:free",
+        "input": {
+          "sections": [
+            "document_review",
+            "policy_verification",
+            "medical_necessity",
+            "benefit_calculation",
+            "recommendation"
+          ],
+          "config": {
+            "provider": "openrouter",
+            "url": "https://openrouter.ai/api/v1/chat/completions",
+            "model": "recursive/flint-v1.0:free",
+            "temperature": 0.0,
+            "max_tokens": 4000,
+            "reasoning_effort": "low",
+            "max_attempts": 2
+          },
+          "url": "https://openrouter.ai/api/v1/chat/completions",
+          "request_body": {
+            "model": "recursive/flint-v1.0:free",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You draft explanations for a human insurance claim assessor.\nRules:\n- Use only the facts in the supplied JSON. Do not add clinical, policy or financial information.\n- Do not make, change or question the recommendation. The application decided it; you explain it.\n- Mention only clause IDs, document IDs and amounts that appear in the facts. Write amounts with two decimals exactly as given.\n- Reply with one JSON object and nothing else. Its keys must be exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation."
+              },
+              {
+                "role": "user",
+                "content": "{\"claim_id\":\"CLM-APP-001\",\"currency\":\"USD\",\"document_review\":{\"checklist\":{\"id\":\"CHK-OUTPATIENT\",\"version\":\"1.2\",\"source\":{\"document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"location\":\"Section 4.1, Outpatient claim documents\"}},\"rows\":[{\"document_type\":\"CLAIM_FORM\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-1\",\"document_id\":\"A-D1\",\"submitted_type\":\"CLAIM_FORM\",\"detected_type\":\"CLAIM_FORM\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"A-D1\"],\"citation_ids\":[\"PC-01\"]},{\"document_type\":\"ITEMIZED_INVOICE\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-2\",\"document_id\":\"A-D2\",\"submitted_type\":\"ITEMIZED_INVOICE\",\"detected_type\":\"ITEMIZED_INVOICE\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"A-D2\"],\"citation_ids\":[\"PC-02\"]},{\"document_type\":\"PAYMENT_RECEIPT\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-3\",\"document_id\":\"A-D3\",\"submitted_type\":\"PAYMENT_RECEIPT\",\"detected_type\":\"PAYMENT_RECEIPT\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"A-D3\"],\"citation_ids\":[\"PC-03\"]},{\"document_type\":\"MEDICAL_REPORT\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-4\",\"document_id\":\"A-D4\",\"submitted_type\":\"MEDICAL_REPORT\",\"detected_type\":\"MEDICAL_REPORT\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"A-D4\"],\"citation_ids\":[\"PC-04\"]},{\"document_type\":\"REFERRAL_LETTER\",\"required\":\"CONDITIONAL\",\"status\":\"NOT_APPLICABLE\",\"requirement_id\":\"OP-REQ-5\",\"document_id\":null,\"submitted_type\":null,\"detected_type\":null,\"verification\":null,\"issues\":[\"Condition fact 'specialist_referral_required' not documented; requirement not triggered.\"],\"evidence\":[],\"citation_ids\":[\"PC-05\"]}],\"conclusion\":\"COMPLETE\",\"outstanding_requests\":[],\"consistency_issues\":[]},\"policy_verification\":{\"status\":\"FOUND\",\"policy_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"checks\":[{\"check\":\"policy_active\",\"label\":\"Policy active on treatment date\",\"result\":\"PASS\",\"verified_fact\":\"Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15.\",\"clause_ids\":[\"APP-2.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-06\"],\"evidence\":[\"policy_record:POL-APP-001\"]},{\"check\":\"member_covered\",\"label\":\"Member covered\",\"result\":\"PASS\",\"verified_fact\":\"Member MEM-APP-001 covered 2026-01-01 to 2026-12-31.\",\"clause_ids\":[\"APP-2.2\"],\"rule_ids\":[],\"citation_ids\":[\"PC-07\"],\"evidence\":[\"policy_record:POL-APP-001\"]},{\"check\":\"benefit_covered\",\"label\":\"Claim type / benefit covered\",\"result\":\"PASS\",\"verified_fact\":\"OUTPATIENT benefit included.\",\"clause_ids\":[\"APP-3.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-08\"],\"evidence\":[\"policy_record:POL-APP-001\"]},{\"check\":\"waiting_period\",\"label\":\"Waiting period\",\"result\":\"PASS\",\"verified_fact\":\"30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15.\",\"clause_ids\":[\"APP-4.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-09\"],\"evidence\":[\"policy_record:POL-APP-001\"]},{\"check\":\"submission_deadline\",\"label\":\"Claim submitted within deadline\",\"result\":\"PASS\",\"verified_fact\":\"Submitted 2026-09-18, 3 days after last treatment 2026-09-15; OUTPATIENT deadline 60 days (2026-11-14).\",\"clause_ids\":[],\"rule_ids\":[\"CSR-2.1\"],\"citation_ids\":[\"PC-10\"],\"evidence\":[\"rule_set:CSR-2026\",\"claim_submission:CLM-APP-001\"]},{\"check\":\"exclusions\",\"label\":\"Exclusions\",\"result\":\"PASS\",\"verified_fact\":\"Verified procedure classification MEDICAL matches no exclusion.\",\"clause_ids\":[\"APP-6.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-11\"],\"evidence\":[\"A-D4\"]},{\"check\":\"limit\",\"label\":\"Remaining benefit limit\",\"result\":\"PASS\",\"verified_fact\":\"Remaining OUTPATIENT limit USD 800.00 of 1000.00 as of 2026-09-17.\",\"clause_ids\":[\"APP-5.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-12\"],\"evidence\":[\"ledger:LED-APP-001-OP-2026\"]}],\"remaining_limit\":\"800.00\",\"conclusion\":\"ELIGIBLE\",\"reason\":null},\"medical_necessity\":{\"diagnosis\":\"Acute bacterial sinusitis\",\"procedures\":[\"Outpatient consultation\",\"Prescribed treatment\"],\"result\":\"SUPPORTED\",\"rule_id\":\"CR-001\",\"rationale\":\"Outpatient consultation and prescribed treatment are an appropriate response to documented acute bacterial sinusitis.\",\"clinical_source\":\"Fictional Clinical Necessity Rulebook CNR-2026 v1.0 CNR-2026 Section 2.3\",\"rule_set_version\":\"1.0\",\"policy_clause_ids\":[\"APP-3.2\"],\"citation_ids\":[\"PC-13\"],\"evidence\":[{\"value\":\"Acute bacterial sinusitis\",\"document_id\":\"A-D4\",\"location\":\"p.1, Assessment\"},{\"value\":[\"Outpatient consultation\",\"Prescribed treatment\"],\"document_id\":\"A-D4\",\"location\":\"p.1, Plan\"},{\"value\":true,\"document_id\":\"A-D4\",\"location\":\"p.1, Assessment\"}],\"outstanding_concerns\":[]},\"benefit_calculation\":{\"status\":\"COMPLETE\",\"currency\":\"USD\",\"submitted\":\"200.00\",\"excluded\":\"0.00\",\"eligible\":\"200.00\",\"deductible\":\"0.00\",\"copay\":\"20.00\",\"coinsurance\":\"0.00\",\"limit_adjustment\":\"0.00\",\"insurer_payable\":\"180.00\",\"member_responsibility\":\"20.00\",\"remaining_limit_before\":\"800.00\",\"remaining_limit_after\":\"620.00\",\"steps\":[{\"step\":\"EXCLUSIONS\",\"amount\":\"0.00\",\"detail\":\"Verified procedure classification MEDICAL matches no exclusion.\"},{\"step\":\"DEDUCTIBLE\",\"amount\":\"0.00\",\"detail\":\"Deductible 0.00.\"},{\"step\":\"COPAY\",\"amount\":\"20.00\",\"detail\":\"Copay 20.00 x 1 visit(s), capped at the amount left.\"},{\"step\":\"COINSURANCE\",\"amount\":\"0.00\",\"detail\":\"Coinsurance rate 0.00.\"},{\"step\":\"ANNUAL_LIMIT\",\"amount\":\"0.00\",\"detail\":\"Payable capped at remaining limit 800.00.\"}],\"clause_ids\":[\"APP-5.2\",\"APP-5.3\",\"APP-5.1\"],\"citation_ids\":[\"PC-14\",\"PC-15\",\"PC-12\"],\"evidence\":[\"A-D2\",\"ledger:LED-APP-001-OP-2026\",\"A-D4\"],\"pending_reasons\":[]},\"recommendation\":{\"outcome\":\"APPROVE\",\"recommended_payable\":\"180.00\",\"reasons\":[{\"finding\":\"Coverage established: Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15. Member MEM-APP-001 covered 2026-01-01 to 2026-12-31.\",\"evidence\":[\"policy_record:POL-APP-001\"],\"citation_ids\":[\"PC-06\",\"PC-07\"]},{\"finding\":\"Submitted on time: Submitted 2026-09-18, 3 days after last treatment 2026-09-15; OUTPATIENT deadline 60 days (2026-11-14).\",\"evidence\":[\"rule_set:CSR-2026\",\"claim_submission:CLM-APP-001\"],\"citation_ids\":[\"PC-10\"]},{\"finding\":\"Benefit applies: OUTPATIENT benefit included. 30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15. Verified procedure classification MEDICAL matches no exclusion.\",\"evidence\":[\"A-D4\",\"policy_record:POL-APP-001\"],\"citation_ids\":[\"PC-08\",\"PC-09\",\"PC-11\"]},{\"finding\":\"Medical necessity SUPPORTED (CR-001): Outpatient consultation and prescribed treatment are an appropriate response to documented acute bacterial sinusitis.\",\"evidence\":[\"A-D4\",\"clinical_rule:CR-001\"],\"citation_ids\":[\"PC-13\"]},{\"finding\":\"Calculation: USD 200.00 submitted, 0.00 excluded, 180.00 insurer payable, 20.00 member responsibility; remaining limit 800.00 -> 620.00.\",\"evidence\":[\"A-D2\",\"ledger:LED-APP-001-OP-2026\",\"A-D4\"],\"citation_ids\":[\"PC-14\",\"PC-15\",\"PC-12\"]}],\"information_requests\":[],\"escalations\":[],\"next_action\":\"Send to an authorized approver to authorize payment of USD 180.00.\",\"authorization_owner\":\"Claims approver\"},\"policy_citations\":{\"citations\":[{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-1\",\"title\":\"CHK-OUTPATIENT CLAIM_FORM\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"CLAIM_FORM is REQUIRED: Identifies the member, policy, treatment date and amount claimed.\",\"citation_id\":\"PC-01\",\"supported_findings\":[\"Document requirement CLAIM_FORM\"],\"evidence_ids\":[\"A-D1\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-2\",\"title\":\"CHK-OUTPATIENT ITEMIZED_INVOICE\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"ITEMIZED_INVOICE is REQUIRED: Itemizes the charges so covered and excluded amounts can be identified.\",\"citation_id\":\"PC-02\",\"supported_findings\":[\"Document requirement ITEMIZED_INVOICE\"],\"evidence_ids\":[\"A-D2\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-3\",\"title\":\"CHK-OUTPATIENT PAYMENT_RECEIPT\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"PAYMENT_RECEIPT is REQUIRED: Confirms the member paid the amount being reimbursed.\",\"citation_id\":\"PC-03\",\"supported_findings\":[\"Document requirement PAYMENT_RECEIPT\"],\"evidence_ids\":[\"A-D3\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-4\",\"title\":\"CHK-OUTPATIENT MEDICAL_REPORT\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"MEDICAL_REPORT is REQUIRED: Documents the diagnosis and treatment needed to assess coverage and medical necessity.\",\"citation_id\":\"PC-04\",\"supported_findings\":[\"Document requirement MEDICAL_REPORT\"],\"evidence_ids\":[\"A-D4\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-5\",\"title\":\"CHK-OUTPATIENT REFERRAL_LETTER\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"REFERRAL_LETTER is CONDITIONAL: Confirms a referral where the policy requires one for specialist consultation.\",\"citation_id\":\"PC-05\",\"supported_findings\":[\"Document requirement REFERRAL_LETTER\"],\"evidence_ids\":[]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-2.1\",\"title\":\"Period of cover\",\"location\":\"Page 2, Section 2.1\",\"text\":\"Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment.\",\"citation_id\":\"PC-06\",\"supported_findings\":[\"Policy active on treatment date\",\"Coverage established: Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15. Member MEM-APP-001 covered 2026-01-01 to 2026-12-31.\"],\"evidence_ids\":[\"policy_record:POL-APP-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-2.2\",\"title\":\"Insured members\",\"location\":\"Page 2, Section 2.2\",\"text\":\"Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force.\",\"citation_id\":\"PC-07\",\"supported_findings\":[\"Member covered\",\"Coverage established: Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-09-15 to 2026-09-15. Member MEM-APP-001 covered 2026-01-01 to 2026-12-31.\"],\"evidence_ids\":[\"policy_record:POL-APP-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-3.1\",\"title\":\"Outpatient benefit\",\"location\":\"Page 4, Section 3.1\",\"text\":\"We will pay for outpatient consultations and treatment prescribed by a registered medical practitioner, subject to the limits and cost-sharing shown in Section 5.\",\"citation_id\":\"PC-08\",\"supported_findings\":[\"Claim type / benefit covered\",\"Benefit applies: OUTPATIENT benefit included. 30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15. Verified procedure classification MEDICAL matches no exclusion.\"],\"evidence_ids\":[\"policy_record:POL-APP-001\",\"A-D4\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-4.1\",\"title\":\"Waiting period\",\"location\":\"Page 5, Section 4.1\",\"text\":\"Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident.\",\"citation_id\":\"PC-09\",\"supported_findings\":[\"Waiting period\",\"Benefit applies: OUTPATIENT benefit included. 30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15. Verified procedure classification MEDICAL matches no exclusion.\"],\"evidence_ids\":[\"policy_record:POL-APP-001\",\"A-D4\"]},{\"kind\":\"RULE\",\"source_document\":\"Fictional Claim Submission Rules CSR-2026\",\"version\":\"2026.1\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"CSR-2.1\",\"title\":\"CSR-2026\",\"location\":\"Section 2.1, Standard medical treatment\",\"text\":\"Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date.\",\"citation_id\":\"PC-10\",\"supported_findings\":[\"Claim submitted within deadline\",\"Submitted on time: Submitted 2026-09-18, 3 days after last treatment 2026-09-15; OUTPATIENT deadline 60 days (2026-11-14).\"],\"evidence_ids\":[\"rule_set:CSR-2026\",\"claim_submission:CLM-APP-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-6.1\",\"title\":\"Cosmetic treatment exclusion\",\"location\":\"Page 8, Section 6.1\",\"text\":\"We will not pay for cosmetic or aesthetic treatment performed to change appearance where there is no documented medical indication.\",\"citation_id\":\"PC-11\",\"supported_findings\":[\"Exclusions\",\"Benefit applies: OUTPATIENT benefit included. 30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-09-15. Verified procedure classification MEDICAL matches no exclusion.\"],\"evidence_ids\":[\"A-D4\",\"policy_record:POL-APP-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-5.1\",\"title\":\"Annual outpatient limit\",\"location\":\"Page 6, Section 5.1\",\"text\":\"The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,000.00.\",\"citation_id\":\"PC-12\",\"supported_findings\":[\"Remaining benefit limit\",\"Calculation: USD 200.00 submitted, 0.00 excluded, 180.00 insurer payable, 20.00 member responsibility; remaining limit 800.00 -> 620.00.\",\"Benefit calculation\"],\"evidence_ids\":[\"ledger:LED-APP-001-OP-2026\",\"A-D2\",\"A-D4\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-3.2\",\"title\":\"Medical necessity\",\"location\":\"Page 4, Section 3.2\",\"text\":\"Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner.\",\"citation_id\":\"PC-13\",\"supported_findings\":[\"Medical necessity SUPPORTED (CR-001): Outpatient consultation and prescribed treatment are an appropriate response to documented acute bacterial sinusitis.\",\"Medical necessity\"],\"evidence_ids\":[\"A-D4\",\"clinical_rule:CR-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-5.2\",\"title\":\"Deductible\",\"location\":\"Page 6, Section 5.2\",\"text\":\"No deductible applies to outpatient benefits under this plan.\",\"citation_id\":\"PC-14\",\"supported_findings\":[\"Calculation: USD 200.00 submitted, 0.00 excluded, 180.00 insurer payable, 20.00 member responsibility; remaining limit 800.00 -> 620.00.\",\"Benefit calculation\"],\"evidence_ids\":[\"A-D2\",\"ledger:LED-APP-001-OP-2026\",\"A-D4\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Essential Health Plan, Policy Wording 2026-A\",\"version\":\"2026-A\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"APP-5.3\",\"title\":\"Outpatient copay\",\"location\":\"Page 6, Section 5.3\",\"text\":\"The member pays a fixed copay of USD 20.00 for each outpatient visit. No coinsurance applies to outpatient benefits.\",\"citation_id\":\"PC-15\",\"supported_findings\":[\"Calculation: USD 200.00 submitted, 0.00 excluded, 180.00 insurer payable, 20.00 member responsibility; remaining limit 800.00 -> 620.00.\",\"Benefit calculation\"],\"evidence_ids\":[\"A-D2\",\"ledger:LED-APP-001-OP-2026\",\"A-D4\"]}]}}"
+              }
+            ],
+            "temperature": 0.0,
+            "max_tokens": 4000,
+            "reasoning": {
+              "effort": "low"
+            }
+          }
+        },
+        "output": {
+          "status": "DRAFTED",
+          "attempts": 1,
+          "served_model": "recursive/flint-v1.0:free",
+          "response_id": "gen-1793187041-dQdYkp5hlAtu7PzSFvQB",
+          "exchanges": [
+            {
+              "attempt": 1,
+              "response_id": "gen-1793187041-dQdYkp5hlAtu7PzSFvQB",
+              "served_model": "recursive/flint-v1.0:free",
+              "usage": {
+                "prompt_tokens": 4288,
+                "completion_tokens": 1936,
+                "total_tokens": 6224,
+                "cost": 0,
+                "is_byok": false,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "audio_tokens": 0,
+                  "video_tokens": 0
+                },
+                "cost_details": {
+                  "upstream_inference_cost": 0,
+                  "upstream_inference_prompt_cost": 0,
+                  "upstream_inference_completions_cost": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 1810,
+                  "image_tokens": 0,
+                  "audio_tokens": 0
+                }
+              },
+              "raw_content": "{\"document_review\":\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\",\"policy_verification\":\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\",\"medical_necessity\":\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2; evidence A-D4.\",\"benefit_calculation\":\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\",\"recommendation\":\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\"}",
+              "response_body": {
+                "id": "gen-1793187041-dQdYkp5hlAtu7PzSFvQB",
+                "object": "chat.completion",
+                "created": 1793187041,
+                "model": "recursive/flint-v1.0:free",
+                "provider": "Recursive",
+                "system_fingerprint": null,
+                "service_tier": null,
+                "choices": [
+                  {
+                    "index": 0,
+                    "logprobs": null,
+                    "finish_reason": "stop",
+                    "native_finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "content": "{\"document_review\":\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\",\"policy_verification\":\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\",\"medical_necessity\":\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2; evidence A-D4.\",\"benefit_calculation\":\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\",\"recommendation\":\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\"}",
+                      "refusal": null,
+                      "reasoning": "We need answer user. Need craft final? We need respond with one JSON object and nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\n\nWe need use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\n\nWe need likely output JSON object with those keys. Values short plain-text explanations.\n\nNeed be careful: final answer should be one JSON object and nothing else. Keys exactly those. Each value short plain-text explanation.\n\nWe can compose:\n\n{\n  \"document_review\": \"Checklist CHK-OUTPATIENT version 1.2 found all required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable because condition fact 'specialist_referral_required' not documented; no outstanding requests or consistency issues.\",\n  \"policy_verification\": \"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\",\n  \"medical_necessity\": \"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2.\",\n  \"benefit_calculation\": \"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\",\n  \"recommendation\": \"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to authorized approver to authorize payment of USD 180.00.\"\n}\n\nCheck rules: Mention only clause IDs, document IDs and amounts that appear in facts. I mentioned CHK-OUTPATIENT version 1.2 okay? It's checklist id. Document IDs? I didn't mention A-D1 etc. Maybe okay? \"Mention only clause IDs, document IDs and amounts that appear in facts.\" Means if mention IDs, only those. We can include relevant. But final should be short plain-text explanations.\n\nNeed maybe not add \"version 1.2\"? It appears. Fine.\n\nShould we include exact amounts with two decimals. Yes.\n\nNeed one JSON object and nothing else. No markdown. Ensure valid JSON. Keys exactly. Values short plain-text. Could include quotes escaped? Plain text. JSON object.\n\nPotential final:\n{\"document_review\":\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\",\"policy_verification\":\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\",\"medical_necessity\":\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2.\",\"benefit_calculation\":\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\",\"recommendation\":\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\"}\n\nCheck keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Yes.\n\nBut user asked \"Reply with one JSON object and nothing else. Its keys must be exactly: ...\" So final should be just JSON. No code fence.\n\nNeed maybe not include extra keys. Good.\n\nShould we include clause IDs? We included CHK-OUTPATIENT, CR-001, APP-3.2. CHK-OUTPATIENT is checklist id, okay? Clause IDs? Maybe CHK-OUTPATIENT not clause. But appears. Fine.\n\nMaybe policy_verification should mention status FOUND, conclusion ELIGIBLE? Short. Good.\n\nMedical necessity: result SUPPORTED, rule CR-001, policy clause APP-3.2.\n\nBenefit calculation: all amounts two decimals. \"USD 1000.00\"? In facts remaining limit \"USD 800.00 of 1000.00\" but amount maybe 1000.00? It says 1000.00? Actually JSON: \"Remaining OUTPATIENT limit USD 800.00 of 1000.00 as of 2026-09-17.\" It has 1000.00? Yes \"1000.00\". But I wrote 1000.00? In draft I wrote 1000.00? I wrote \"1000.00\" maybe yes? Let's ensure: I wrote \"USD 800.00 of 1000.00.\" Good.\n\nBenefit calc: remaining_limit_before \"800.00\", after \"620.00\". Good.\n\nRecommendation: recommended_payable \"180.00\". Good.\n\nShould we mention document IDs? Not necessary? The instruction: Mention only clause IDs, document IDs and amounts that appear in facts. It doesn't say must mention all. But maybe to satisfy, include document IDs like A-D4? But final values short. Could include A-D4 in medical necessity. But not required? To be safe, mention only IDs that appear. We can include A-D4. But if we mention document IDs, ensure they appear. Yes A-D4 appears.\n\nMaybe final:\n{\"document_review\":\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\",\"policy_verification\":\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\",\"medical_necessity\":\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2; evidence A-D4.\",\"benefit_calculation\":\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\",\"recommendation\":\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\"}\n\nCheck \"policy_verification\" value: \"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE\" maybe status FOUND, conclusion ELIGIBLE. Good.\n\nShould we include \"benefit_calculation\" status COMPLETE. Good.\n\nShould we include \"medical_necessity\" result SUPPORTED. Good.\n\nShould we include \"document_review\" conclusion COMPLETE. Good.\n\nShould we include \"recommendation\" outcome APPROVE. Good.\n\nNo extra text. Valid JSON. Ensure no unescaped apostrophes? JSON strings can contain apostrophes unescaped. Fine.\n\nFinal answer only JSON.",
+                      "reasoning_details": [
+                        {
+                          "type": "reasoning.text",
+                          "text": "We need answer user. Need craft final? We need respond with one JSON object and nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\n\nWe need use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\n\nWe need likely output JSON object with those keys. Values short plain-text explanations.\n\nNeed be careful: final answer should be one JSON object and nothing else. Keys exactly those. Each value short plain-text explanation.\n\nWe can compose:\n\n{\n  \"document_review\": \"Checklist CHK-OUTPATIENT version 1.2 found all required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable because condition fact 'specialist_referral_required' not documented; no outstanding requests or consistency issues.\",\n  \"policy_verification\": \"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\",\n  \"medical_necessity\": \"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2.\",\n  \"benefit_calculation\": \"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\",\n  \"recommendation\": \"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to authorized approver to authorize payment of USD 180.00.\"\n}\n\nCheck rules: Mention only clause IDs, document IDs and amounts that appear in facts. I mentioned CHK-OUTPATIENT version 1.2 okay? It's checklist id. Document IDs? I didn't mention A-D1 etc. Maybe okay? \"Mention only clause IDs, document IDs and amounts that appear in facts.\" Means if mention IDs, only those. We can include relevant. But final should be short plain-text explanations.\n\nNeed maybe not add \"version 1.2\"? It appears. Fine.\n\nShould we include exact amounts with two decimals. Yes.\n\nNeed one JSON object and nothing else. No markdown. Ensure valid JSON. Keys exactly. Values short plain-text. Could include quotes escaped? Plain text. JSON object.\n\nPotential final:\n{\"document_review\":\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\",\"policy_verification\":\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\",\"medical_necessity\":\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2.\",\"benefit_calculation\":\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\",\"recommendation\":\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\"}\n\nCheck keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Yes.\n\nBut user asked \"Reply with one JSON object and nothing else. Its keys must be exactly: ...\" So final should be just JSON. No code fence.\n\nNeed maybe not include extra keys. Good.\n\nShould we include clause IDs? We included CHK-OUTPATIENT, CR-001, APP-3.2. CHK-OUTPATIENT is checklist id, okay? Clause IDs? Maybe CHK-OUTPATIENT not clause. But appears. Fine.\n\nMaybe policy_verification should mention status FOUND, conclusion ELIGIBLE? Short. Good.\n\nMedical necessity: result SUPPORTED, rule CR-001, policy clause APP-3.2.\n\nBenefit calculation: all amounts two decimals. \"USD 1000.00\"? In facts remaining limit \"USD 800.00 of 1000.00\" but amount maybe 1000.00? It says 1000.00? Actually JSON: \"Remaining OUTPATIENT limit USD 800.00 of 1000.00 as of 2026-09-17.\" It has 1000.00? Yes \"1000.00\". But I wrote 1000.00? In draft I wrote 1000.00? I wrote \"1000.00\" maybe yes? Let's ensure: I wrote \"USD 800.00 of 1000.00.\" Good.\n\nBenefit calc: remaining_limit_before \"800.00\", after \"620.00\". Good.\n\nRecommendation: recommended_payable \"180.00\". Good.\n\nShould we mention document IDs? Not necessary? The instruction: Mention only clause IDs, document IDs and amounts that appear in facts. It doesn't say must mention all. But maybe to satisfy, include document IDs like A-D4? But final values short. Could include A-D4 in medical necessity. But not required? To be safe, mention only IDs that appear. We can include A-D4. But if we mention document IDs, ensure they appear. Yes A-D4 appears.\n\nMaybe final:\n{\"document_review\":\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\",\"policy_verification\":\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\",\"medical_necessity\":\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2; evidence A-D4.\",\"benefit_calculation\":\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\",\"recommendation\":\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\"}\n\nCheck \"policy_verification\" value: \"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE\" maybe status FOUND, conclusion ELIGIBLE. Good.\n\nShould we include \"benefit_calculation\" status COMPLETE. Good.\n\nShould we include \"medical_necessity\" result SUPPORTED. Good.\n\nShould we include \"document_review\" conclusion COMPLETE. Good.\n\nShould we include \"recommendation\" outcome APPROVE. Good.\n\nNo extra text. Valid JSON. Ensure no unescaped apostrophes? JSON strings can contain apostrophes unescaped. Fine.\n\nFinal answer only JSON.",
+                          "format": "unknown",
+                          "index": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "usage": {
+                  "prompt_tokens": 4288,
+                  "completion_tokens": 1936,
+                  "total_tokens": 6224,
+                  "cost": 0,
+                  "is_byok": false,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0,
+                    "audio_tokens": 0,
+                    "video_tokens": 0
+                  },
+                  "cost_details": {
+                    "upstream_inference_cost": 0,
+                    "upstream_inference_prompt_cost": 0,
+                    "upstream_inference_completions_cost": 0
+                  },
+                  "completion_tokens_details": {
+                    "reasoning_tokens": 1810,
+                    "image_tokens": 0,
+                    "audio_tokens": 0
+                  }
+                }
+              },
+              "response_raw": "\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1793187041-dQdYkp5hlAtu7PzSFvQB\",\"object\":\"chat.completion\",\"created\":1793187041,\"model\":\"recursive/flint-v1.0:free\",\"provider\":\"Recursive\",\"system_fingerprint\":null,\"service_tier\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"document_review\\\":\\\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\\\",\\\"policy_verification\\\":\\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\\\",\\\"medical_necessity\\\":\\\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2; evidence A-D4.\\\",\\\"benefit_calculation\\\":\\\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\\\",\\\"recommendation\\\":\\\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\\\"}\",\"refusal\":null,\"reasoning\":\"We need answer user. Need craft final? We need respond with one JSON object and nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\\n\\nWe need use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\\n\\nWe need likely output JSON object with those keys. Values short plain-text explanations.\\n\\nNeed be careful: final answer should be one JSON object and nothing else. Keys exactly those. Each value short plain-text explanation.\\n\\nWe can compose:\\n\\n{\\n  \\\"document_review\\\": \\\"Checklist CHK-OUTPATIENT version 1.2 found all required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable because condition fact 'specialist_referral_required' not documented; no outstanding requests or consistency issues.\\\",\\n  \\\"policy_verification\\\": \\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2.\\\",\\n  \\\"benefit_calculation\\\": \\\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to authorized approver to authorize payment of USD 180.00.\\\"\\n}\\n\\nCheck rules: Mention only clause IDs, document IDs and amounts that appear in facts. I mentioned CHK-OUTPATIENT version 1.2 okay? It's checklist id. Document IDs? I didn't mention A-D1 etc. Maybe okay? \\\"Mention only clause IDs, document IDs and amounts that appear in facts.\\\" Means if mention IDs, only those. We can include relevant. But final should be short plain-text explanations.\\n\\nNeed maybe not add \\\"version 1.2\\\"? It appears. Fine.\\n\\nShould we include exact amounts with two decimals. Yes.\\n\\nNeed one JSON object and nothing else. No markdown. Ensure valid JSON. Keys exactly. Values short plain-text. Could include quotes escaped? Plain text. JSON object.\\n\\nPotential final:\\n{\\\"document_review\\\":\\\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\\\",\\\"policy_verification\\\":\\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\\\",\\\"medical_necessity\\\":\\\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2.\\\",\\\"benefit_calculation\\\":\\\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\\\",\\\"recommendation\\\":\\\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\\\"}\\n\\nCheck keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Yes.\\n\\nBut user asked \\\"Reply with one JSON object and nothing else. Its keys must be exactly: ...\\\" So final should be just JSON. No code fence.\\n\\nNeed maybe not include extra keys. Good.\\n\\nShould we include clause IDs? We included CHK-OUTPATIENT, CR-001, APP-3.2. CHK-OUTPATIENT is checklist id, okay? Clause IDs? Maybe CHK-OUTPATIENT not clause. But appears. Fine.\\n\\nMaybe policy_verification should mention status FOUND, conclusion ELIGIBLE? Short. Good.\\n\\nMedical necessity: result SUPPORTED, rule CR-001, policy clause APP-3.2.\\n\\nBenefit calculation: all amounts two decimals. \\\"USD 1000.00\\\"? In facts remaining limit \\\"USD 800.00 of 1000.00\\\" but amount maybe 1000.00? It says 1000.00? Actually JSON: \\\"Remaining OUTPATIENT limit USD 800.00 of 1000.00 as of 2026-09-17.\\\" It has 1000.00? Yes \\\"1000.00\\\". But I wrote 1000.00? In draft I wrote 1000.00? I wrote \\\"1000.00\\\" maybe yes? Let's ensure: I wrote \\\"USD 800.00 of 1000.00.\\\" Good.\\n\\nBenefit calc: remaining_limit_before \\\"800.00\\\", after \\\"620.00\\\". Good.\\n\\nRecommendation: recommended_payable \\\"180.00\\\". Good.\\n\\nShould we mention document IDs? Not necessary? The instruction: Mention only clause IDs, document IDs and amounts that appear in facts. It doesn't say must mention all. But maybe to satisfy, include document IDs like A-D4? But final values short. Could include A-D4 in medical necessity. But not required? To be safe, mention only IDs that appear. We can include A-D4. But if we mention document IDs, ensure they appear. Yes A-D4 appears.\\n\\nMaybe final:\\n{\\\"document_review\\\":\\\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\\\",\\\"policy_verification\\\":\\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\\\",\\\"medical_necessity\\\":\\\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2; evidence A-D4.\\\",\\\"benefit_calculation\\\":\\\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\\\",\\\"recommendation\\\":\\\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\\\"}\\n\\nCheck \\\"policy_verification\\\" value: \\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE\\\" maybe status FOUND, conclusion ELIGIBLE. Good.\\n\\nShould we include \\\"benefit_calculation\\\" status COMPLETE. Good.\\n\\nShould we include \\\"medical_necessity\\\" result SUPPORTED. Good.\\n\\nShould we include \\\"document_review\\\" conclusion COMPLETE. Good.\\n\\nShould we include \\\"recommendation\\\" outcome APPROVE. Good.\\n\\nNo extra text. Valid JSON. Ensure no unescaped apostrophes? JSON strings can contain apostrophes unescaped. Fine.\\n\\nFinal answer only JSON.\",\"reasoning_details\":[{\"type\":\"reasoning.text\",\"text\":\"We need answer user. Need craft final? We need respond with one JSON object and nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\\n\\nWe need use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\\n\\nWe need likely output JSON object with those keys. Values short plain-text explanations.\\n\\nNeed be careful: final answer should be one JSON object and nothing else. Keys exactly those. Each value short plain-text explanation.\\n\\nWe can compose:\\n\\n{\\n  \\\"document_review\\\": \\\"Checklist CHK-OUTPATIENT version 1.2 found all required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable because condition fact 'specialist_referral_required' not documented; no outstanding requests or consistency issues.\\\",\\n  \\\"policy_verification\\\": \\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2.\\\",\\n  \\\"benefit_calculation\\\": \\\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to authorized approver to authorize payment of USD 180.00.\\\"\\n}\\n\\nCheck rules: Mention only clause IDs, document IDs and amounts that appear in facts. I mentioned CHK-OUTPATIENT version 1.2 okay? It's checklist id. Document IDs? I didn't mention A-D1 etc. Maybe okay? \\\"Mention only clause IDs, document IDs and amounts that appear in facts.\\\" Means if mention IDs, only those. We can include relevant. But final should be short plain-text explanations.\\n\\nNeed maybe not add \\\"version 1.2\\\"? It appears. Fine.\\n\\nShould we include exact amounts with two decimals. Yes.\\n\\nNeed one JSON object and nothing else. No markdown. Ensure valid JSON. Keys exactly. Values short plain-text. Could include quotes escaped? Plain text. JSON object.\\n\\nPotential final:\\n{\\\"document_review\\\":\\\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\\\",\\\"policy_verification\\\":\\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\\\",\\\"medical_necessity\\\":\\\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2.\\\",\\\"benefit_calculation\\\":\\\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\\\",\\\"recommendation\\\":\\\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\\\"}\\n\\nCheck keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Yes.\\n\\nBut user asked \\\"Reply with one JSON object and nothing else. Its keys must be exactly: ...\\\" So final should be just JSON. No code fence.\\n\\nNeed maybe not include extra keys. Good.\\n\\nShould we include clause IDs? We included CHK-OUTPATIENT, CR-001, APP-3.2. CHK-OUTPATIENT is checklist id, okay? Clause IDs? Maybe CHK-OUTPATIENT not clause. But appears. Fine.\\n\\nMaybe policy_verification should mention status FOUND, conclusion ELIGIBLE? Short. Good.\\n\\nMedical necessity: result SUPPORTED, rule CR-001, policy clause APP-3.2.\\n\\nBenefit calculation: all amounts two decimals. \\\"USD 1000.00\\\"? In facts remaining limit \\\"USD 800.00 of 1000.00\\\" but amount maybe 1000.00? It says 1000.00? Actually JSON: \\\"Remaining OUTPATIENT limit USD 800.00 of 1000.00 as of 2026-09-17.\\\" It has 1000.00? Yes \\\"1000.00\\\". But I wrote 1000.00? In draft I wrote 1000.00? I wrote \\\"1000.00\\\" maybe yes? Let's ensure: I wrote \\\"USD 800.00 of 1000.00.\\\" Good.\\n\\nBenefit calc: remaining_limit_before \\\"800.00\\\", after \\\"620.00\\\". Good.\\n\\nRecommendation: recommended_payable \\\"180.00\\\". Good.\\n\\nShould we mention document IDs? Not necessary? The instruction: Mention only clause IDs, document IDs and amounts that appear in facts. It doesn't say must mention all. But maybe to satisfy, include document IDs like A-D4? But final values short. Could include A-D4 in medical necessity. But not required? To be safe, mention only IDs that appear. We can include A-D4. But if we mention document IDs, ensure they appear. Yes A-D4 appears.\\n\\nMaybe final:\\n{\\\"document_review\\\":\\\"Checklist CHK-OUTPATIENT version 1.2 found required outpatient claim documents COMPLETE and VERIFIED; referral letter not applicable; no outstanding requests or consistency issues.\\\",\\\"policy_verification\\\":\\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE; policy active, member covered, OUTPATIENT benefit included, waiting period satisfied, submission within deadline, exclusions no match, remaining limit USD 800.00 of 1000.00.\\\",\\\"medical_necessity\\\":\\\"Medical necessity SUPPORTED under CR-001 for documented acute bacterial sinusitis; outpatient consultation and prescribed treatment appropriate; policy clause APP-3.2; evidence A-D4.\\\",\\\"benefit_calculation\\\":\\\"Calculation COMPLETE: submitted USD 200.00, excluded USD 0.00, eligible USD 200.00, deductible USD 0.00, copay USD 20.00, coinsurance USD 0.00, limit adjustment USD 0.00, insurer payable USD 180.00, member responsibility USD 20.00, remaining limit before USD 800.00, after USD 620.00.\\\",\\\"recommendation\\\":\\\"Recommendation outcome APPROVE, recommended payable USD 180.00; next action send to an authorized approver to authorize payment of USD 180.00.\\\"}\\n\\nCheck \\\"policy_verification\\\" value: \\\"Policy Fictional Essential Health Plan, Policy Wording 2026-A version 2026-A FOUND ELIGIBLE\\\" maybe status FOUND, conclusion ELIGIBLE. Good.\\n\\nShould we include \\\"benefit_calculation\\\" status COMPLETE. Good.\\n\\nShould we include \\\"medical_necessity\\\" result SUPPORTED. Good.\\n\\nShould we include \\\"document_review\\\" conclusion COMPLETE. Good.\\n\\nShould we include \\\"recommendation\\\" outcome APPROVE. Good.\\n\\nNo extra text. Valid JSON. Ensure no unescaped apostrophes? JSON strings can contain apostrophes unescaped. Fine.\\n\\nFinal answer only JSON.\",\"format\":\"unknown\",\"index\":0}]}}],\"usage\":{\"prompt_tokens\":4288,\"completion_tokens\":1936,\"total_tokens\":6224,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":1810,\"image_tokens\":0,\"audio_tokens\":0}}}",
+              "validation_problems": []
+            }
+          ]
+        },
+        "reason": null
+      },
+      {
+        "sequence": 12,
+        "event": "STEP",
+        "name": "validateReport",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:30:57+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "validateReport/1.0",
+        "input": null,
+        "output": {
+          "status": "PASS",
+          "errors": [],
+          "citation_check": "PASS",
+          "reconciliation": "PASS",
+          "assessment_status": "READY_FOR_AUTHORIZATION"
+        },
+        "reason": null
+      }
+    ]
+  }
+}

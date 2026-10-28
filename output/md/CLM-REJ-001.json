@@ -1,0 +1,1555 @@
+{
+  "report": {
+    "notice": "Prototype assessment of FICTIONAL claim data. Recommendation only; final authorization belongs to a human.",
+    "metadata": {
+      "claim_id": "CLM-REJ-001",
+      "assessment_id": "ASM-e8a5323ab8",
+      "assessor": "claim-agent (automated initial assessment)",
+      "assessment_date": "2026-10-28T11:31:17+00:00",
+      "policy_id": "POL-REJ-001",
+      "policy_version": "2026-B",
+      "policyholder": {
+        "policyholder_id": "PH-REJ-001",
+        "type": "INDIVIDUAL",
+        "name": "Morgan Sample",
+        "member_id": null
+      },
+      "claim_type": "OUTPATIENT",
+      "member_id": "MEM-REJ-001",
+      "treatment_dates": {
+        "start": "2026-08-20",
+        "end": "2026-08-20"
+      },
+      "verified_diagnosis": {
+        "value": null,
+        "verified": true,
+        "source": "R-D4 p.1, Assessment"
+      },
+      "verified_procedures": {
+        "value": [
+          "Elective cosmetic rhinoplasty"
+        ],
+        "verified": true,
+        "source": "R-D4 p.1, Procedure"
+      },
+      "reported_diagnosis": null,
+      "reported_procedures": [
+        "Elective cosmetic rhinoplasty"
+      ],
+      "submitted_amount": "2000.00",
+      "currency": "USD",
+      "context_version": "ctx-1/fixtures-2026.10-1",
+      "tool_versions": {
+        "verifyDocument": "verifyDocument/1.0",
+        "lookupPolicy": "lookupPolicy/1.0",
+        "checkMedicalNecessity": "checkMedicalNecessity/1.0",
+        "calculateBenefit": "calculateBenefit/1.0"
+      },
+      "llm": {
+        "provider": "openrouter",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "model": "recursive/flint-v1.0:free",
+        "temperature": 0.0,
+        "max_tokens": 4000,
+        "reasoning_effort": "low",
+        "max_attempts": 2
+      }
+    },
+    "document_review": {
+      "checklist": {
+        "id": "CHK-OUTPATIENT",
+        "version": "1.2",
+        "source": {
+          "document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "location": "Section 4.1, Outpatient claim documents"
+        }
+      },
+      "rows": [
+        {
+          "document_type": "CLAIM_FORM",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-1",
+          "document_id": "R-D1",
+          "submitted_type": "CLAIM_FORM",
+          "detected_type": "CLAIM_FORM",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "R-D1"
+          ],
+          "citation_ids": [
+            "PC-01"
+          ]
+        },
+        {
+          "document_type": "ITEMIZED_INVOICE",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-2",
+          "document_id": "R-D2",
+          "submitted_type": "ITEMIZED_INVOICE",
+          "detected_type": "ITEMIZED_INVOICE",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "R-D2"
+          ],
+          "citation_ids": [
+            "PC-02"
+          ]
+        },
+        {
+          "document_type": "PAYMENT_RECEIPT",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-3",
+          "document_id": "R-D3",
+          "submitted_type": "PAYMENT_RECEIPT",
+          "detected_type": "PAYMENT_RECEIPT",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "R-D3"
+          ],
+          "citation_ids": [
+            "PC-03"
+          ]
+        },
+        {
+          "document_type": "MEDICAL_REPORT",
+          "required": "Y",
+          "status": "COMPLETE",
+          "requirement_id": "OP-REQ-4",
+          "document_id": "R-D4",
+          "submitted_type": "MEDICAL_REPORT",
+          "detected_type": "MEDICAL_REPORT",
+          "verification": "VERIFIED",
+          "issues": [],
+          "evidence": [
+            "R-D4"
+          ],
+          "citation_ids": [
+            "PC-04"
+          ]
+        },
+        {
+          "document_type": "REFERRAL_LETTER",
+          "required": "CONDITIONAL",
+          "status": "NOT_APPLICABLE",
+          "requirement_id": "OP-REQ-5",
+          "document_id": null,
+          "submitted_type": null,
+          "detected_type": null,
+          "verification": null,
+          "issues": [
+            "Condition fact 'specialist_referral_required' not documented; requirement not triggered."
+          ],
+          "evidence": [],
+          "citation_ids": [
+            "PC-05"
+          ]
+        }
+      ],
+      "conclusion": "COMPLETE",
+      "outstanding_requests": [],
+      "consistency_issues": []
+    },
+    "policy_verification": {
+      "status": "FOUND",
+      "policy_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+      "version": "2026-B",
+      "checks": [
+        {
+          "check": "policy_active",
+          "label": "Policy active on treatment date",
+          "result": "PASS",
+          "verified_fact": "Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-08-20 to 2026-08-20.",
+          "clause_ids": [
+            "REJ-2.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-06"
+          ],
+          "evidence": [
+            "policy_record:POL-REJ-001"
+          ]
+        },
+        {
+          "check": "member_covered",
+          "label": "Member covered",
+          "result": "PASS",
+          "verified_fact": "Member MEM-REJ-001 covered 2026-01-01 to 2026-12-31.",
+          "clause_ids": [
+            "REJ-2.2"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-07"
+          ],
+          "evidence": [
+            "policy_record:POL-REJ-001"
+          ]
+        },
+        {
+          "check": "benefit_covered",
+          "label": "Claim type / benefit covered",
+          "result": "PASS",
+          "verified_fact": "OUTPATIENT benefit included.",
+          "clause_ids": [
+            "REJ-3.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-08"
+          ],
+          "evidence": [
+            "policy_record:POL-REJ-001"
+          ]
+        },
+        {
+          "check": "waiting_period",
+          "label": "Waiting period",
+          "result": "PASS",
+          "verified_fact": "30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-08-20.",
+          "clause_ids": [
+            "REJ-4.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-09"
+          ],
+          "evidence": [
+            "policy_record:POL-REJ-001"
+          ]
+        },
+        {
+          "check": "submission_deadline",
+          "label": "Claim submitted within deadline",
+          "result": "PASS",
+          "verified_fact": "Submitted 2026-08-27, 7 days after last treatment 2026-08-20; OUTPATIENT deadline 60 days (2026-10-19).",
+          "clause_ids": [],
+          "rule_ids": [
+            "CSR-2.1"
+          ],
+          "citation_ids": [
+            "PC-10"
+          ],
+          "evidence": [
+            "rule_set:CSR-2026",
+            "claim_submission:CLM-REJ-001"
+          ]
+        },
+        {
+          "check": "exclusions",
+          "label": "Exclusions",
+          "result": "FAIL",
+          "verified_fact": "Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication.",
+          "clause_ids": [
+            "REJ-6.4"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-11"
+          ],
+          "evidence": [
+            "R-D4"
+          ]
+        },
+        {
+          "check": "limit",
+          "label": "Remaining benefit limit",
+          "result": "PASS",
+          "verified_fact": "Remaining OUTPATIENT limit USD 1500.00 of 1500.00 as of 2026-08-26.",
+          "clause_ids": [
+            "REJ-5.1"
+          ],
+          "rule_ids": [],
+          "citation_ids": [
+            "PC-12"
+          ],
+          "evidence": [
+            "ledger:LED-REJ-001-OP-2026"
+          ]
+        }
+      ],
+      "remaining_limit": "1500.00",
+      "conclusion": "INELIGIBLE",
+      "reason": null
+    },
+    "medical_necessity": {
+      "diagnosis": null,
+      "procedures": [
+        "Elective cosmetic rhinoplasty"
+      ],
+      "result": "NOT_SUPPORTED",
+      "rule_id": "CR-002",
+      "rationale": "The treating practitioner documents an elective cosmetic procedure and explicitly records no medical indication or functional impairment.",
+      "clinical_source": "Fictional Clinical Necessity Rulebook CNR-2026 v1.0 CNR-2026 Section 7.1",
+      "rule_set_version": "1.0",
+      "policy_clause_ids": [
+        "REJ-3.2"
+      ],
+      "citation_ids": [
+        "PC-13"
+      ],
+      "evidence": [
+        {
+          "value": null,
+          "document_id": "R-D4",
+          "location": "p.1, Assessment"
+        },
+        {
+          "value": [
+            "Elective cosmetic rhinoplasty"
+          ],
+          "document_id": "R-D4",
+          "location": "p.1, Procedure"
+        },
+        {
+          "value": false,
+          "document_id": "R-D4",
+          "location": "p.1, Assessment"
+        },
+        {
+          "value": "COSMETIC_ELECTIVE",
+          "document_id": "R-D4",
+          "location": "p.1, Procedure"
+        }
+      ],
+      "outstanding_concerns": []
+    },
+    "benefit_calculation": {
+      "status": "COMPLETE",
+      "currency": "USD",
+      "submitted": "2000.00",
+      "excluded": "2000.00",
+      "eligible": "0.00",
+      "deductible": "0.00",
+      "copay": "0.00",
+      "coinsurance": "0.00",
+      "limit_adjustment": "0.00",
+      "insurer_payable": "0.00",
+      "member_responsibility": "2000.00",
+      "remaining_limit_before": "1500.00",
+      "remaining_limit_after": "1500.00",
+      "steps": [
+        {
+          "step": "EXCLUSIONS",
+          "amount": "2000.00",
+          "detail": "Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication."
+        },
+        {
+          "step": "DEDUCTIBLE",
+          "amount": "0.00",
+          "detail": "Deductible 0.00."
+        },
+        {
+          "step": "COPAY",
+          "amount": "0.00",
+          "detail": "Copay 20.00 x 1 visit(s), capped at the amount left."
+        },
+        {
+          "step": "COINSURANCE",
+          "amount": "0.00",
+          "detail": "Coinsurance rate 0.00."
+        },
+        {
+          "step": "ANNUAL_LIMIT",
+          "amount": "0.00",
+          "detail": "Payable capped at remaining limit 1500.00."
+        }
+      ],
+      "clause_ids": [
+        "REJ-6.4",
+        "REJ-5.2",
+        "REJ-5.1"
+      ],
+      "citation_ids": [
+        "PC-11",
+        "PC-14",
+        "PC-12"
+      ],
+      "evidence": [
+        "R-D2",
+        "ledger:LED-REJ-001-OP-2026",
+        "R-D4"
+      ],
+      "pending_reasons": []
+    },
+    "recommendation": {
+      "outcome": "REJECT",
+      "recommended_payable": "0.00",
+      "reasons": [
+        {
+          "finding": "Exclusions failed: Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication.",
+          "evidence": [
+            "R-D4"
+          ],
+          "citation_ids": [
+            "PC-11"
+          ]
+        },
+        {
+          "finding": "Medical necessity NOT_SUPPORTED (CR-002): The treating practitioner documents an elective cosmetic procedure and explicitly records no medical indication or functional impairment.",
+          "evidence": [
+            "R-D4",
+            "clinical_rule:CR-002"
+          ],
+          "citation_ids": [
+            "PC-13"
+          ]
+        },
+        {
+          "finding": "Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.",
+          "evidence": [
+            "R-D2",
+            "ledger:LED-REJ-001-OP-2026",
+            "R-D4"
+          ],
+          "citation_ids": [
+            "PC-11",
+            "PC-14",
+            "PC-12"
+          ]
+        }
+      ],
+      "information_requests": [],
+      "escalations": [],
+      "next_action": "Route to human denial review; the denial notice must cite the clauses above.",
+      "authorization_owner": "Senior claims assessor (denial review)"
+    },
+    "policy_citations": {
+      "citations": [
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-1",
+          "title": "CHK-OUTPATIENT CLAIM_FORM",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "CLAIM_FORM is REQUIRED: Identifies the member, policy, treatment date and amount claimed.",
+          "citation_id": "PC-01",
+          "supported_findings": [
+            "Document requirement CLAIM_FORM"
+          ],
+          "evidence_ids": [
+            "R-D1"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-2",
+          "title": "CHK-OUTPATIENT ITEMIZED_INVOICE",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "ITEMIZED_INVOICE is REQUIRED: Itemizes the charges so covered and excluded amounts can be identified.",
+          "citation_id": "PC-02",
+          "supported_findings": [
+            "Document requirement ITEMIZED_INVOICE"
+          ],
+          "evidence_ids": [
+            "R-D2"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-3",
+          "title": "CHK-OUTPATIENT PAYMENT_RECEIPT",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "PAYMENT_RECEIPT is REQUIRED: Confirms the member paid the amount being reimbursed.",
+          "citation_id": "PC-03",
+          "supported_findings": [
+            "Document requirement PAYMENT_RECEIPT"
+          ],
+          "evidence_ids": [
+            "R-D3"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-4",
+          "title": "CHK-OUTPATIENT MEDICAL_REPORT",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "MEDICAL_REPORT is REQUIRED: Documents the diagnosis and treatment needed to assess coverage and medical necessity.",
+          "citation_id": "PC-04",
+          "supported_findings": [
+            "Document requirement MEDICAL_REPORT"
+          ],
+          "evidence_ids": [
+            "R-D4"
+          ]
+        },
+        {
+          "kind": "PROCEDURAL",
+          "source_document": "Fictional Claims Procedure Manual CPM-2026",
+          "version": "1.2",
+          "effective_date": null,
+          "clause_id": "OP-REQ-5",
+          "title": "CHK-OUTPATIENT REFERRAL_LETTER",
+          "location": "Section 4.1, Outpatient claim documents",
+          "text": "REFERRAL_LETTER is CONDITIONAL: Confirms a referral where the policy requires one for specialist consultation.",
+          "citation_id": "PC-05",
+          "supported_findings": [
+            "Document requirement REFERRAL_LETTER"
+          ],
+          "evidence_ids": []
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "version": "2026-B",
+          "effective_date": "2026-01-01",
+          "clause_id": "REJ-2.1",
+          "title": "Period of cover",
+          "location": "Page 2, Section 2.1",
+          "text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment.",
+          "citation_id": "PC-06",
+          "supported_findings": [
+            "Policy active on treatment date"
+          ],
+          "evidence_ids": [
+            "policy_record:POL-REJ-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "version": "2026-B",
+          "effective_date": "2026-01-01",
+          "clause_id": "REJ-2.2",
+          "title": "Insured members",
+          "location": "Page 2, Section 2.2",
+          "text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force.",
+          "citation_id": "PC-07",
+          "supported_findings": [
+            "Member covered"
+          ],
+          "evidence_ids": [
+            "policy_record:POL-REJ-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "version": "2026-B",
+          "effective_date": "2026-01-01",
+          "clause_id": "REJ-3.1",
+          "title": "Outpatient benefit",
+          "location": "Page 4, Section 3.1",
+          "text": "We will pay for outpatient consultations, day procedures and treatment prescribed by a registered medical practitioner, subject to Sections 5 and 6.",
+          "citation_id": "PC-08",
+          "supported_findings": [
+            "Claim type / benefit covered"
+          ],
+          "evidence_ids": [
+            "policy_record:POL-REJ-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "version": "2026-B",
+          "effective_date": "2026-01-01",
+          "clause_id": "REJ-4.1",
+          "title": "Waiting period",
+          "location": "Page 5, Section 4.1",
+          "text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident.",
+          "citation_id": "PC-09",
+          "supported_findings": [
+            "Waiting period"
+          ],
+          "evidence_ids": [
+            "policy_record:POL-REJ-001"
+          ]
+        },
+        {
+          "kind": "RULE",
+          "source_document": "Fictional Claim Submission Rules CSR-2026",
+          "version": "2026.1",
+          "effective_date": "2026-01-01",
+          "clause_id": "CSR-2.1",
+          "title": "CSR-2026",
+          "location": "Section 2.1, Standard medical treatment",
+          "text": "Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date.",
+          "citation_id": "PC-10",
+          "supported_findings": [
+            "Claim submitted within deadline"
+          ],
+          "evidence_ids": [
+            "rule_set:CSR-2026",
+            "claim_submission:CLM-REJ-001"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "version": "2026-B",
+          "effective_date": "2026-01-01",
+          "clause_id": "REJ-6.4",
+          "title": "Cosmetic and aesthetic procedures exclusion",
+          "location": "Page 9, Section 6.4",
+          "text": "We will not pay for any cosmetic or aesthetic procedure, including rhinoplasty, performed to change appearance where there is no medical indication documented by the treating practitioner. This exclusion does not apply to reconstructive surgery required because of an accident or a documented functional impairment.",
+          "citation_id": "PC-11",
+          "supported_findings": [
+            "Exclusions",
+            "Exclusions failed: Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication.",
+            "Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.",
+            "Benefit calculation"
+          ],
+          "evidence_ids": [
+            "R-D4",
+            "R-D2",
+            "ledger:LED-REJ-001-OP-2026"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "version": "2026-B",
+          "effective_date": "2026-01-01",
+          "clause_id": "REJ-5.1",
+          "title": "Annual outpatient limit",
+          "location": "Page 6, Section 5.1",
+          "text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,500.00.",
+          "citation_id": "PC-12",
+          "supported_findings": [
+            "Remaining benefit limit",
+            "Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.",
+            "Benefit calculation"
+          ],
+          "evidence_ids": [
+            "ledger:LED-REJ-001-OP-2026",
+            "R-D2",
+            "R-D4"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "version": "2026-B",
+          "effective_date": "2026-01-01",
+          "clause_id": "REJ-3.2",
+          "title": "Medical necessity",
+          "location": "Page 4, Section 3.2",
+          "text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner.",
+          "citation_id": "PC-13",
+          "supported_findings": [
+            "Medical necessity NOT_SUPPORTED (CR-002): The treating practitioner documents an elective cosmetic procedure and explicitly records no medical indication or functional impairment.",
+            "Medical necessity"
+          ],
+          "evidence_ids": [
+            "R-D4",
+            "clinical_rule:CR-002"
+          ]
+        },
+        {
+          "kind": "POLICY",
+          "source_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "version": "2026-B",
+          "effective_date": "2026-01-01",
+          "clause_id": "REJ-5.2",
+          "title": "Outpatient cost-sharing",
+          "location": "Page 6, Section 5.2",
+          "text": "No deductible or coinsurance applies to outpatient benefits. The member pays a fixed copay of USD 20.00 for each outpatient visit.",
+          "citation_id": "PC-14",
+          "supported_findings": [
+            "Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.",
+            "Benefit calculation"
+          ],
+          "evidence_ids": [
+            "R-D2",
+            "ledger:LED-REJ-001-OP-2026",
+            "R-D4"
+          ]
+        }
+      ],
+      "coverage_check": "PASS"
+    },
+    "assessment_status": "READY_FOR_AUTHORIZATION",
+    "audit_reference": "AUD-CLM-REJ-001-80274dd6",
+    "explanations": {
+      "status": "DRAFTED",
+      "sections": {
+        "document_review": "Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and the conditional referral was not applicable; no outstanding requests or consistency issues.",
+        "policy_verification": "Policy verification found the policy checks, but the exclusions check failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; overall conclusion was INELIGIBLE.",
+        "medical_necessity": "Medical necessity was NOT_SUPPORTED under clinical rule CR-002; the treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.",
+        "benefit_calculation": "Benefit calculation was COMPLETE; submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, and remaining limit before and after was USD 1500.00.",
+        "recommendation": "Recommendation outcome was REJECT with recommended payable USD 0.00; reasons included exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showing USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, and remaining limit USD 1500.00."
+      },
+      "llm": {
+        "provider": "openrouter",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "model": "recursive/flint-v1.0:free",
+        "temperature": 0.0,
+        "max_tokens": 4000,
+        "reasoning_effort": "low",
+        "max_attempts": 2,
+        "served_model": "recursive/flint-v1.0:free",
+        "response_id": "gen-1793187078-mtBXRh2bF8fYwG8eTter"
+      },
+      "errors": []
+    },
+    "human_review": {
+      "authorization_status": "PENDING",
+      "reviewer": null,
+      "decision": null,
+      "final_outcome": null,
+      "reason": null,
+      "reviewed_at": null
+    },
+    "validation": {
+      "status": "PASS",
+      "errors": [],
+      "citation_check": "PASS",
+      "reconciliation": "PASS"
+    }
+  },
+  "audit": {
+    "reference": "AUD-CLM-REJ-001-80274dd6",
+    "claim_id": "CLM-REJ-001",
+    "context_version": "ctx-1/fixtures-2026.10-1",
+    "events": [
+      {
+        "sequence": 1,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "R-D1"
+        },
+        "output": {
+          "document_id": "R-D1",
+          "status": "FOUND",
+          "declared_type": "CLAIM_FORM",
+          "detected_type": "CLAIM_FORM",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "member_id": {
+              "value": "MEM-REJ-001",
+              "document_id": "R-D1",
+              "location": "p.1, Member details"
+            },
+            "policy_id": {
+              "value": "POL-REJ-001",
+              "document_id": "R-D1",
+              "location": "p.1, Member details"
+            },
+            "treatment_date": {
+              "value": "2026-08-20",
+              "document_id": "R-D1",
+              "location": "p.1, Treatment details"
+            },
+            "claimed_amount": {
+              "value": "2000.00",
+              "document_id": "R-D1",
+              "location": "p.2, Amount claimed"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 2,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "R-D2"
+        },
+        "output": {
+          "document_id": "R-D2",
+          "status": "FOUND",
+          "declared_type": "ITEMIZED_INVOICE",
+          "detected_type": "ITEMIZED_INVOICE",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "provider_id": {
+              "value": "PRV-0202",
+              "document_id": "R-D2",
+              "location": "p.1, Header"
+            },
+            "service_date": {
+              "value": "2026-08-20",
+              "document_id": "R-D2",
+              "location": "p.1, Header"
+            },
+            "line_items": {
+              "value": [
+                {
+                  "line_id": "R-D2-L1",
+                  "description": "Rhinoplasty surgeon fee",
+                  "amount": "1400.00",
+                  "category": "PROCEDURE"
+                },
+                {
+                  "line_id": "R-D2-L2",
+                  "description": "Day surgery facility fee",
+                  "amount": "600.00",
+                  "category": "FACILITY"
+                }
+              ],
+              "document_id": "R-D2",
+              "location": "p.1, Lines 1-2"
+            },
+            "invoice_total": {
+              "value": "2000.00",
+              "document_id": "R-D2",
+              "location": "p.1, Total"
+            },
+            "visit_count": {
+              "value": 1,
+              "document_id": "R-D2",
+              "location": "p.1, Header"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 3,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "R-D3"
+        },
+        "output": {
+          "document_id": "R-D3",
+          "status": "FOUND",
+          "declared_type": "PAYMENT_RECEIPT",
+          "detected_type": "PAYMENT_RECEIPT",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "amount_paid": {
+              "value": "2000.00",
+              "document_id": "R-D3",
+              "location": "p.1, Amount paid"
+            },
+            "payment_date": {
+              "value": "2026-08-20",
+              "document_id": "R-D3",
+              "location": "p.1, Date"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 4,
+        "event": "TOOL_CALL",
+        "name": "verifyDocument",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "verifyDocument/1.0",
+        "input": {
+          "documentId": "R-D4"
+        },
+        "output": {
+          "document_id": "R-D4",
+          "status": "FOUND",
+          "declared_type": "MEDICAL_REPORT",
+          "detected_type": "MEDICAL_REPORT",
+          "completeness_status": "COMPLETE",
+          "verification_status": "VERIFIED",
+          "issues": [],
+          "extracted_facts": {
+            "patient_member_id": {
+              "value": "MEM-REJ-001",
+              "document_id": "R-D4",
+              "location": "p.1, Patient"
+            },
+            "examination_date": {
+              "value": "2026-08-20",
+              "document_id": "R-D4",
+              "location": "p.1, Header"
+            },
+            "diagnosis": {
+              "value": null,
+              "document_id": "R-D4",
+              "location": "p.1, Assessment"
+            },
+            "procedures": {
+              "value": [
+                "Elective cosmetic rhinoplasty"
+              ],
+              "document_id": "R-D4",
+              "location": "p.1, Procedure"
+            },
+            "medical_indication_present": {
+              "value": false,
+              "document_id": "R-D4",
+              "location": "p.1, Assessment"
+            },
+            "procedure_classification": {
+              "value": "COSMETIC_ELECTIVE",
+              "document_id": "R-D4",
+              "location": "p.1, Procedure"
+            },
+            "clinical_findings": {
+              "value": "Patient requested aesthetic reshaping of the nasal dorsum. No breathing difficulty, septal deviation, trauma or other functional impairment found on examination. Procedure performed at patient's elective request.",
+              "document_id": "R-D4",
+              "location": "p.1, Assessment"
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 5,
+        "event": "STEP",
+        "name": "documentReview",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "documentReview/1.0",
+        "input": {
+          "checklist": "CHK-OUTPATIENT v1.2"
+        },
+        "output": {
+          "claim_id": "CLM-REJ-001",
+          "rows": [
+            {
+              "document_type": "CLAIM_FORM",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-1",
+              "document_id": "R-D1",
+              "submitted_type": "CLAIM_FORM",
+              "detected_type": "CLAIM_FORM",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "R-D1"
+              ]
+            },
+            {
+              "document_type": "ITEMIZED_INVOICE",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-2",
+              "document_id": "R-D2",
+              "submitted_type": "ITEMIZED_INVOICE",
+              "detected_type": "ITEMIZED_INVOICE",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "R-D2"
+              ]
+            },
+            {
+              "document_type": "PAYMENT_RECEIPT",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-3",
+              "document_id": "R-D3",
+              "submitted_type": "PAYMENT_RECEIPT",
+              "detected_type": "PAYMENT_RECEIPT",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "R-D3"
+              ]
+            },
+            {
+              "document_type": "MEDICAL_REPORT",
+              "required": "Y",
+              "status": "COMPLETE",
+              "requirement_id": "OP-REQ-4",
+              "document_id": "R-D4",
+              "submitted_type": "MEDICAL_REPORT",
+              "detected_type": "MEDICAL_REPORT",
+              "verification": "VERIFIED",
+              "issues": [],
+              "evidence": [
+                "R-D4"
+              ]
+            },
+            {
+              "document_type": "REFERRAL_LETTER",
+              "required": "CONDITIONAL",
+              "status": "NOT_APPLICABLE",
+              "requirement_id": "OP-REQ-5",
+              "document_id": null,
+              "submitted_type": null,
+              "detected_type": null,
+              "verification": null,
+              "issues": [
+                "Condition fact 'specialist_referral_required' not documented; requirement not triggered."
+              ],
+              "evidence": []
+            }
+          ],
+          "conclusion": "COMPLETE",
+          "requests": [],
+          "checklist_id": "CHK-OUTPATIENT",
+          "checklist_version": "1.2",
+          "checklist_source": {
+            "document": "Fictional Claims Procedure Manual CPM-2026",
+            "version": "1.2",
+            "location": "Section 4.1, Outpatient claim documents"
+          },
+          "consistency_issues": []
+        },
+        "reason": null
+      },
+      {
+        "sequence": 6,
+        "event": "TOOL_CALL",
+        "name": "lookupPolicy",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "lookupPolicy/1.0",
+        "input": {
+          "policyId": "POL-REJ-001"
+        },
+        "output": {
+          "policy_id": "POL-REJ-001",
+          "status": "FOUND",
+          "version": "2026-B",
+          "policy_document": "Fictional Standard Health Plan, Policy Wording 2026-B",
+          "effective_from": "2026-01-01",
+          "effective_to": "2026-12-31",
+          "currency": "USD",
+          "policyholder": {
+            "policyholder_id": "PH-REJ-001",
+            "type": "INDIVIDUAL",
+            "name": "Morgan Sample",
+            "member_id": null
+          },
+          "checks": {
+            "policy_active": {
+              "result": "PASS",
+              "fact": "Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-08-20 to 2026-08-20.",
+              "clause_ids": [
+                "REJ-2.1"
+              ],
+              "evidence": [
+                "policy_record:POL-REJ-001"
+              ],
+              "rule_ids": []
+            },
+            "member_covered": {
+              "result": "PASS",
+              "fact": "Member MEM-REJ-001 covered 2026-01-01 to 2026-12-31.",
+              "clause_ids": [
+                "REJ-2.2"
+              ],
+              "evidence": [
+                "policy_record:POL-REJ-001"
+              ],
+              "rule_ids": []
+            },
+            "benefit_covered": {
+              "result": "PASS",
+              "fact": "OUTPATIENT benefit included.",
+              "clause_ids": [
+                "REJ-3.1"
+              ],
+              "evidence": [
+                "policy_record:POL-REJ-001"
+              ],
+              "rule_ids": []
+            },
+            "waiting_period": {
+              "result": "PASS",
+              "fact": "30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-08-20.",
+              "clause_ids": [
+                "REJ-4.1"
+              ],
+              "evidence": [
+                "policy_record:POL-REJ-001"
+              ],
+              "rule_ids": []
+            },
+            "submission_deadline": {
+              "result": "PASS",
+              "fact": "Submitted 2026-08-27, 7 days after last treatment 2026-08-20; OUTPATIENT deadline 60 days (2026-10-19).",
+              "clause_ids": [],
+              "evidence": [
+                "rule_set:CSR-2026",
+                "claim_submission:CLM-REJ-001"
+              ],
+              "rule_ids": [
+                "CSR-2.1"
+              ]
+            },
+            "exclusions": {
+              "result": "FAIL",
+              "fact": "Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication.",
+              "clause_ids": [
+                "REJ-6.4"
+              ],
+              "evidence": [
+                "R-D4"
+              ],
+              "rule_ids": []
+            },
+            "limit": {
+              "result": "PASS",
+              "fact": "Remaining OUTPATIENT limit USD 1500.00 of 1500.00 as of 2026-08-26.",
+              "clause_ids": [
+                "REJ-5.1"
+              ],
+              "evidence": [
+                "ledger:LED-REJ-001-OP-2026"
+              ],
+              "rule_ids": []
+            }
+          },
+          "clauses": {
+            "REJ-2.1": {
+              "clause_id": "REJ-2.1",
+              "title": "Period of cover",
+              "location": "Page 2, Section 2.1",
+              "exact_text": "Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment."
+            },
+            "REJ-2.2": {
+              "clause_id": "REJ-2.2",
+              "title": "Insured members",
+              "location": "Page 2, Section 2.2",
+              "exact_text": "Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force."
+            },
+            "REJ-3.1": {
+              "clause_id": "REJ-3.1",
+              "title": "Outpatient benefit",
+              "location": "Page 4, Section 3.1",
+              "exact_text": "We will pay for outpatient consultations, day procedures and treatment prescribed by a registered medical practitioner, subject to Sections 5 and 6."
+            },
+            "REJ-3.2": {
+              "clause_id": "REJ-3.2",
+              "title": "Medical necessity",
+              "location": "Page 4, Section 3.2",
+              "exact_text": "Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner."
+            },
+            "REJ-4.1": {
+              "clause_id": "REJ-4.1",
+              "title": "Waiting period",
+              "location": "Page 5, Section 4.1",
+              "exact_text": "Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident."
+            },
+            "REJ-5.1": {
+              "clause_id": "REJ-5.1",
+              "title": "Annual outpatient limit",
+              "location": "Page 6, Section 5.1",
+              "exact_text": "The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,500.00."
+            },
+            "REJ-5.2": {
+              "clause_id": "REJ-5.2",
+              "title": "Outpatient cost-sharing",
+              "location": "Page 6, Section 5.2",
+              "exact_text": "No deductible or coinsurance applies to outpatient benefits. The member pays a fixed copay of USD 20.00 for each outpatient visit."
+            },
+            "REJ-6.4": {
+              "clause_id": "REJ-6.4",
+              "title": "Cosmetic and aesthetic procedures exclusion",
+              "location": "Page 9, Section 6.4",
+              "exact_text": "We will not pay for any cosmetic or aesthetic procedure, including rhinoplasty, performed to change appearance where there is no medical indication documented by the treating practitioner. This exclusion does not apply to reconstructive surgery required because of an accident or a documented functional impairment."
+            }
+          },
+          "benefit": {
+            "covered": true,
+            "benefit_clause_id": "REJ-3.1",
+            "annual_limit": "1500.00",
+            "limit_clause_id": "REJ-5.1",
+            "deductible": "0.00",
+            "deductible_clause_id": "REJ-5.2",
+            "copay_per_visit": "20.00",
+            "copay_clause_id": "REJ-5.2",
+            "coinsurance_rate": "0.00",
+            "coinsurance_clause_id": "REJ-5.2",
+            "waiting_period_days": 30,
+            "waiting_period_clause_id": "REJ-4.1",
+            "medical_necessity_clause_id": "REJ-3.2"
+          },
+          "remaining_limit": "1500.00",
+          "ledger_ref": "LED-REJ-001-OP-2026",
+          "document_requirement_clause_ids": {},
+          "rules": {
+            "CSR-2.1": {
+              "rule_id": "CSR-2.1",
+              "rule_set_id": "CSR-2026",
+              "version": "2026.1",
+              "effective_from": "2026-01-01",
+              "source_document": "Fictional Claim Submission Rules CSR-2026",
+              "location": "Section 2.1, Standard medical treatment",
+              "exact_text": "Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date."
+            }
+          },
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 7,
+        "event": "TOOL_CALL",
+        "name": "checkMedicalNecessity",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "checkMedicalNecessity/1.0",
+        "input": {
+          "diagnosis": null,
+          "procedures": [
+            "Elective cosmetic rhinoplasty"
+          ]
+        },
+        "output": {
+          "result": "NOT_SUPPORTED",
+          "diagnosis": null,
+          "procedures": [
+            "Elective cosmetic rhinoplasty"
+          ],
+          "rule_id": "CR-002",
+          "rationale": "The treating practitioner documents an elective cosmetic procedure and explicitly records no medical indication or functional impairment.",
+          "rule_set_version": "1.0",
+          "source": "Fictional Clinical Necessity Rulebook CNR-2026 v1.0",
+          "source_location": "CNR-2026 Section 7.1",
+          "evidence": [
+            {
+              "value": null,
+              "document_id": "R-D4",
+              "location": "p.1, Assessment"
+            },
+            {
+              "value": [
+                "Elective cosmetic rhinoplasty"
+              ],
+              "document_id": "R-D4",
+              "location": "p.1, Procedure"
+            },
+            {
+              "value": false,
+              "document_id": "R-D4",
+              "location": "p.1, Assessment"
+            },
+            {
+              "value": "COSMETIC_ELECTIVE",
+              "document_id": "R-D4",
+              "location": "p.1, Procedure"
+            }
+          ],
+          "reason": null
+        },
+        "reason": null
+      },
+      {
+        "sequence": 8,
+        "event": "TOOL_CALL",
+        "name": "calculateBenefit",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "calculateBenefit/1.0",
+        "input": {
+          "policyId": "POL-REJ-001",
+          "claimType": "OUTPATIENT",
+          "amount": "2000.00"
+        },
+        "output": {
+          "status": "COMPLETE",
+          "policy_id": "POL-REJ-001",
+          "claim_type": "OUTPATIENT",
+          "currency": "USD",
+          "submitted": "2000.00",
+          "excluded": "2000.00",
+          "eligible": "0.00",
+          "deductible": "0.00",
+          "copay": "0.00",
+          "coinsurance": "0.00",
+          "limit_adjustment": "0.00",
+          "insurer_payable": "0.00",
+          "member_responsibility": "2000.00",
+          "remaining_limit_before": "1500.00",
+          "remaining_limit_after": "1500.00",
+          "steps": [
+            {
+              "step": "EXCLUSIONS",
+              "amount": "2000.00",
+              "detail": "Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication."
+            },
+            {
+              "step": "DEDUCTIBLE",
+              "amount": "0.00",
+              "detail": "Deductible 0.00."
+            },
+            {
+              "step": "COPAY",
+              "amount": "0.00",
+              "detail": "Copay 20.00 x 1 visit(s), capped at the amount left."
+            },
+            {
+              "step": "COINSURANCE",
+              "amount": "0.00",
+              "detail": "Coinsurance rate 0.00."
+            },
+            {
+              "step": "ANNUAL_LIMIT",
+              "amount": "0.00",
+              "detail": "Payable capped at remaining limit 1500.00."
+            }
+          ],
+          "clause_ids": [
+            "REJ-6.4",
+            "REJ-5.2",
+            "REJ-5.1"
+          ],
+          "evidence": [
+            "R-D2",
+            "ledger:LED-REJ-001-OP-2026",
+            "R-D4"
+          ],
+          "pending_reasons": []
+        },
+        "reason": null
+      },
+      {
+        "sequence": 9,
+        "event": "STEP",
+        "name": "decide",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:17+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "decide/1.0",
+        "input": null,
+        "output": {
+          "outcome": "REJECT",
+          "assessment_status": "READY_FOR_AUTHORIZATION",
+          "recommended_payable": "0.00",
+          "reasons": 3,
+          "information_requests": [],
+          "escalations": 0
+        },
+        "reason": null
+      },
+      {
+        "sequence": 10,
+        "event": "LLM_REQUEST",
+        "name": "openrouter.chat",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:37+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "openrouter:recursive/flint-v1.0:free",
+        "input": {
+          "url": "https://openrouter.ai/api/v1/chat/completions",
+          "model": "recursive/flint-v1.0:free",
+          "attempt": 1,
+          "request_preview": [
+            {
+              "role": "system",
+              "chars": 603,
+              "text": "You draft explanations for a human insurance claim assessor. Rules: - U\u2026"
+            },
+            {
+              "role": "user",
+              "chars": 14361,
+              "text": "{\"claim_id\":\"CLM-REJ-001\",\"currency\":\"USD\",\"document_review\":{\"checklis\u2026"
+            }
+          ]
+        },
+        "output": {
+          "response_id": "gen-1793187078-mtBXRh2bF8fYwG8eTter",
+          "served_model": "recursive/flint-v1.0:free",
+          "tokens_in": 3785,
+          "tokens_out": 2406,
+          "validation_problems": [],
+          "response_preview": {
+            "chars": 1299,
+            "text": "{ \"document_review\": \"Outpatient document checklist concluded COMPLETE;\u2026"
+          }
+        },
+        "reason": null
+      },
+      {
+        "sequence": 11,
+        "event": "LLM_CALL",
+        "name": "draftExplanations",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:37+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "openrouter:recursive/flint-v1.0:free",
+        "input": {
+          "sections": [
+            "document_review",
+            "policy_verification",
+            "medical_necessity",
+            "benefit_calculation",
+            "recommendation"
+          ],
+          "config": {
+            "provider": "openrouter",
+            "url": "https://openrouter.ai/api/v1/chat/completions",
+            "model": "recursive/flint-v1.0:free",
+            "temperature": 0.0,
+            "max_tokens": 4000,
+            "reasoning_effort": "low",
+            "max_attempts": 2
+          },
+          "url": "https://openrouter.ai/api/v1/chat/completions",
+          "request_body": {
+            "model": "recursive/flint-v1.0:free",
+            "messages": [
+              {
+                "role": "system",
+                "content": "You draft explanations for a human insurance claim assessor.\nRules:\n- Use only the facts in the supplied JSON. Do not add clinical, policy or financial information.\n- Do not make, change or question the recommendation. The application decided it; you explain it.\n- Mention only clause IDs, document IDs and amounts that appear in the facts. Write amounts with two decimals exactly as given.\n- Reply with one JSON object and nothing else. Its keys must be exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation."
+              },
+              {
+                "role": "user",
+                "content": "{\"claim_id\":\"CLM-REJ-001\",\"currency\":\"USD\",\"document_review\":{\"checklist\":{\"id\":\"CHK-OUTPATIENT\",\"version\":\"1.2\",\"source\":{\"document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"location\":\"Section 4.1, Outpatient claim documents\"}},\"rows\":[{\"document_type\":\"CLAIM_FORM\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-1\",\"document_id\":\"R-D1\",\"submitted_type\":\"CLAIM_FORM\",\"detected_type\":\"CLAIM_FORM\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"R-D1\"],\"citation_ids\":[\"PC-01\"]},{\"document_type\":\"ITEMIZED_INVOICE\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-2\",\"document_id\":\"R-D2\",\"submitted_type\":\"ITEMIZED_INVOICE\",\"detected_type\":\"ITEMIZED_INVOICE\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"R-D2\"],\"citation_ids\":[\"PC-02\"]},{\"document_type\":\"PAYMENT_RECEIPT\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-3\",\"document_id\":\"R-D3\",\"submitted_type\":\"PAYMENT_RECEIPT\",\"detected_type\":\"PAYMENT_RECEIPT\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"R-D3\"],\"citation_ids\":[\"PC-03\"]},{\"document_type\":\"MEDICAL_REPORT\",\"required\":\"Y\",\"status\":\"COMPLETE\",\"requirement_id\":\"OP-REQ-4\",\"document_id\":\"R-D4\",\"submitted_type\":\"MEDICAL_REPORT\",\"detected_type\":\"MEDICAL_REPORT\",\"verification\":\"VERIFIED\",\"issues\":[],\"evidence\":[\"R-D4\"],\"citation_ids\":[\"PC-04\"]},{\"document_type\":\"REFERRAL_LETTER\",\"required\":\"CONDITIONAL\",\"status\":\"NOT_APPLICABLE\",\"requirement_id\":\"OP-REQ-5\",\"document_id\":null,\"submitted_type\":null,\"detected_type\":null,\"verification\":null,\"issues\":[\"Condition fact 'specialist_referral_required' not documented; requirement not triggered.\"],\"evidence\":[],\"citation_ids\":[\"PC-05\"]}],\"conclusion\":\"COMPLETE\",\"outstanding_requests\":[],\"consistency_issues\":[]},\"policy_verification\":{\"status\":\"FOUND\",\"policy_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"checks\":[{\"check\":\"policy_active\",\"label\":\"Policy active on treatment date\",\"result\":\"PASS\",\"verified_fact\":\"Policy ACTIVE 2026-01-01 to 2026-12-31; treatment 2026-08-20 to 2026-08-20.\",\"clause_ids\":[\"REJ-2.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-06\"],\"evidence\":[\"policy_record:POL-REJ-001\"]},{\"check\":\"member_covered\",\"label\":\"Member covered\",\"result\":\"PASS\",\"verified_fact\":\"Member MEM-REJ-001 covered 2026-01-01 to 2026-12-31.\",\"clause_ids\":[\"REJ-2.2\"],\"rule_ids\":[],\"citation_ids\":[\"PC-07\"],\"evidence\":[\"policy_record:POL-REJ-001\"]},{\"check\":\"benefit_covered\",\"label\":\"Claim type / benefit covered\",\"result\":\"PASS\",\"verified_fact\":\"OUTPATIENT benefit included.\",\"clause_ids\":[\"REJ-3.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-08\"],\"evidence\":[\"policy_record:POL-REJ-001\"]},{\"check\":\"waiting_period\",\"label\":\"Waiting period\",\"result\":\"PASS\",\"verified_fact\":\"30-day waiting period from 2026-01-01 satisfied from 2026-01-31; treatment 2026-08-20.\",\"clause_ids\":[\"REJ-4.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-09\"],\"evidence\":[\"policy_record:POL-REJ-001\"]},{\"check\":\"submission_deadline\",\"label\":\"Claim submitted within deadline\",\"result\":\"PASS\",\"verified_fact\":\"Submitted 2026-08-27, 7 days after last treatment 2026-08-20; OUTPATIENT deadline 60 days (2026-10-19).\",\"clause_ids\":[],\"rule_ids\":[\"CSR-2.1\"],\"citation_ids\":[\"PC-10\"],\"evidence\":[\"rule_set:CSR-2026\",\"claim_submission:CLM-REJ-001\"]},{\"check\":\"exclusions\",\"label\":\"Exclusions\",\"result\":\"FAIL\",\"verified_fact\":\"Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication.\",\"clause_ids\":[\"REJ-6.4\"],\"rule_ids\":[],\"citation_ids\":[\"PC-11\"],\"evidence\":[\"R-D4\"]},{\"check\":\"limit\",\"label\":\"Remaining benefit limit\",\"result\":\"PASS\",\"verified_fact\":\"Remaining OUTPATIENT limit USD 1500.00 of 1500.00 as of 2026-08-26.\",\"clause_ids\":[\"REJ-5.1\"],\"rule_ids\":[],\"citation_ids\":[\"PC-12\"],\"evidence\":[\"ledger:LED-REJ-001-OP-2026\"]}],\"remaining_limit\":\"1500.00\",\"conclusion\":\"INELIGIBLE\",\"reason\":null},\"medical_necessity\":{\"diagnosis\":null,\"procedures\":[\"Elective cosmetic rhinoplasty\"],\"result\":\"NOT_SUPPORTED\",\"rule_id\":\"CR-002\",\"rationale\":\"The treating practitioner documents an elective cosmetic procedure and explicitly records no medical indication or functional impairment.\",\"clinical_source\":\"Fictional Clinical Necessity Rulebook CNR-2026 v1.0 CNR-2026 Section 7.1\",\"rule_set_version\":\"1.0\",\"policy_clause_ids\":[\"REJ-3.2\"],\"citation_ids\":[\"PC-13\"],\"evidence\":[{\"value\":null,\"document_id\":\"R-D4\",\"location\":\"p.1, Assessment\"},{\"value\":[\"Elective cosmetic rhinoplasty\"],\"document_id\":\"R-D4\",\"location\":\"p.1, Procedure\"},{\"value\":false,\"document_id\":\"R-D4\",\"location\":\"p.1, Assessment\"},{\"value\":\"COSMETIC_ELECTIVE\",\"document_id\":\"R-D4\",\"location\":\"p.1, Procedure\"}],\"outstanding_concerns\":[]},\"benefit_calculation\":{\"status\":\"COMPLETE\",\"currency\":\"USD\",\"submitted\":\"2000.00\",\"excluded\":\"2000.00\",\"eligible\":\"0.00\",\"deductible\":\"0.00\",\"copay\":\"0.00\",\"coinsurance\":\"0.00\",\"limit_adjustment\":\"0.00\",\"insurer_payable\":\"0.00\",\"member_responsibility\":\"2000.00\",\"remaining_limit_before\":\"1500.00\",\"remaining_limit_after\":\"1500.00\",\"steps\":[{\"step\":\"EXCLUSIONS\",\"amount\":\"2000.00\",\"detail\":\"Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication.\"},{\"step\":\"DEDUCTIBLE\",\"amount\":\"0.00\",\"detail\":\"Deductible 0.00.\"},{\"step\":\"COPAY\",\"amount\":\"0.00\",\"detail\":\"Copay 20.00 x 1 visit(s), capped at the amount left.\"},{\"step\":\"COINSURANCE\",\"amount\":\"0.00\",\"detail\":\"Coinsurance rate 0.00.\"},{\"step\":\"ANNUAL_LIMIT\",\"amount\":\"0.00\",\"detail\":\"Payable capped at remaining limit 1500.00.\"}],\"clause_ids\":[\"REJ-6.4\",\"REJ-5.2\",\"REJ-5.1\"],\"citation_ids\":[\"PC-11\",\"PC-14\",\"PC-12\"],\"evidence\":[\"R-D2\",\"ledger:LED-REJ-001-OP-2026\",\"R-D4\"],\"pending_reasons\":[]},\"recommendation\":{\"outcome\":\"REJECT\",\"recommended_payable\":\"0.00\",\"reasons\":[{\"finding\":\"Exclusions failed: Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication.\",\"evidence\":[\"R-D4\"],\"citation_ids\":[\"PC-11\"]},{\"finding\":\"Medical necessity NOT_SUPPORTED (CR-002): The treating practitioner documents an elective cosmetic procedure and explicitly records no medical indication or functional impairment.\",\"evidence\":[\"R-D4\",\"clinical_rule:CR-002\"],\"citation_ids\":[\"PC-13\"]},{\"finding\":\"Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.\",\"evidence\":[\"R-D2\",\"ledger:LED-REJ-001-OP-2026\",\"R-D4\"],\"citation_ids\":[\"PC-11\",\"PC-14\",\"PC-12\"]}],\"information_requests\":[],\"escalations\":[],\"next_action\":\"Route to human denial review; the denial notice must cite the clauses above.\",\"authorization_owner\":\"Senior claims assessor (denial review)\"},\"policy_citations\":{\"citations\":[{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-1\",\"title\":\"CHK-OUTPATIENT CLAIM_FORM\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"CLAIM_FORM is REQUIRED: Identifies the member, policy, treatment date and amount claimed.\",\"citation_id\":\"PC-01\",\"supported_findings\":[\"Document requirement CLAIM_FORM\"],\"evidence_ids\":[\"R-D1\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-2\",\"title\":\"CHK-OUTPATIENT ITEMIZED_INVOICE\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"ITEMIZED_INVOICE is REQUIRED: Itemizes the charges so covered and excluded amounts can be identified.\",\"citation_id\":\"PC-02\",\"supported_findings\":[\"Document requirement ITEMIZED_INVOICE\"],\"evidence_ids\":[\"R-D2\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-3\",\"title\":\"CHK-OUTPATIENT PAYMENT_RECEIPT\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"PAYMENT_RECEIPT is REQUIRED: Confirms the member paid the amount being reimbursed.\",\"citation_id\":\"PC-03\",\"supported_findings\":[\"Document requirement PAYMENT_RECEIPT\"],\"evidence_ids\":[\"R-D3\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-4\",\"title\":\"CHK-OUTPATIENT MEDICAL_REPORT\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"MEDICAL_REPORT is REQUIRED: Documents the diagnosis and treatment needed to assess coverage and medical necessity.\",\"citation_id\":\"PC-04\",\"supported_findings\":[\"Document requirement MEDICAL_REPORT\"],\"evidence_ids\":[\"R-D4\"]},{\"kind\":\"PROCEDURAL\",\"source_document\":\"Fictional Claims Procedure Manual CPM-2026\",\"version\":\"1.2\",\"effective_date\":null,\"clause_id\":\"OP-REQ-5\",\"title\":\"CHK-OUTPATIENT REFERRAL_LETTER\",\"location\":\"Section 4.1, Outpatient claim documents\",\"text\":\"REFERRAL_LETTER is CONDITIONAL: Confirms a referral where the policy requires one for specialist consultation.\",\"citation_id\":\"PC-05\",\"supported_findings\":[\"Document requirement REFERRAL_LETTER\"],\"evidence_ids\":[]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"REJ-2.1\",\"title\":\"Period of cover\",\"location\":\"Page 2, Section 2.1\",\"text\":\"Cover under this policy applies to treatment received between the effective date and the expiry date shown in the schedule, provided the policy is in force on the date of treatment.\",\"citation_id\":\"PC-06\",\"supported_findings\":[\"Policy active on treatment date\"],\"evidence_ids\":[\"policy_record:POL-REJ-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"REJ-2.2\",\"title\":\"Insured members\",\"location\":\"Page 2, Section 2.2\",\"text\":\"Only persons named as insured members in the schedule are covered, and only for treatment received while their individual cover is in force.\",\"citation_id\":\"PC-07\",\"supported_findings\":[\"Member covered\"],\"evidence_ids\":[\"policy_record:POL-REJ-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"REJ-3.1\",\"title\":\"Outpatient benefit\",\"location\":\"Page 4, Section 3.1\",\"text\":\"We will pay for outpatient consultations, day procedures and treatment prescribed by a registered medical practitioner, subject to Sections 5 and 6.\",\"citation_id\":\"PC-08\",\"supported_findings\":[\"Claim type / benefit covered\"],\"evidence_ids\":[\"policy_record:POL-REJ-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"REJ-4.1\",\"title\":\"Waiting period\",\"location\":\"Page 5, Section 4.1\",\"text\":\"Outpatient benefits are payable only for treatment received after 30 days of continuous cover from the member's cover start date, except for treatment following an accident.\",\"citation_id\":\"PC-09\",\"supported_findings\":[\"Waiting period\"],\"evidence_ids\":[\"policy_record:POL-REJ-001\"]},{\"kind\":\"RULE\",\"source_document\":\"Fictional Claim Submission Rules CSR-2026\",\"version\":\"2026.1\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"CSR-2.1\",\"title\":\"CSR-2026\",\"location\":\"Section 2.1, Standard medical treatment\",\"text\":\"Reimbursement claims for standard medical treatment (inpatient or outpatient) must be submitted within 60 days from the last date of treatment or the discharge date.\",\"citation_id\":\"PC-10\",\"supported_findings\":[\"Claim submitted within deadline\"],\"evidence_ids\":[\"rule_set:CSR-2026\",\"claim_submission:CLM-REJ-001\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"REJ-6.4\",\"title\":\"Cosmetic and aesthetic procedures exclusion\",\"location\":\"Page 9, Section 6.4\",\"text\":\"We will not pay for any cosmetic or aesthetic procedure, including rhinoplasty, performed to change appearance where there is no medical indication documented by the treating practitioner. This exclusion does not apply to reconstructive surgery required because of an accident or a documented functional impairment.\",\"citation_id\":\"PC-11\",\"supported_findings\":[\"Exclusions\",\"Exclusions failed: Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication.\",\"Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.\",\"Benefit calculation\"],\"evidence_ids\":[\"R-D4\",\"R-D2\",\"ledger:LED-REJ-001-OP-2026\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"REJ-5.1\",\"title\":\"Annual outpatient limit\",\"location\":\"Page 6, Section 5.1\",\"text\":\"The maximum we will pay for all outpatient benefits per member in a policy year is USD 1,500.00.\",\"citation_id\":\"PC-12\",\"supported_findings\":[\"Remaining benefit limit\",\"Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.\",\"Benefit calculation\"],\"evidence_ids\":[\"ledger:LED-REJ-001-OP-2026\",\"R-D2\",\"R-D4\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"REJ-3.2\",\"title\":\"Medical necessity\",\"location\":\"Page 4, Section 3.2\",\"text\":\"Treatment is covered only when it is medically necessary for the diagnosis documented by the treating practitioner.\",\"citation_id\":\"PC-13\",\"supported_findings\":[\"Medical necessity NOT_SUPPORTED (CR-002): The treating practitioner documents an elective cosmetic procedure and explicitly records no medical indication or functional impairment.\",\"Medical necessity\"],\"evidence_ids\":[\"R-D4\",\"clinical_rule:CR-002\"]},{\"kind\":\"POLICY\",\"source_document\":\"Fictional Standard Health Plan, Policy Wording 2026-B\",\"version\":\"2026-B\",\"effective_date\":\"2026-01-01\",\"clause_id\":\"REJ-5.2\",\"title\":\"Outpatient cost-sharing\",\"location\":\"Page 6, Section 5.2\",\"text\":\"No deductible or coinsurance applies to outpatient benefits. The member pays a fixed copay of USD 20.00 for each outpatient visit.\",\"citation_id\":\"PC-14\",\"supported_findings\":[\"Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.\",\"Benefit calculation\"],\"evidence_ids\":[\"R-D2\",\"ledger:LED-REJ-001-OP-2026\",\"R-D4\"]}]}}"
+              }
+            ],
+            "temperature": 0.0,
+            "max_tokens": 4000,
+            "reasoning": {
+              "effort": "low"
+            }
+          }
+        },
+        "output": {
+          "status": "DRAFTED",
+          "attempts": 1,
+          "served_model": "recursive/flint-v1.0:free",
+          "response_id": "gen-1793187078-mtBXRh2bF8fYwG8eTter",
+          "exchanges": [
+            {
+              "attempt": 1,
+              "response_id": "gen-1793187078-mtBXRh2bF8fYwG8eTter",
+              "served_model": "recursive/flint-v1.0:free",
+              "usage": {
+                "prompt_tokens": 3785,
+                "completion_tokens": 2406,
+                "total_tokens": 6191,
+                "cost": 0,
+                "is_byok": false,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0,
+                  "cache_write_tokens": 0,
+                  "audio_tokens": 0,
+                  "video_tokens": 0
+                },
+                "cost_details": {
+                  "upstream_inference_cost": 0,
+                  "upstream_inference_prompt_cost": 0,
+                  "upstream_inference_completions_cost": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 2306,
+                  "image_tokens": 0,
+                  "audio_tokens": 0
+                }
+              },
+              "raw_content": "{\n  \"document_review\": \"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and the conditional referral was not applicable; no outstanding requests or consistency issues.\",\n  \"policy_verification\": \"Policy verification found the policy checks, but the exclusions check failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; overall conclusion was INELIGIBLE.\",\n  \"medical_necessity\": \"Medical necessity was NOT_SUPPORTED under clinical rule CR-002; the treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\",\n  \"benefit_calculation\": \"Benefit calculation was COMPLETE; submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, and remaining limit before and after was USD 1500.00.\",\n  \"recommendation\": \"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons included exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showing USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, and remaining limit USD 1500.00.\"\n}",
+              "response_body": {
+                "id": "gen-1793187078-mtBXRh2bF8fYwG8eTter",
+                "object": "chat.completion",
+                "created": 1793187078,
+                "model": "recursive/flint-v1.0:free",
+                "provider": "Recursive",
+                "system_fingerprint": null,
+                "service_tier": null,
+                "choices": [
+                  {
+                    "index": 0,
+                    "logprobs": null,
+                    "finish_reason": "stop",
+                    "native_finish_reason": "stop",
+                    "message": {
+                      "role": "assistant",
+                      "content": "{\n  \"document_review\": \"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and the conditional referral was not applicable; no outstanding requests or consistency issues.\",\n  \"policy_verification\": \"Policy verification found the policy checks, but the exclusions check failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; overall conclusion was INELIGIBLE.\",\n  \"medical_necessity\": \"Medical necessity was NOT_SUPPORTED under clinical rule CR-002; the treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\",\n  \"benefit_calculation\": \"Benefit calculation was COMPLETE; submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, and remaining limit before and after was USD 1500.00.\",\n  \"recommendation\": \"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons included exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showing USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, and remaining limit USD 1500.00.\"\n}",
+                      "refusal": null,
+                      "reasoning": "We need answer must be one JSON object nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\n\nWe need draft explanations for human insurance claim assessor. Use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\n\nNeed likely output JSON with those keys. Values short plain-text explanations.\n\nWe must be careful: final answer should be one JSON object and nothing else. Keys exactly those five. Each value short plain-text explanation.\n\nWe should not include extra keys. Could structure as strings.\n\nNeed mention only clause IDs, document IDs and amounts that appear. We can mention document IDs like R-D1, R-D2, R-D4, etc. Clause IDs like REJ-6.4, REJ-3.2, CR-002, REJ-5.1, REJ-5.2, REJ-2.1 etc. Amounts with two decimals exactly as given: USD 1500.00, USD 2000.00, USD 0.00, USD 20.00, USD 1500.00, etc.\n\nWe need maybe not add clinical/policy/financial info. But explanations can summarize.\n\nLet's parse facts.\n\nDocument review: checklist conclusion COMPLETE, outstanding_requests [], consistency_issues []. All required docs complete, referral conditional not applicable because condition not documented. Could say: Outpatient document checklist complete; required documents R-D1 through R-D4 verified; conditional referral not triggered. No outstanding requests or consistency issues.\n\nPolicy verification: status FOUND, policy active etc. Conclusion INELIGIBLE. Exclusions FAIL: procedure classification COSMETIC_ELECTIVE with no documented medical indication. Clause REJ-6.4. Other checks pass.\n\nMedical necessity: result NOT_SUPPORTED, rule CR-002, rationale elective cosmetic procedure no medical indication/functional impairment. Policy clause REJ-3.2.\n\nBenefit calculation: status COMPLETE. Submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, deductible USD 0.00, copay USD 0.00, coinsurance USD 0.00, limit_adjustment USD 0.00, insurer_payable USD 0.00, member_responsibility USD 2000.00, remaining_limit_before USD 1500.00, remaining_limit_after USD 1500.00. Steps: EXCLUSIONS amount USD 2000.00; DEDUCTIBLE 0.00; COPAY 0.00 detail Copay 20.00 x 1 visit(s), capped at amount left; COINSURANCE 0.00; ANNUAL_LIMIT 0.00 detail Payable capped at remaining limit 1500.00.\n\nWait inconsistency: copay step says copay 20.00 x 1 visit(s), capped at amount left, but benefit_calculation copay is 0.00. Maybe because excluded? We just explain facts.\n\nRecommendation: outcome REJECT, recommended_payable USD 0.00, reasons: Exclusions failed: Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication. Evidence R-D4, citation REJ-11? Actually REJ-6.4. Medical necessity NOT_SUPPORTED (CR-002): ... Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.\n\nNext action: Route to human denial review; denial notice must cite clauses above.\n\nWe need final JSON with exactly keys. Values short plain-text explanations. Could be strings.\n\nWe should ensure no extra text outside JSON. The final answer should be valid JSON. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation.\n\nMaybe:\n{\n  \"document_review\": \"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and conditional referral R-D5? Actually referral document id null. Conditional referral not applicable because condition not documented. No outstanding requests or consistency issues.\",\n  \"policy_verification\": \"Policy verification found Fictional Standard Health Plan Policy Wording 2026-B; checks passed for active policy, member covered, outpatient benefit, waiting period and submission deadline, but exclusions failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; conclusion INELIGIBLE.\",\n  \"medical_necessity\": \"Medical necessity result was NOT_SUPPORTED under clinical rule CR-002; treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\",\n  \"benefit_calculation\": \"Benefit calculation was COMPLETE: submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, remaining limit before and after USD 1500.00.\",\n  \"recommendation\": \"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons were exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showed USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, remaining limit USD 1500.00.\"\n}\n\nCheck rules: Mention only clause IDs, document IDs and amounts that appear in facts. I mentioned R-D5? No, I said conditional referral R-D5? I wrote R-D5? Actually I wrote \"conditional referral R-D5?\" No, I wrote \"conditional referral not applicable\". I should not invent R-D5. The referral document id is null. So don't mention R-D5.\n\nI mentioned \"R-D1, R-D2, R-D3 and R-D4\" okay. Clause REJ-6.4, REJ-3.2. Amounts: USD 2000.00, USD 0.00, USD 1500.00. Good.\n\nBut the instruction: \"Mention only clause IDs, document IDs and amounts that appear in the facts. Write amounts with two decimals exactly as given.\" This might mean in explanations, only mention those, not other numbers like policy dates? Better avoid extra numbers. I included \"Policy Wording 2026-B\" which is version, not clause/doc/amount. Might be okay? To be safe, avoid extra identifiers. But policy_document is a fact. Still, rule says mention only clause IDs, document IDs and amounts that appear. So maybe don't mention policy name/version. Just say policy verification.\n\nAlso \"short plain-text explanation\" so keep concise.\n\nWe need final answer one JSON object and nothing else. No markdown. Ensure valid JSON. Keys exactly. Values strings.\n\nLet's draft final JSON:\n\n{\n  \"document_review\": \"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and the conditional referral was not applicable; no outstanding requests or consistency issues.\",\n  \"policy_verification\": \"Policy verification found the policy checks, but the exclusions check failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; overall conclusion was INELIGIBLE.\",\n  \"medical_necessity\": \"Medical necessity was NOT_SUPPORTED under clinical rule CR-002; the treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\",\n  \"benefit_calculation\": \"Benefit calculation was COMPLETE; submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, and remaining limit before and after was USD 1500.00.\",\n  \"recommendation\": \"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons included exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showing USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, and remaining limit USD 1500.00.\"\n}\n\nCheck: Did I mention amounts with two decimals exactly? Yes: USD 2000.00, USD 0.00, USD 1500.00. Good.\n\nDid I mention only clause IDs, document IDs and amounts? I mentioned COSMETIC_ELECTIVE, which is procedure classification, not clause/doc/amount. Might be okay? The rule says mention only clause IDs, document IDs and amounts that appear in facts. COSMETIC_ELECTIVE appears in facts. But maybe strict? To be safe, maybe avoid procedure classification? But it's a fact. The instruction might mean don't add new info. It's in facts.\n\nI mentioned \"policy checks\" no IDs. Fine.\n\nI mentioned \"INELIGIBLE\" which is conclusion. Fine.\n\nI mentioned \"elective cosmetic rhinoplasty\" clinical info. But it's in facts. The rule says use only facts, do not add clinical info. So okay.\n\nI mentioned \"no outstanding requests or consistency issues\" from facts.\n\nI mentioned \"conditional referral was not applicable\" from facts.\n\nI mentioned \"recommended payable USD 0.00\" from facts.\n\nI mentioned \"remaining limit before and after was USD 1500.00\" from facts.\n\nI did not mention copay 20.00, deductible etc. That's okay? The value should be short plain-text explanation. Might be okay.\n\nBut the final answer must be one JSON object and nothing else. So I will output that JSON.\n\nDouble-check keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Yes.\n\nNo extra keys. Yes.\n\nEach value is a short plain-text explanation. Yes.\n\nOne JSON object. Yes.\n\nNothing else. Yes.\n\nI should ensure valid JSON: quotes, commas. No trailing commas.\n\nLet's final.",
+                      "reasoning_details": [
+                        {
+                          "type": "reasoning.text",
+                          "text": "We need answer must be one JSON object nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\n\nWe need draft explanations for human insurance claim assessor. Use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\n\nNeed likely output JSON with those keys. Values short plain-text explanations.\n\nWe must be careful: final answer should be one JSON object and nothing else. Keys exactly those five. Each value short plain-text explanation.\n\nWe should not include extra keys. Could structure as strings.\n\nNeed mention only clause IDs, document IDs and amounts that appear. We can mention document IDs like R-D1, R-D2, R-D4, etc. Clause IDs like REJ-6.4, REJ-3.2, CR-002, REJ-5.1, REJ-5.2, REJ-2.1 etc. Amounts with two decimals exactly as given: USD 1500.00, USD 2000.00, USD 0.00, USD 20.00, USD 1500.00, etc.\n\nWe need maybe not add clinical/policy/financial info. But explanations can summarize.\n\nLet's parse facts.\n\nDocument review: checklist conclusion COMPLETE, outstanding_requests [], consistency_issues []. All required docs complete, referral conditional not applicable because condition not documented. Could say: Outpatient document checklist complete; required documents R-D1 through R-D4 verified; conditional referral not triggered. No outstanding requests or consistency issues.\n\nPolicy verification: status FOUND, policy active etc. Conclusion INELIGIBLE. Exclusions FAIL: procedure classification COSMETIC_ELECTIVE with no documented medical indication. Clause REJ-6.4. Other checks pass.\n\nMedical necessity: result NOT_SUPPORTED, rule CR-002, rationale elective cosmetic procedure no medical indication/functional impairment. Policy clause REJ-3.2.\n\nBenefit calculation: status COMPLETE. Submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, deductible USD 0.00, copay USD 0.00, coinsurance USD 0.00, limit_adjustment USD 0.00, insurer_payable USD 0.00, member_responsibility USD 2000.00, remaining_limit_before USD 1500.00, remaining_limit_after USD 1500.00. Steps: EXCLUSIONS amount USD 2000.00; DEDUCTIBLE 0.00; COPAY 0.00 detail Copay 20.00 x 1 visit(s), capped at amount left; COINSURANCE 0.00; ANNUAL_LIMIT 0.00 detail Payable capped at remaining limit 1500.00.\n\nWait inconsistency: copay step says copay 20.00 x 1 visit(s), capped at amount left, but benefit_calculation copay is 0.00. Maybe because excluded? We just explain facts.\n\nRecommendation: outcome REJECT, recommended_payable USD 0.00, reasons: Exclusions failed: Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication. Evidence R-D4, citation REJ-11? Actually REJ-6.4. Medical necessity NOT_SUPPORTED (CR-002): ... Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.\n\nNext action: Route to human denial review; denial notice must cite clauses above.\n\nWe need final JSON with exactly keys. Values short plain-text explanations. Could be strings.\n\nWe should ensure no extra text outside JSON. The final answer should be valid JSON. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation.\n\nMaybe:\n{\n  \"document_review\": \"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and conditional referral R-D5? Actually referral document id null. Conditional referral not applicable because condition not documented. No outstanding requests or consistency issues.\",\n  \"policy_verification\": \"Policy verification found Fictional Standard Health Plan Policy Wording 2026-B; checks passed for active policy, member covered, outpatient benefit, waiting period and submission deadline, but exclusions failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; conclusion INELIGIBLE.\",\n  \"medical_necessity\": \"Medical necessity result was NOT_SUPPORTED under clinical rule CR-002; treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\",\n  \"benefit_calculation\": \"Benefit calculation was COMPLETE: submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, remaining limit before and after USD 1500.00.\",\n  \"recommendation\": \"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons were exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showed USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, remaining limit USD 1500.00.\"\n}\n\nCheck rules: Mention only clause IDs, document IDs and amounts that appear in facts. I mentioned R-D5? No, I said conditional referral R-D5? I wrote R-D5? Actually I wrote \"conditional referral R-D5?\" No, I wrote \"conditional referral not applicable\". I should not invent R-D5. The referral document id is null. So don't mention R-D5.\n\nI mentioned \"R-D1, R-D2, R-D3 and R-D4\" okay. Clause REJ-6.4, REJ-3.2. Amounts: USD 2000.00, USD 0.00, USD 1500.00. Good.\n\nBut the instruction: \"Mention only clause IDs, document IDs and amounts that appear in the facts. Write amounts with two decimals exactly as given.\" This might mean in explanations, only mention those, not other numbers like policy dates? Better avoid extra numbers. I included \"Policy Wording 2026-B\" which is version, not clause/doc/amount. Might be okay? To be safe, avoid extra identifiers. But policy_document is a fact. Still, rule says mention only clause IDs, document IDs and amounts that appear. So maybe don't mention policy name/version. Just say policy verification.\n\nAlso \"short plain-text explanation\" so keep concise.\n\nWe need final answer one JSON object and nothing else. No markdown. Ensure valid JSON. Keys exactly. Values strings.\n\nLet's draft final JSON:\n\n{\n  \"document_review\": \"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and the conditional referral was not applicable; no outstanding requests or consistency issues.\",\n  \"policy_verification\": \"Policy verification found the policy checks, but the exclusions check failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; overall conclusion was INELIGIBLE.\",\n  \"medical_necessity\": \"Medical necessity was NOT_SUPPORTED under clinical rule CR-002; the treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\",\n  \"benefit_calculation\": \"Benefit calculation was COMPLETE; submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, and remaining limit before and after was USD 1500.00.\",\n  \"recommendation\": \"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons included exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showing USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, and remaining limit USD 1500.00.\"\n}\n\nCheck: Did I mention amounts with two decimals exactly? Yes: USD 2000.00, USD 0.00, USD 1500.00. Good.\n\nDid I mention only clause IDs, document IDs and amounts? I mentioned COSMETIC_ELECTIVE, which is procedure classification, not clause/doc/amount. Might be okay? The rule says mention only clause IDs, document IDs and amounts that appear in facts. COSMETIC_ELECTIVE appears in facts. But maybe strict? To be safe, maybe avoid procedure classification? But it's a fact. The instruction might mean don't add new info. It's in facts.\n\nI mentioned \"policy checks\" no IDs. Fine.\n\nI mentioned \"INELIGIBLE\" which is conclusion. Fine.\n\nI mentioned \"elective cosmetic rhinoplasty\" clinical info. But it's in facts. The rule says use only facts, do not add clinical info. So okay.\n\nI mentioned \"no outstanding requests or consistency issues\" from facts.\n\nI mentioned \"conditional referral was not applicable\" from facts.\n\nI mentioned \"recommended payable USD 0.00\" from facts.\n\nI mentioned \"remaining limit before and after was USD 1500.00\" from facts.\n\nI did not mention copay 20.00, deductible etc. That's okay? The value should be short plain-text explanation. Might be okay.\n\nBut the final answer must be one JSON object and nothing else. So I will output that JSON.\n\nDouble-check keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Yes.\n\nNo extra keys. Yes.\n\nEach value is a short plain-text explanation. Yes.\n\nOne JSON object. Yes.\n\nNothing else. Yes.\n\nI should ensure valid JSON: quotes, commas. No trailing commas.\n\nLet's final.",
+                          "format": "unknown",
+                          "index": 0
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "usage": {
+                  "prompt_tokens": 3785,
+                  "completion_tokens": 2406,
+                  "total_tokens": 6191,
+                  "cost": 0,
+                  "is_byok": false,
+                  "prompt_tokens_details": {
+                    "cached_tokens": 0,
+                    "cache_write_tokens": 0,
+                    "audio_tokens": 0,
+                    "video_tokens": 0
+                  },
+                  "cost_details": {
+                    "upstream_inference_cost": 0,
+                    "upstream_inference_prompt_cost": 0,
+                    "upstream_inference_completions_cost": 0
+                  },
+                  "completion_tokens_details": {
+                    "reasoning_tokens": 2306,
+                    "image_tokens": 0,
+                    "audio_tokens": 0
+                  }
+                }
+              },
+              "response_raw": "\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n\n         \n{\"id\":\"gen-1793187078-mtBXRh2bF8fYwG8eTter\",\"object\":\"chat.completion\",\"created\":1793187078,\"model\":\"recursive/flint-v1.0:free\",\"provider\":\"Recursive\",\"system_fingerprint\":null,\"service_tier\":null,\"choices\":[{\"index\":0,\"logprobs\":null,\"finish_reason\":\"stop\",\"native_finish_reason\":\"stop\",\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"document_review\\\": \\\"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and the conditional referral was not applicable; no outstanding requests or consistency issues.\\\",\\n  \\\"policy_verification\\\": \\\"Policy verification found the policy checks, but the exclusions check failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; overall conclusion was INELIGIBLE.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity was NOT_SUPPORTED under clinical rule CR-002; the treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\\\",\\n  \\\"benefit_calculation\\\": \\\"Benefit calculation was COMPLETE; submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, and remaining limit before and after was USD 1500.00.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons included exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showing USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, and remaining limit USD 1500.00.\\\"\\n}\",\"refusal\":null,\"reasoning\":\"We need answer must be one JSON object nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\\n\\nWe need draft explanations for human insurance claim assessor. Use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\\n\\nNeed likely output JSON with those keys. Values short plain-text explanations.\\n\\nWe must be careful: final answer should be one JSON object and nothing else. Keys exactly those five. Each value short plain-text explanation.\\n\\nWe should not include extra keys. Could structure as strings.\\n\\nNeed mention only clause IDs, document IDs and amounts that appear. We can mention document IDs like R-D1, R-D2, R-D4, etc. Clause IDs like REJ-6.4, REJ-3.2, CR-002, REJ-5.1, REJ-5.2, REJ-2.1 etc. Amounts with two decimals exactly as given: USD 1500.00, USD 2000.00, USD 0.00, USD 20.00, USD 1500.00, etc.\\n\\nWe need maybe not add clinical/policy/financial info. But explanations can summarize.\\n\\nLet's parse facts.\\n\\nDocument review: checklist conclusion COMPLETE, outstanding_requests [], consistency_issues []. All required docs complete, referral conditional not applicable because condition not documented. Could say: Outpatient document checklist complete; required documents R-D1 through R-D4 verified; conditional referral not triggered. No outstanding requests or consistency issues.\\n\\nPolicy verification: status FOUND, policy active etc. Conclusion INELIGIBLE. Exclusions FAIL: procedure classification COSMETIC_ELECTIVE with no documented medical indication. Clause REJ-6.4. Other checks pass.\\n\\nMedical necessity: result NOT_SUPPORTED, rule CR-002, rationale elective cosmetic procedure no medical indication/functional impairment. Policy clause REJ-3.2.\\n\\nBenefit calculation: status COMPLETE. Submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, deductible USD 0.00, copay USD 0.00, coinsurance USD 0.00, limit_adjustment USD 0.00, insurer_payable USD 0.00, member_responsibility USD 2000.00, remaining_limit_before USD 1500.00, remaining_limit_after USD 1500.00. Steps: EXCLUSIONS amount USD 2000.00; DEDUCTIBLE 0.00; COPAY 0.00 detail Copay 20.00 x 1 visit(s), capped at amount left; COINSURANCE 0.00; ANNUAL_LIMIT 0.00 detail Payable capped at remaining limit 1500.00.\\n\\nWait inconsistency: copay step says copay 20.00 x 1 visit(s), capped at amount left, but benefit_calculation copay is 0.00. Maybe because excluded? We just explain facts.\\n\\nRecommendation: outcome REJECT, recommended_payable USD 0.00, reasons: Exclusions failed: Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication. Evidence R-D4, citation REJ-11? Actually REJ-6.4. Medical necessity NOT_SUPPORTED (CR-002): ... Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.\\n\\nNext action: Route to human denial review; denial notice must cite clauses above.\\n\\nWe need final JSON with exactly keys. Values short plain-text explanations. Could be strings.\\n\\nWe should ensure no extra text outside JSON. The final answer should be valid JSON. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation.\\n\\nMaybe:\\n{\\n  \\\"document_review\\\": \\\"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and conditional referral R-D5? Actually referral document id null. Conditional referral not applicable because condition not documented. No outstanding requests or consistency issues.\\\",\\n  \\\"policy_verification\\\": \\\"Policy verification found Fictional Standard Health Plan Policy Wording 2026-B; checks passed for active policy, member covered, outpatient benefit, waiting period and submission deadline, but exclusions failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; conclusion INELIGIBLE.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity result was NOT_SUPPORTED under clinical rule CR-002; treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\\\",\\n  \\\"benefit_calculation\\\": \\\"Benefit calculation was COMPLETE: submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, remaining limit before and after USD 1500.00.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons were exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showed USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, remaining limit USD 1500.00.\\\"\\n}\\n\\nCheck rules: Mention only clause IDs, document IDs and amounts that appear in facts. I mentioned R-D5? No, I said conditional referral R-D5? I wrote R-D5? Actually I wrote \\\"conditional referral R-D5?\\\" No, I wrote \\\"conditional referral not applicable\\\". I should not invent R-D5. The referral document id is null. So don't mention R-D5.\\n\\nI mentioned \\\"R-D1, R-D2, R-D3 and R-D4\\\" okay. Clause REJ-6.4, REJ-3.2. Amounts: USD 2000.00, USD 0.00, USD 1500.00. Good.\\n\\nBut the instruction: \\\"Mention only clause IDs, document IDs and amounts that appear in the facts. Write amounts with two decimals exactly as given.\\\" This might mean in explanations, only mention those, not other numbers like policy dates? Better avoid extra numbers. I included \\\"Policy Wording 2026-B\\\" which is version, not clause/doc/amount. Might be okay? To be safe, avoid extra identifiers. But policy_document is a fact. Still, rule says mention only clause IDs, document IDs and amounts that appear. So maybe don't mention policy name/version. Just say policy verification.\\n\\nAlso \\\"short plain-text explanation\\\" so keep concise.\\n\\nWe need final answer one JSON object and nothing else. No markdown. Ensure valid JSON. Keys exactly. Values strings.\\n\\nLet's draft final JSON:\\n\\n{\\n  \\\"document_review\\\": \\\"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and the conditional referral was not applicable; no outstanding requests or consistency issues.\\\",\\n  \\\"policy_verification\\\": \\\"Policy verification found the policy checks, but the exclusions check failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; overall conclusion was INELIGIBLE.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity was NOT_SUPPORTED under clinical rule CR-002; the treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\\\",\\n  \\\"benefit_calculation\\\": \\\"Benefit calculation was COMPLETE; submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, and remaining limit before and after was USD 1500.00.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons included exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showing USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, and remaining limit USD 1500.00.\\\"\\n}\\n\\nCheck: Did I mention amounts with two decimals exactly? Yes: USD 2000.00, USD 0.00, USD 1500.00. Good.\\n\\nDid I mention only clause IDs, document IDs and amounts? I mentioned COSMETIC_ELECTIVE, which is procedure classification, not clause/doc/amount. Might be okay? The rule says mention only clause IDs, document IDs and amounts that appear in facts. COSMETIC_ELECTIVE appears in facts. But maybe strict? To be safe, maybe avoid procedure classification? But it's a fact. The instruction might mean don't add new info. It's in facts.\\n\\nI mentioned \\\"policy checks\\\" no IDs. Fine.\\n\\nI mentioned \\\"INELIGIBLE\\\" which is conclusion. Fine.\\n\\nI mentioned \\\"elective cosmetic rhinoplasty\\\" clinical info. But it's in facts. The rule says use only facts, do not add clinical info. So okay.\\n\\nI mentioned \\\"no outstanding requests or consistency issues\\\" from facts.\\n\\nI mentioned \\\"conditional referral was not applicable\\\" from facts.\\n\\nI mentioned \\\"recommended payable USD 0.00\\\" from facts.\\n\\nI mentioned \\\"remaining limit before and after was USD 1500.00\\\" from facts.\\n\\nI did not mention copay 20.00, deductible etc. That's okay? The value should be short plain-text explanation. Might be okay.\\n\\nBut the final answer must be one JSON object and nothing else. So I will output that JSON.\\n\\nDouble-check keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Yes.\\n\\nNo extra keys. Yes.\\n\\nEach value is a short plain-text explanation. Yes.\\n\\nOne JSON object. Yes.\\n\\nNothing else. Yes.\\n\\nI should ensure valid JSON: quotes, commas. No trailing commas.\\n\\nLet's final.\",\"reasoning_details\":[{\"type\":\"reasoning.text\",\"text\":\"We need answer must be one JSON object nothing else. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value short plain-text explanation.\\n\\nWe need draft explanations for human insurance claim assessor. Use only facts in supplied JSON. Do not add clinical/policy/financial info. Do not make/change/question recommendation. Mention only clause IDs, document IDs and amounts that appear in facts. Write amounts with two decimals exactly as given.\\n\\nNeed likely output JSON with those keys. Values short plain-text explanations.\\n\\nWe must be careful: final answer should be one JSON object and nothing else. Keys exactly those five. Each value short plain-text explanation.\\n\\nWe should not include extra keys. Could structure as strings.\\n\\nNeed mention only clause IDs, document IDs and amounts that appear. We can mention document IDs like R-D1, R-D2, R-D4, etc. Clause IDs like REJ-6.4, REJ-3.2, CR-002, REJ-5.1, REJ-5.2, REJ-2.1 etc. Amounts with two decimals exactly as given: USD 1500.00, USD 2000.00, USD 0.00, USD 20.00, USD 1500.00, etc.\\n\\nWe need maybe not add clinical/policy/financial info. But explanations can summarize.\\n\\nLet's parse facts.\\n\\nDocument review: checklist conclusion COMPLETE, outstanding_requests [], consistency_issues []. All required docs complete, referral conditional not applicable because condition not documented. Could say: Outpatient document checklist complete; required documents R-D1 through R-D4 verified; conditional referral not triggered. No outstanding requests or consistency issues.\\n\\nPolicy verification: status FOUND, policy active etc. Conclusion INELIGIBLE. Exclusions FAIL: procedure classification COSMETIC_ELECTIVE with no documented medical indication. Clause REJ-6.4. Other checks pass.\\n\\nMedical necessity: result NOT_SUPPORTED, rule CR-002, rationale elective cosmetic procedure no medical indication/functional impairment. Policy clause REJ-3.2.\\n\\nBenefit calculation: status COMPLETE. Submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, deductible USD 0.00, copay USD 0.00, coinsurance USD 0.00, limit_adjustment USD 0.00, insurer_payable USD 0.00, member_responsibility USD 2000.00, remaining_limit_before USD 1500.00, remaining_limit_after USD 1500.00. Steps: EXCLUSIONS amount USD 2000.00; DEDUCTIBLE 0.00; COPAY 0.00 detail Copay 20.00 x 1 visit(s), capped at amount left; COINSURANCE 0.00; ANNUAL_LIMIT 0.00 detail Payable capped at remaining limit 1500.00.\\n\\nWait inconsistency: copay step says copay 20.00 x 1 visit(s), capped at amount left, but benefit_calculation copay is 0.00. Maybe because excluded? We just explain facts.\\n\\nRecommendation: outcome REJECT, recommended_payable USD 0.00, reasons: Exclusions failed: Verified procedure classification COSMETIC_ELECTIVE with no documented medical indication. Evidence R-D4, citation REJ-11? Actually REJ-6.4. Medical necessity NOT_SUPPORTED (CR-002): ... Calculation: USD 2000.00 submitted, 2000.00 excluded, 0.00 insurer payable, 2000.00 member responsibility; remaining limit 1500.00 -> 1500.00.\\n\\nNext action: Route to human denial review; denial notice must cite clauses above.\\n\\nWe need final JSON with exactly keys. Values short plain-text explanations. Could be strings.\\n\\nWe should ensure no extra text outside JSON. The final answer should be valid JSON. Keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Each value is a short plain-text explanation.\\n\\nMaybe:\\n{\\n  \\\"document_review\\\": \\\"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and conditional referral R-D5? Actually referral document id null. Conditional referral not applicable because condition not documented. No outstanding requests or consistency issues.\\\",\\n  \\\"policy_verification\\\": \\\"Policy verification found Fictional Standard Health Plan Policy Wording 2026-B; checks passed for active policy, member covered, outpatient benefit, waiting period and submission deadline, but exclusions failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; conclusion INELIGIBLE.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity result was NOT_SUPPORTED under clinical rule CR-002; treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\\\",\\n  \\\"benefit_calculation\\\": \\\"Benefit calculation was COMPLETE: submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, remaining limit before and after USD 1500.00.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons were exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showed USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, remaining limit USD 1500.00.\\\"\\n}\\n\\nCheck rules: Mention only clause IDs, document IDs and amounts that appear in facts. I mentioned R-D5? No, I said conditional referral R-D5? I wrote R-D5? Actually I wrote \\\"conditional referral R-D5?\\\" No, I wrote \\\"conditional referral not applicable\\\". I should not invent R-D5. The referral document id is null. So don't mention R-D5.\\n\\nI mentioned \\\"R-D1, R-D2, R-D3 and R-D4\\\" okay. Clause REJ-6.4, REJ-3.2. Amounts: USD 2000.00, USD 0.00, USD 1500.00. Good.\\n\\nBut the instruction: \\\"Mention only clause IDs, document IDs and amounts that appear in the facts. Write amounts with two decimals exactly as given.\\\" This might mean in explanations, only mention those, not other numbers like policy dates? Better avoid extra numbers. I included \\\"Policy Wording 2026-B\\\" which is version, not clause/doc/amount. Might be okay? To be safe, avoid extra identifiers. But policy_document is a fact. Still, rule says mention only clause IDs, document IDs and amounts that appear. So maybe don't mention policy name/version. Just say policy verification.\\n\\nAlso \\\"short plain-text explanation\\\" so keep concise.\\n\\nWe need final answer one JSON object and nothing else. No markdown. Ensure valid JSON. Keys exactly. Values strings.\\n\\nLet's draft final JSON:\\n\\n{\\n  \\\"document_review\\\": \\\"Outpatient document checklist concluded COMPLETE; required documents R-D1, R-D2, R-D3 and R-D4 were verified, and the conditional referral was not applicable; no outstanding requests or consistency issues.\\\",\\n  \\\"policy_verification\\\": \\\"Policy verification found the policy checks, but the exclusions check failed under clause REJ-6.4 with procedure classification COSMETIC_ELECTIVE and no documented medical indication; overall conclusion was INELIGIBLE.\\\",\\n  \\\"medical_necessity\\\": \\\"Medical necessity was NOT_SUPPORTED under clinical rule CR-002; the treating practitioner documented elective cosmetic rhinoplasty and no medical indication or functional impairment, with policy clause REJ-3.2.\\\",\\n  \\\"benefit_calculation\\\": \\\"Benefit calculation was COMPLETE; submitted USD 2000.00, excluded USD 2000.00, eligible USD 0.00, insurer payable USD 0.00, member responsibility USD 2000.00, and remaining limit before and after was USD 1500.00.\\\",\\n  \\\"recommendation\\\": \\\"Recommendation outcome was REJECT with recommended payable USD 0.00; reasons included exclusions failed under REJ-6.4, medical necessity NOT_SUPPORTED under CR-002, and calculation showing USD 2000.00 submitted and excluded, USD 0.00 insurer payable, USD 2000.00 member responsibility, and remaining limit USD 1500.00.\\\"\\n}\\n\\nCheck: Did I mention amounts with two decimals exactly? Yes: USD 2000.00, USD 0.00, USD 1500.00. Good.\\n\\nDid I mention only clause IDs, document IDs and amounts? I mentioned COSMETIC_ELECTIVE, which is procedure classification, not clause/doc/amount. Might be okay? The rule says mention only clause IDs, document IDs and amounts that appear in facts. COSMETIC_ELECTIVE appears in facts. But maybe strict? To be safe, maybe avoid procedure classification? But it's a fact. The instruction might mean don't add new info. It's in facts.\\n\\nI mentioned \\\"policy checks\\\" no IDs. Fine.\\n\\nI mentioned \\\"INELIGIBLE\\\" which is conclusion. Fine.\\n\\nI mentioned \\\"elective cosmetic rhinoplasty\\\" clinical info. But it's in facts. The rule says use only facts, do not add clinical info. So okay.\\n\\nI mentioned \\\"no outstanding requests or consistency issues\\\" from facts.\\n\\nI mentioned \\\"conditional referral was not applicable\\\" from facts.\\n\\nI mentioned \\\"recommended payable USD 0.00\\\" from facts.\\n\\nI mentioned \\\"remaining limit before and after was USD 1500.00\\\" from facts.\\n\\nI did not mention copay 20.00, deductible etc. That's okay? The value should be short plain-text explanation. Might be okay.\\n\\nBut the final answer must be one JSON object and nothing else. So I will output that JSON.\\n\\nDouble-check keys exactly: document_review, policy_verification, medical_necessity, benefit_calculation, recommendation. Yes.\\n\\nNo extra keys. Yes.\\n\\nEach value is a short plain-text explanation. Yes.\\n\\nOne JSON object. Yes.\\n\\nNothing else. Yes.\\n\\nI should ensure valid JSON: quotes, commas. No trailing commas.\\n\\nLet's final.\",\"format\":\"unknown\",\"index\":0}]}}],\"usage\":{\"prompt_tokens\":3785,\"completion_tokens\":2406,\"total_tokens\":6191,\"cost\":0,\"is_byok\":false,\"prompt_tokens_details\":{\"cached_tokens\":0,\"cache_write_tokens\":0,\"audio_tokens\":0,\"video_tokens\":0},\"cost_details\":{\"upstream_inference_cost\":0,\"upstream_inference_prompt_cost\":0,\"upstream_inference_completions_cost\":0},\"completion_tokens_details\":{\"reasoning_tokens\":2306,\"image_tokens\":0,\"audio_tokens\":0}}}",
+              "validation_problems": []
+            }
+          ]
+        },
+        "reason": null
+      },
+      {
+        "sequence": 12,
+        "event": "STEP",
+        "name": "validateReport",
+        "status": "OK",
+        "timestamp": "2026-10-28T11:31:37+00:00",
+        "context_version": "ctx-1/fixtures-2026.10-1",
+        "tool_version": "validateReport/1.0",
+        "input": null,
+        "output": {
+          "status": "PASS",
+          "errors": [],
+          "citation_check": "PASS",
+          "reconciliation": "PASS",
+          "assessment_status": "READY_FOR_AUTHORIZATION"
+        },
+        "reason": null
+      }
+    ]
+  }
+}
