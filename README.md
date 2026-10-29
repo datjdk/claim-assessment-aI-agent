@@ -8,6 +8,10 @@ A prototype agent that does the **first-pass assessment of a health insurance cl
 
 All policies, members, documents and amounts in `sample_data/` are **fictional**.
 
+## Trả lời "Câu hỏi tư duy"
+
+[cau-hoi-tu-duy.md](cau-hoi-tu-duy.md) holds my answers to the reflective questions, written in Vietnamese. It is separate from the agent and isn't used by the code.
+
 ## How this was built
 
 | Stage | Tool | Output | AI conversation |
@@ -106,6 +110,8 @@ All three pass validation and the citation check. Full reports, generated with `
 - [CLM-APP-001.md](output/md/CLM-APP-001.md)
 - [CLM-REJ-001.md](output/md/CLM-REJ-001.md)
 - [CLM-RFI-001.md](output/md/CLM-RFI-001.md)
+
+For every other scenario, including edge cases such as late submission, a lapsed policy, a missing document or a missing policy record, see the [test case matrix](docs/test-case-matrix.md).
 
 The outputs below are excerpts. Times, assessment IDs and audit IDs change on every run.
 
@@ -392,6 +398,7 @@ src/claim_agent/
 tests/                  unit and acceptance tests
 get-started/            implementation plan and operating guideline (planning docs)
 ai-conversation/        exported ChatGPT planning and Claude Code implementation conversations
+cau-hoi-tu-duy.md       answers to the reflective questions (in Vietnamese)
 ```
 
 See [CLAUDE.md](CLAUDE.md) for design decisions and the full list of verified case outputs and failure-mode tests.
